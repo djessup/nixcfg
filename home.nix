@@ -6,20 +6,107 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [ 
+    # Nix
     nix-direnv
     nixfmt-rfc-style
     nil
+    # Shell
+    iterm2
+    nix-zsh-completions
+    zsh-completions
+    zsh-better-npm-completion
+    # zsh-history
+    zsh-fzf-tab
+    zsh-fzf-history-search
+    # AWS
+    awscli2
+    aws-sam-cli
+    awslogs
+    aws-gate
+    aws-shell
+    aws-vault
+    aws-rotate-key
+    nodePackages.aws-cdk
+    okta-aws-cli
+    cw
+    packer
+    k9s
+    cloudlens
+    # Azure
+    azure-cli
+    azure-storage-azcopy
+    # Misc tools
+    darwin.lsusb
     git
-    awscli
     direnv
-    git
     htop
+    btop
     wget
     ripgrep
     jq
+    yq
+    sshpass
+    tree
+    watch
+    hwatch
+    skopeo
     sops
+    qemu
+    sonar-scanner-cli
+    minicom
+    coreutils
+    openssl
+    ngrok
+    aiac
+    # airgorah
+    localstack
+    warp-terminal
+    code-cursor
+    vscode
+    # ghidra
+    utm
+    # Python
+    uv
+    python3
+    # python313
+    # python39
+    micromamba
+
+    # Java
+    # jdk11
+    # openjdk8
+    # jdk17
+    # jdk21
+    visualvm
+
+    jetbrains.writerside
+    jetbrains.clion
+    jetbrains.idea-ultimate
+    jetbrains.rust-rover
+    # jetbrains-toolbox
+    # Fonts
+    nerd-fonts.jetbrains-mono
+
+    # Embedded
+    avrdude
+    # ravedude
+    # simulide
+    autoconf
+    automake
+    pkgconf
+    cmake
+    ninja
+    dfu-util
+    openocd
+    llvm
     probe-rs
-    
+    SDL2
+    qemu
+    gcc-arm-embedded
+    # libuv
+    # libssh
+    # libssh2
+    # libusb
   ];
   
   programs = {
@@ -39,9 +126,11 @@
         plugins = [
           "git"
           "direnv"
+          "zsh-fzf-tab"
         ];
+  
       };
-
+      
       autocd = true;
       autosuggestion.enable = true;
       enableCompletion = true;
@@ -63,7 +152,7 @@
 
     dircolors.enable = true;
     fzf.enable = true;
-    starship.enable = true;
+    # starship.enable = true;
     # zoxide.enable = true;
 
       # initExtra = ''
