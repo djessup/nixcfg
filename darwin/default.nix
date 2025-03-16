@@ -30,11 +30,8 @@
 
   programs.bash.completion.enable = true;
 
-  programs.nix-index = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
+  programs.man.enable = true;
+  programs.nix-index.enable = true;
 
   # User mappings, the rest is handled by home-manager
   users.users."${user}" = {
@@ -47,6 +44,7 @@
     ./settings/system.nix
     ./settings/environment.nix
     ./settings/security.nix
+    ./settings/network.nix
     ./settings/homebrew.nix 
   ];
 }
