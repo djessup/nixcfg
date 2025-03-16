@@ -31,18 +31,24 @@
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
     };
 
+    sessionVariables = {
+      ARTIFACTORY_USER = "jessup";
+    };
+    
     initExtra = ''
-      # export TERM=xterm-256color
+      export TERM=xterm-256color
       # export LANG=en_US.UTF-8
 
       . "$HOME/.asdf/asdf.sh"
       source <(kubectl completion zsh)
      
-      # amstool completions
-      source ~/.amstool.zsh
+      # Additional completions
+      fpath+=($HOME/.zfunc)
 
+      # amstool completions
+      # source $HOME/.zfunc/_amstool
       # uv completions
-      source ~/.uv.zsh
+      # source $HOME/.zfunc/_uv
 
       # jenv
       export PATH="$HOME/.jenv/bin:$PATH"
@@ -50,16 +56,16 @@
 
       # NVM
       export NVM_DIR="$HOME/.nvm"
-
       [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
       # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-      export KERL_BUILD_DOCS="yes"
-      export ERL_AFLAGS="-kernel shell_history enabled"
       # SDKMAN
       export SDKMAN_DIR="$HOME/.sdkman"
       [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
+      
+      # iTerm2 shell integration
+      [[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
+      
       # Ok, if Nix doesn't work, try this:
       # export PATH="/run/current-system/sw/bin:$PATH"
       # And enable this
