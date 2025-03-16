@@ -1,11 +1,17 @@
 # User-specific configuration
-{ config, pkgs, lib, home-manager, ... }:
 {
- imports = [
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  ...
+}:
+{
+  imports = [
     ./settings/zsh.nix
   ];
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     # Nix
     nix-direnv
     nixfmt-rfc-style
@@ -28,13 +34,16 @@
     okta-aws-cli
     cw
     packer
+    terraform
     k9s
     cloudlens
+    kubectl
     # Azure
     azure-cli
     azure-storage-azcopy
     # Misc tools
     darwin.lsusb
+    asdf
     git
     direnv
     htop
@@ -58,9 +67,11 @@
     aiac
     # airgorah
     localstack
-    
+    asciinema
+    httpie
+    # thefuck
     # ghidra
-    
+    slack
     # Python
     uv
     python3
@@ -116,29 +127,47 @@
     vscode
     fzf
   ];
-  
+
   programs = {
-    # https://github.com/nix-community/nix-direnv
+
     direnv = {
       enable = true;
       enableZshIntegration = true; # see note on other shells below
       nix-direnv.enable = true;
     };
-  
-  
 
     dircolors.enable = true;
-    fzf.enable = true;
-    # Let home Manager install and manage itself.
-    home-manager.enable = true;
-    # starship.enable = true;
+
     # zoxide.enable = true;
 
-      # initExtra = ''
-      #   # Enable iTerm2 shell integration.
-      #   test -e "~/.iterm2_shell_integration.zsh" && source "~/.iterm2_shell_integration.zsh"
-      # '';
+    # starship = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
+
+    # bat = {
+    #   enable = true;
+    #   config.theme = "TwoDark";
+    # };
+
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    eza.enable = true;
+    git.enable = true;
+
+    # initExtra = ''
+    #   # Enable iTerm2 shell integration.
+    #   test -e "~/.iterm2_shell_integration.zsh" && source "~/.iterm2_shell_integration.zsh"
+    # '';
+
+    # Let home Manager install and manage itself.
+    home-manager.enable = true;
   };
+
+  home.file.".inputrc".source = ./settings/inputrc;
 
   # The state version is required and should stay at the version originally installed.
   home.stateVersion = "24.11";
