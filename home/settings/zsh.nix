@@ -3,6 +3,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     # enableVteIntegration = true;
@@ -33,22 +34,17 @@
 
     sessionVariables = {
       ARTIFACTORY_USER = "jessup";
+      ASDF_DATA_DIR = "$HOME/.asdf";
     };
     
     initExtra = ''
       export TERM=xterm-256color
       # export LANG=en_US.UTF-8
 
-      . "$HOME/.asdf/asdf.sh"
       source <(kubectl completion zsh)
      
-      # Additional completions
-      fpath+=($HOME/.zfunc)
-
-      # amstool completions
-      # source $HOME/.zfunc/_amstool
-      # uv completions
-      # source $HOME/.zfunc/_uv
+      # AMSTOOL completions
+      eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
 
       # jenv
       export PATH="$HOME/.jenv/bin:$PATH"
@@ -57,7 +53,6 @@
       # NVM
       export NVM_DIR="$HOME/.nvm"
       [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-      # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
       # SDKMAN
       export SDKMAN_DIR="$HOME/.sdkman"
@@ -76,9 +71,11 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "spaceship";
+      theme = "robbyrussell";
       plugins = [ 
         "aws"
+        "asdf"
+        "brew"
         "git" 
         "direnv"
         "docker" 

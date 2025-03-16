@@ -126,6 +126,7 @@
     code-cursor
     vscode
     fzf
+    asdf-vm
   ];
 
   programs = {

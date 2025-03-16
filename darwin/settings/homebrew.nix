@@ -5,18 +5,26 @@
   homebrew = {
     enable = true;
 
+    # Use the Apple Silicon prefix for Homebrew
+    brewPrefix = "/opt/homebrew/bin";
+
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
       upgrade = true;
+      cleanup = "uninstall";
+      extraFlags = [ "--verbose" ];
     };
 
     brews = [
-      "pyramid/homebrew/amstool"
+      "amstool"
       "i2cssh"
       "jenv"
       "mvnvm"
       "nvm"
+      "mas"
+
+
+
       # "arm-none-eabi-gcc"
       # "asdf"
       # "autoconf"
@@ -74,6 +82,7 @@
       "docker"
       "monitorcontrol" # Brightness and volume controls for external monitors.
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
+      "okta-advanced-server-access"
       # "gcc-arm-embedded"
       # "ghidra"
       # "iterm2"
@@ -85,15 +94,15 @@
 
     taps = [
       "armmbed/formulae"
-      "derailed/k9s"
-      "hashicorp/tap"
+      # "derailed/k9s"
+      # "hashicorp/tap"
       "homebrew/bundle"
       "homebrew/services"
       "hudochenkov/sshpass"
-      "localstack/tap"
-      "lucagrulla/tap"
+      # "localstack/tap"
+      # "lucagrulla/tap"
       "osx-cross/avr"
-      "probe-rs/probe-rs"
+      # "probe-rs/probe-rs"
       "wouterdebie/repo"
       {
         name = "Pyramid/homebrew";
