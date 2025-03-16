@@ -42,9 +42,11 @@
     azure-cli
     azure-storage-azcopy
     # Misc tools
+    eza
     darwin.lsusb
     asdf
     git
+    gh
     direnv
     htop
     btop
@@ -84,7 +86,7 @@
     # openjdk8
     # jdk17
     # jdk21
-    visualvm
+
 
     # jetbrains.writerside
     # jetbrains.clion
@@ -108,9 +110,15 @@
     llvm
     probe-rs
     SDL2
+    zlib
     qemu
     gcc-arm-embedded
     rustup
+    # cargo
+    cargo-diet
+    cargo-bloat
+    rust-motd
+    
     # libuv
     # libssh
     # libssh2
@@ -146,10 +154,10 @@
     #   enableZshIntegration = true;
     # };
 
-    # bat = {
-    #   enable = true;
-    #   config.theme = "TwoDark";
-    # };
+    bat = {
+      enable = true;
+      config.theme = "TwoDark";
+    };
 
     fzf = {
       enable = true;
@@ -157,12 +165,17 @@
     };
 
     eza.enable = true;
-    git.enable = true;
 
-    # initExtra = ''
-    #   # Enable iTerm2 shell integration.
-    #   test -e "~/.iterm2_shell_integration.zsh" && source "~/.iterm2_shell_integration.zsh"
-    # '';
+    git = {
+      enable = true;
+      lfs.enable = true;
+      userName = "David Jessup";
+      userEmail = "jessup@adobe.com";
+      extraConfig = {
+        init.defaultBranch = "master";
+        credential."https://git.cloudmanager.adobe.com".provider = "generic";
+      };
+    };
 
     # Let home Manager install and manage itself.
     home-manager.enable = true;
