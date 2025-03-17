@@ -127,7 +127,7 @@ in
 
         # Create a function to get current dock items with their sections
         get_current_dock_entries() {
-          ${dockutil}/bin/dockutil --list | while read line; do
+          ${dockutil}/bin/dockutil --list | while read -r line; do
             uri=$(echo "$line" | ${pkgs.coreutils}/bin/cut -f2)
             section=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $NF}' | tr -d '()')
             options=""

@@ -10,7 +10,10 @@
 {
   nix = {
     # Necessary for using flakes on this system.
-    settings.experimental-features = "nix-command flakes";
+    settings = {
+      experimental-features = "nix-command flakes";
+      trusted-users = [ "root" "${user}" ];
+    };
     # Optimise the Nix store automatically
     optimise.automatic = true;
     # Garbage collect the Nix store automatically

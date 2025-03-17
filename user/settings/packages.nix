@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, user, ... }:
+{ pkgs, ... }:
 {
   packages = with pkgs; [
     # Nix
@@ -132,5 +132,6 @@
     asdf-vm
     pnpm
     graphviz
+    dockutil
   ];
 }
