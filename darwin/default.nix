@@ -46,5 +46,6 @@
     ./settings/security.nix
     ./settings/network.nix
     ./settings/homebrew.nix 
+    ./settings/dock.nix
   ];
 }
