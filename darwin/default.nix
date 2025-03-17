@@ -8,11 +8,20 @@
   ...
 }:
 {
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
-  nix.optimise.automatic = true;
+  nix = {
+    # Necessary for using flakes on this system.
+    settings.experimental-features = "nix-command flakes";
+    # Optimise the Nix store automatically
+    optimise.automatic = true;
+    # Garbage collect the Nix store automatically
+    gc = {
+      automatic = true;
+      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      options = "--delete-older-than 30d";
+    };
+  };
 
-  # The platform the configuration will be used on.
+  # Host architecture for the system the configuration is being used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
   # Allow commerical software packages to be installed
   nixpkgs.config.allowUnfree = true;
@@ -28,16 +37,20 @@
     # enableFzfHistory = true;
   };
 
+  # Enable bash completion
   programs.bash.completion.enable = true;
 
+  # Enable man pages
   programs.man.enable = true;
+
+  # Enable nix-index
   programs.nix-index.enable = true;
 
-  # User mappings, the rest is handled by home-manager
-  users.users."${user}" = {
-    home = "/Users/${user}";
-    shell = pkgs.zsh;
-  };
+  # # User mappings, the rest is handled by home-manager
+  # users.users."${user}" = {
+  #   home = "/Users/${user}";
+  #   shell = pkgs.zsh;
+  # };
 
   # Import settings
   imports = [ 
@@ -46,6 +59,5 @@
     ./settings/security.nix
     ./settings/network.nix
     ./settings/homebrew.nix 
-    ./settings/dock.nix
   ];
 }

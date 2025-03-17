@@ -1,9 +1,12 @@
-{ pkgs, config, user,... }:
+{ config, pkgs, home-manager, user, ... }:
 {
+  imports = [
+    ./dock
+  ];
   # Fully declarative dock using the latest from Nix Store
-  local = {
-    dock.enable = true;
-    dock.entries = [
+  local.dock = {
+    enable = true;
+    entries = [
       { path = "${pkgs.iterm2}/Applications/iTerm.app/"; }
       { path = "${pkgs.warp-terminal}/Applications/Warp.app/"; }
       { path = "${pkgs.code-cursor}/Applications/Cursor.app/"; }

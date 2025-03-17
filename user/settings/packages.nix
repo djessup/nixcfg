@@ -1,17 +1,6 @@
-# User-specific configuration
+{ config, pkgs, home-manager, user, ... }:
 {
-  config,
-  pkgs,
-  lib,
-  home-manager,
-  ...
-}:
-{
-  imports = [
-    ./settings/zsh.nix
-  ];
-
-  home.packages = with pkgs; [
+  packages = with pkgs; [
     # Nix
     nix-direnv
     nixfmt-rfc-style
@@ -60,6 +49,7 @@
     hwatch
     skopeo
     sops
+    age
     qemu
     sonar-scanner-cli
     minicom
@@ -95,6 +85,11 @@
     # jetbrains-toolbox
     # Fonts
     nerd-fonts.jetbrains-mono
+    font-awesome
+    hack-font
+    noto-fonts
+    noto-fonts-emoji
+    meslo-lgs-nf
 
     # Embedded
     avrdude
@@ -118,7 +113,7 @@
     cargo-diet
     cargo-bloat
     rust-motd
-    
+    git-cliff
     # libuv
     # libssh
     # libssh2
@@ -135,55 +130,7 @@
     vscode
     fzf
     asdf-vm
+    pnpm
+    graphviz
   ];
-
-  programs = {
-
-    direnv = {
-      enable = true;
-      enableZshIntegration = true; # see note on other shells below
-      nix-direnv.enable = true;
-    };
-
-    dircolors.enable = true;
-
-    # zoxide.enable = true;
-
-    # starship = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    # };
-
-    bat = {
-      enable = true;
-      config.theme = "TwoDark";
-    };
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    eza.enable = true;
-
-    git = {
-      enable = true;
-      lfs.enable = true;
-      userName = "David Jessup";
-      userEmail = "jessup@adobe.com";
-      extraConfig = {
-        init.defaultBranch = "master";
-        credential."https://git.cloudmanager.adobe.com".provider = "generic";
-      };
-    };
-
-    # Let home Manager install and manage itself.
-    home-manager.enable = true;
-  };
-
-  home.file.".inputrc".source = ./settings/inputrc;
-
-  # The state version is required and should stay at the version originally installed.
-  home.stateVersion = "24.11";
-
 }

@@ -37,6 +37,11 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Lix 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Build darwin flake using:
@@ -51,6 +56,7 @@
       homebrew-core,
       homebrew-cask,
       homebrew-bundle,
+      lix-module,
       ...
     }:
     {
@@ -65,79 +71,16 @@
               ./darwin
               # System-level Home Manager config
               home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = "before-hm";
-                  verbose = true;
-                  users."${user}" = import ./home;
-                  extraSpecialArgs = {
-                    inherit inputs;
-                    inherit user;
-                  };
-                };
-              }
+              ./user
               # System-level Homebrew config
               nix-homebrew.darwinModules.nix-homebrew
               {
-                nix-homebrew = {
-                  # Install Homebrew under the default prefix
-                  enable = true;
-
-                  # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-                  enableRosetta = true;
-
-                  # User owning the Homebrew prefix
-                  user = user;
-
-                  # Optional: Declarative tap management
-                  # taps = {
-                  #   "homebrew/homebrew-core" = homebrew-core;
-                  #   "homebrew/homebrew-cask" = homebrew-cask;
-                  #   "homebrew/homebrew-bundle" = homebrew-bundle;
-                  # };
-
-                  # Optional: Enable fully-declarative tap management
-                  # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                  mutableTaps = true;
-                };
+               
               }
+              lix-module.nixosModules.default
             ];
           };
         };
     };
 
-  # Fully declarative dock using the latest from Nix Store
-  # local = {
-  #   dock.enable = true;
-  #   dock.entries = [
-  #     { path = "${pkgs.iterm2}/Applications/iTerm.app/"; }
-  #     { path = "${pkgs.warp-terminal}/Applications/Warp.app/"; }
-  #     { path = "${pkgs.code-cursor}/Applications/Cursor.app/"; }
-  #     { path = "/Applications/Microsoft Teams.app/"; }
-  #     { path = "/Applications/Slack.app/"; }
-  #     { path = "/Applications/Outlook.app/"; }
-  #     { path = "/Applications/Microsoft Edge.app/"; }
-  #     { path = "/Applications/System Settings.app/"; }
-  #     { path = "/Applications/Github Desktop.app/"; }
-  #     { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-  #     { path = "/System/Applications/Podcasts.app/"; }
-  #     { path = "/Applications/ChatGPT.app/"; }
-
-  #     { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
-  #     { path = "${pkgs.jetbrains.clion}/Applications/CLion.app/"; }
-  #     { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
-  #     {
-  #       path = "/Applications";
-  #       section = "others";
-  #       options = "--sort name --view grid --display folder";
-  #     }
-  #     # {
-  #     #   path = "${config.users.users.${user}.home}/Downloads";
-  #     #   section = "others";
-  #     #   options = "--sort name --view grid --display stack";
-  #     # }
-  #   ];
-  # };
 }
