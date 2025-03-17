@@ -51,6 +51,7 @@
       { path = "/Applications/Microsoft Teams.app/"; }
       { path = "/Applications/Slack.app/"; }
       { path = "/Applications/Microsoft Outlook.app/"; }
+      { path = "/Applications/Notes.app/"; }
       { path = "/Applications/Microsoft Edge.app/"; }
       { path = "/System/Applications/System Settings.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
