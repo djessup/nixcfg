@@ -1,4 +1,4 @@
-# System-wide configuration
+# System-wide configuration for Darwin (macOS)
 {
   config,
   pkgs,
@@ -8,30 +8,35 @@
   ...
 }:
 {
+  # Nix package manager configuration
   nix = {
-    # Necessary for using flakes on this system.
+    # Enable flakes and nix-command features
     settings = {
       experimental-features = "nix-command flakes";
-      trusted-users = [ "root" "${user}" ];
+      trusted-users = [ "root" "${user}" ]; # Allow specified users to perform privileged Nix operations
     };
-    # Optimise the Nix store automatically
-    optimise.automatic = true;
-    # Garbage collect the Nix store automatically
+    
+    # Store optimization settings
+    optimise = {
+      automatic = true; # Enable automatic optimization of the Nix store
+    };
+    
+    # Garbage collection settings
     gc = {
-      automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
-      options = "--delete-older-than 30d";
+      automatic = true; # Enable automatic garbage collection
+      interval = { Weekday = 0; Hour = 2; Minute = 0; }; # Schedule GC for Sunday at 2:00 AM
+      options = "--delete-older-than 30d"; # Remove items older than 30 days
     };
   };
 
-  # Host architecture for the system the configuration is being used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
-  # Allow commerical software packages to be installed
-  nixpkgs.config.allowUnfree = true;
+  # Platform and package configuration
+  nixpkgs.hostPlatform = "aarch64-darwin"; # Target Apple Silicon architecture
+  nixpkgs.config.allowUnfree = true; # Allow installation of non-free/proprietary software packages
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
+  # Shell configuration
   programs.zsh = {
     enable = true;
+    # Commented options can be enabled if needed:
     # enableCompletion = true;
     # enableBashCompletion = true;
     # enableLsColors = true;
@@ -40,27 +45,17 @@
     # enableFzfHistory = true;
   };
 
-  # Enable bash completion
-  programs.bash.completion.enable = true;
+  # Additional system program configurations
+  programs.bash.completion.enable = true; # Enable bash completion for bash shell
+  programs.man.enable = true; # Enable man pages for documentation
+  programs.nix-index.enable = true; # Enable nix-index for command-not-found functionality
 
-  # Enable man pages
-  programs.man.enable = true;
-
-  # Enable nix-index
-  programs.nix-index.enable = true;
-
-  # # User mappings, the rest is handled by home-manager
-  # users.users."${user}" = {
-  #   home = "/Users/${user}";
-  #   shell = pkgs.zsh;
-  # };
-
-  # Import settings
+  # Import modular configuration files
   imports = [ 
-    ./settings/system.nix
-    ./settings/environment.nix
-    ./settings/security.nix
-    ./settings/network.nix
-    ./settings/homebrew.nix 
+    ./settings/system.nix      # System settings for macOS
+    ./settings/environment.nix # Environment variables and paths
+    ./settings/security.nix    # Security-related settings
+    ./settings/network.nix     # Network configuration
+    ./settings/homebrew.nix    # Homebrew package management
   ];
 }

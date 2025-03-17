@@ -1,43 +1,51 @@
+# macOS system settings configuration
 { pkgs, inputs, ... }: {
 
   system = {
+    # Keyboard mappings
     # keyboard.enableKeyMapping = true;
     # keyboard.remapCapsLockToEscape = true;
 
+    # macOS defaults (System Preferences)
     defaults = {  
+      # Global domain settings (NSGlobalDomain)
       NSGlobalDomain = {
-        # Dark mode
-        # AppleInterfaceStyle = "Dark";
+        # UI appearance settings
+        # AppleInterfaceStyle = "Dark"; # Enable Dark Mode
         
-        # Show all file extensions
-        AppleShowAllExtensions = true;
-        # Disable press and hold diacritics
-        ApplePressAndHoldEnabled = false;
+        # File extension visibility
+        AppleShowAllExtensions = true; # Show all file extensions in Finder
+        
+        # Keyboard settings
+        ApplePressAndHoldEnabled = false; # Disable press-and-hold for keys in favor of key repeat
 
-        # Automatically hide and show the menu bar
-        # _HIHideMenuBar = true;
+        # Menu bar visibility
+        # _HIHideMenuBar = true; # Auto-hide menu bar
       };
 
+      # Dock settings
       dock = {
-        # Automatically hide and show the Dock
-        # autohide = true;
+        # Visibility settings
+        # autohide = true; # Automatically hide and show the Dock
         
-        # Style options
-        orientation = "bottom";
-        show-recents = false;
+        # Dock position and behavior
+        orientation = "bottom"; # Place dock at the bottom of the screen
+        show-recents = false;   # Don't show recently used applications
       };
 
+      # Finder settings
       finder = {
-        AppleShowAllExtensions = true;
-        _FXShowPosixPathInTitle = true;
+        AppleShowAllExtensions = true;     # Show all file extensions in Finder
+        _FXShowPosixPathInTitle = true;    # Show full POSIX path in window title
       };
     };
   };
 
-  # Set Git commit hash for darwin-version.
+  # Store Git commit hash for configuration tracking
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
+  # State version for backwards compatibility
+  # IMPORTANT: Do not change this unless you understand the implications
+  # See: darwin-rebuild changelog
   system.stateVersion = 5;
 }

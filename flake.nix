@@ -1,25 +1,31 @@
 {
+  # Main system description
   description = "Work MacBook Pro (Darwin) system flake";
 
+  # External dependencies and inputs
   inputs = {
-    # Nixpkgs
+    # Core Nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Nix Darwin
+    
+    # Darwin system configuration framework
     darwin = {
       url = "github:LnL7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    # Nix Home Manager
+    
+    # User environment management framework
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    # Nix Homebrew
+    
+    # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    # Declarative Homebrew taps
+    
+    # Homebrew package repositories (flake = false means these are not Nix flakes)
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -32,15 +38,17 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    # Nix User Repository
+    
+    # Nix User Repository for community packages
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    # Lix 
+    
+    # Lix project module
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
   };
 
@@ -60,27 +68,30 @@
       ...
     }:
     {
+      # System configurations
       darwinConfigurations =
         let
+          # Define the username once for reuse
           user = "jessup";
         in
         {
+          # Configuration for jessup's MacBook Pro
           jessup-mbp = darwin.lib.darwinSystem {
+            # Pass special arguments to all modules
             specialArgs = { inherit inputs user; };
+            
+            # Include all necessary configuration modules
             modules = [
-              ./darwin
-              # System-level Home Manager config
-              home-manager.darwinModules.home-manager
-              ./user
-              # System-level Homebrew config
-              nix-homebrew.darwinModules.nix-homebrew
+              ./darwin                            # System-wide Darwin settings
+              home-manager.darwinModules.home-manager  # User environment management
+              ./user                              # User-specific settings
+              nix-homebrew.darwinModules.nix-homebrew  # Homebrew integration
               {
-               
+                # Empty module - can be used for ad-hoc configuration
               }
-              lix-module.nixosModules.default
+              lix-module.nixosModules.default     # Lix module configuration
             ];
           };
         };
     };
-
 }

@@ -74,7 +74,6 @@
       theme = "robbyrussell";
       plugins = [ 
         "aws"
-        "asdf"
         "brew"
         "git" 
         "direnv"
