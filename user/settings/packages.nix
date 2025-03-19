@@ -20,6 +20,7 @@
     hwatch                       # Modern watch command
     jq                           # JSON processor
     neovim                       # Vim-fork focused on extensibility and usability
+    nodePackages.neovim          # Neovim Node runtime
     nix-zsh-completions          # Zsh completions for Nix
     ripgrep                      # Fast grep
     sshpass                      # Non-interactive ssh password auth
@@ -86,6 +87,8 @@
     #
     asdf-vm                      # Version manager
     micromamba                   # Conda package manager
+    nodejs                       # Node.js runtime
+    
     pnpm                         # Fast npm alternative
     python3                      # Python language
     uv                           # Python package manager
@@ -130,6 +133,7 @@
     jetbrains.idea-ultimate      # JVM/general IDE
     jetbrains.rust-rover         # Rust IDE
     jetbrains.writerside         # Documentation IDE
+    neovide                      # Neovim GUI
     raycast                      # Productivity launcher
     slack                        # Team communication
     utm                          # Virtual machines

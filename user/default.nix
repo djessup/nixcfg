@@ -5,6 +5,7 @@
   pkgs,
   lib,
   home-manager,
+  nixvim,
   user,
   ...
 }:
@@ -33,20 +34,24 @@
     users.${user} = { pkgs, config, lib, ... }: {
       # Import modular configuration files
       imports = [
+        inputs.sops-nix.homeManagerModules.sops
+        nixvim.homeManagerModules.nixvim
         ./settings/programs.nix # Program-specific configurations
         ./settings/zsh.nix      # ZSH shell configuration
+        ./settings/neovim   # Neovim configuration
       ];
       
       # Home configuration
       home = {
         # Install packages defined in packages.nix
         packages = (import ./settings/packages.nix { inherit pkgs; }).packages;
-        
+
         # Dotfiles
         file.".inputrc".source = ./settings/inputrc;
         
         # Required by home-manager, do not change
         stateVersion = "24.11";
+        
       };
     };
     

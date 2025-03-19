@@ -14,6 +14,10 @@
     settings = {
       experimental-features = "nix-command flakes";
       trusted-users = [ "root" "${user}" ]; # Allow specified users to perform privileged Nix operations
+      
+      extra-access-tokens = [
+        "github.com=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"
+      ];
 
       # Configure binary caches for faster downloads
       substituters = [
@@ -38,8 +42,8 @@
     # Garbage collection settings
     gc = {
       automatic = true; # Enable automatic garbage collection
-      interval = { Weekday = 0; Hour = 2; Minute = 0; }; # Schedule GC for Sunday at 2:00 AM
-      options = "--delete-older-than 30d"; # Remove items older than 30 days
+      interval = { Hour = 2; }; # Schedule GC for 2:00 AM every day
+      options = "--delete-older-than 14d"; # Remove items older than 14 days
     };
   };
 

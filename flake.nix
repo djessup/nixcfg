@@ -6,7 +6,7 @@
   inputs = {
     # Core Nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    
+
     # Darwin system configuration framework
     darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -50,6 +50,13 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
+
+    # Nixvim module
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
+    };
+
   };
 
   # Build darwin flake using:
@@ -65,6 +72,8 @@
       homebrew-cask,
       homebrew-bundle,
       lix-module,
+      nixvim,
+      sops-nix,
       ...
     }:
     {
@@ -78,8 +87,8 @@
           # Configuration for jessup's MacBook Pro
           jessup-mbp = darwin.lib.darwinSystem {
             # Pass special arguments to all modules
-            specialArgs = { inherit inputs user; };
-            
+            specialArgs = { inherit inputs user nixvim; };
+        
             # Include all necessary configuration modules
             modules = [
               ./darwin                            # System-wide Darwin settings
@@ -87,6 +96,7 @@
               home-manager.darwinModules.home-manager  # User environment management
               nix-homebrew.darwinModules.nix-homebrew  # Homebrew integration
               lix-module.nixosModules.default     # Lix module configuration
+              sops-nix.darwinModules.sops-nix
               # nixvim.nixDarwinModules.nixvim
             ];
           };

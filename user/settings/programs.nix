@@ -46,6 +46,16 @@
       };
     };
 
+    # Neovim
+    nixvim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+
+      luaLoader.enable = true;
+    };
+
     # Let home Manager install and manage itself.
     home-manager.enable = true;
   };
