@@ -170,11 +170,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1742364149,
-        "narHash": "sha256-1HiA8GBWJo7++Wc9BYc5luzLGoKYznEMRAztVbQyrW8=",
+        "lastModified": 1742369033,
+        "narHash": "sha256-5PVqYIENt8H8g0csTQLoPJe2W3f/apB5wSWgRSEMp8s=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "c9186bc9fd895387101fa3898499bb551344ad03",
+        "rev": "1e950f289cb4cdc022b50ac34fd59f04e6fabaf2",
         "type": "github"
       },
       "original": {
@@ -302,6 +302,22 @@
         "type": "github"
       }
     },
+    "nix-secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742372719,
+        "narHash": "sha256-Rgni/9jXKzCocTWx4cp+cbZ0gKSrfDaO1BMxNO/4qyU=",
+        "owner": "djessup",
+        "repo": "nix-secrets",
+        "rev": "22a88561c08cd562879cf3ce127eabcf8e096022",
+        "type": "github"
+      },
+      "original": {
+        "owner": "djessup",
+        "repo": "nix-secrets",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1687274257,
@@ -340,11 +356,11 @@
         "nuschtosSearch": "nuschtosSearch"
       },
       "locked": {
-        "lastModified": 1742341882,
-        "narHash": "sha256-ftbTPOg53Ez5smPgQhj4aut4c2QBKuNqlqyr1k2iFpM=",
+        "lastModified": 1742345073,
+        "narHash": "sha256-bkL56qylgoCmdw/qs9IlmCjEgl7eostuInki90MqguM=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "1ca0ec3d798ddc5b37d68bca86119d258a02a17b",
+        "rev": "f78adb09182dc6edf3f2a443c548ae4e0bf789f1",
         "type": "github"
       },
       "original": {
@@ -362,11 +378,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1742367209,
-        "narHash": "sha256-Ovdjsb6g4xDcVWhvrHDpnqKvnfUzh8rOuM8svKsZy1k=",
+        "lastModified": 1742371555,
+        "narHash": "sha256-PbC+OYZNiaoaIMLxIC9Bm1/7JvhyGx8BkVakcZQRA5s=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "15a5e7b0a4919a3823a1100059fee959018d512b",
+        "rev": "cdfdee95d3c671d0f0aefe1d88d7b220a7156a5a",
         "type": "github"
       },
       "original": {
@@ -407,6 +423,7 @@
         "homebrew-core": "homebrew-core",
         "lix-module": "lix-module",
         "nix-homebrew": "nix-homebrew",
+        "nix-secrets": "nix-secrets",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "nur": "nur",

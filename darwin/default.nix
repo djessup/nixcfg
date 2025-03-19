@@ -8,10 +8,13 @@
   sops-nix,
   ...
 }:
+let
+  secretspath = builtins.toString inputs.nix-secrets;
+in
 {
   # Sops configuration
   sops = {
-    defaultSopsFile = ../nix-secrets/secrets.yaml;
+    defaultSopsFile = "${secretspath}/secrets.yaml";
     age = {
       keyFile = "${config.users.users.${user}.home}/.config/sops/age/keys.txt";
     };

@@ -62,6 +62,10 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-secrets = {
+      url = "github:djessup/nix-secrets";
+      flake = false;
+    };
   };
 
   # Build darwin flake using:
@@ -79,6 +83,7 @@
       lix-module,
       nixvim,
       sops-nix,
+      nix-secrets,
       nur,
       ...
     }:
