@@ -87,8 +87,8 @@
           # Configuration for jessup's MacBook Pro
           jessup-mbp = darwin.lib.darwinSystem {
             # Pass special arguments to all modules
-            specialArgs = { inherit inputs user nixvim; };
-        
+            specialArgs = { inherit inputs user; };
+
             # Include all necessary configuration modules
             modules = [
               ./darwin                            # System-wide Darwin settings
