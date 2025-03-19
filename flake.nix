@@ -12,19 +12,19 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    
+
     # User environment management framework
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    
+
     # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    
+
     # Homebrew package repositories (flake = false means these are not Nix flakes)
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -38,13 +38,13 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    
+
     # Nix User Repository for community packages
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-    
+
     # Lix project module
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
@@ -57,6 +57,11 @@
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
 
+    # SOPS-nix
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Build darwin flake using:
@@ -96,8 +101,7 @@
               home-manager.darwinModules.home-manager  # User environment management
               nix-homebrew.darwinModules.nix-homebrew  # Homebrew integration
               lix-module.nixosModules.default     # Lix module configuration
-              sops-nix.darwinModules.sops-nix
-              # nixvim.nixDarwinModules.nixvim
+              sops-nix.darwinModules.sops
             ];
           };
         };

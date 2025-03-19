@@ -5,18 +5,30 @@
   inputs,
   home-manager,
   user,
+  sops-nix,
   ...
 }:
 {
+  # Sops configuration
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    age = {
+      keyFile = "${config.users.users.${user}.home}/.config/sops/age/keys.txt";
+    };
+    secrets.github-token = {};
+  };
+
+  services.openssh.enable = false; # Disable OpenSSH service
+
   # Nix package manager configuration
   nix = {
     # Enable flakes and nix-command features
     settings = {
       experimental-features = "nix-command flakes";
       trusted-users = [ "root" "${user}" ]; # Allow specified users to perform privileged Nix operations
-      
+
       extra-access-tokens = [
-        "github.com=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"
+        "github.com=${config.sops.secrets."github-token".path}"
       ];
 
       # Configure binary caches for faster downloads
@@ -28,17 +40,17 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      
+
       # Optimize downloads with a larger number of connections
       max-jobs = 8;
       cores = 0;
     };
-    
+
     # Store optimization settings
     optimise = {
       automatic = true; # Enable automatic optimization of the Nix store
     };
-    
+
     # Garbage collection settings
     gc = {
       automatic = true; # Enable automatic garbage collection
@@ -69,7 +81,7 @@
   programs.nix-index.enable = true; # Enable nix-index for command-not-found functionality
 
   # Import modular configuration files
-  imports = [ 
+  imports = [
     ./settings/system.nix      # System settings for macOS
     ./settings/environment.nix # Environment variables and paths
     ./settings/security.nix    # Security-related settings
