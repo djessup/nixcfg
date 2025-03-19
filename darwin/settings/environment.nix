@@ -6,8 +6,7 @@
       zsh
     ];
     systemPackages = with pkgs; [ 
-      coreutils 
-      nixd
+      coreutils      
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];

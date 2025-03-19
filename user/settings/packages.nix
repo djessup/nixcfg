@@ -5,8 +5,11 @@
     # Nix development tools
     #
     nil                          # Nix language server
+    nixd                         # Nix language server
     nix-direnv                   # Direnv integration with Nix
     nixfmt-rfc-style             # Nix code formatter
+    nix-inspect                  # Nix inspector
+    nix-output-monitor           # Nix output monitor
     
     #
     # Shell utilities and enhancements
@@ -81,7 +84,8 @@
     skopeo                       # Container image tool
     sonar-scanner-cli            # Code quality scanner
     sops                         # Secrets management
-    
+    rops                         # SOPS in Rust
+
     #
     # Programming languages and environments
     #
@@ -155,5 +159,7 @@
     #
     darwin.lsusb                 # USB device lister
     dockutil                     # macOS dock utility
+    asitop                       # Apple Silicon System monitor
+
   ];
 }

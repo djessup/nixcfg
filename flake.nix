@@ -79,6 +79,7 @@
       lix-module,
       nixvim,
       sops-nix,
+      nur,
       ...
     }:
     {
@@ -91,6 +92,7 @@
         {
           # Configuration for jessup's MacBook Pro
           jessup-mbp = darwin.lib.darwinSystem {
+            system = "aarch64-darwin"; # apple silicon
             # Pass special arguments to all modules
             specialArgs = { inherit inputs user; };
 

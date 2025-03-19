@@ -39,7 +39,8 @@
       # l = "ls -l";
 
       cat = "bat";
-
+      watch = "hwatch";
+      
       # vi = "nvim";
       python = "python3";
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
