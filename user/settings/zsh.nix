@@ -21,14 +21,27 @@
     shellAliases = {
       nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.#";
       nixup = "pushd /etc/nix-darwin; nix flake update; nixswitch; popd";
-      ls = "ls --color=auto";
-      ll = "ls -lahrts";
-      l = "ls -l";
+
+      # Git shortcuts
+      g = "git";
+      gs = "git status -sb";
+      gd = "git diff";
+      gl = "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      
+      # Directory navigation
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      ls = "eza --icons";
+      ll = "eza -lah --icons --git";
+      tree = "eza --tree --icons";
+      # ls = "ls --color=auto";
+      # ll = "ls -lahrts";
+      # l = "ls -l";
+
+      cat = "bat";
+
       # vi = "nvim";
       python = "python3";
-      # k = "kubectl";
-      # tmux = "TERM=screen-256color-bce tmux";
-      # ocaml = "rlwrap ocaml";
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
     };
 
@@ -36,42 +49,10 @@
       ARTIFACTORY_USER = "jessup";
       ASDF_DATA_DIR = "$HOME/.asdf";
     };
-    
-    initExtra = ''
-      export TERM=xterm-256color
-      # export LANG=en_US.UTF-8
-
-      source <(kubectl completion zsh)
-     
-      # AMSTOOL completions
-      eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
-
-      # jenv
-      export PATH="$HOME/.jenv/bin:$PATH"
-      eval "$(jenv init -)"
-
-      # NVM
-      export NVM_DIR="$HOME/.nvm"
-      [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-
-      # SDKMAN
-      export SDKMAN_DIR="$HOME/.sdkman"
-      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-      
-      # iTerm2 shell integration
-      [[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
-      
-      # Ok, if Nix doesn't work, try this:
-      # export PATH="/run/current-system/sw/bin:$PATH"
-      # And enable this
-      # if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      #   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      # fi
-      '';
 
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      extraConfig = builtins.readFile ./extraConfig.zsh;
       plugins = [ 
         "aws"
         "brew"
@@ -79,7 +60,6 @@
         "direnv"
         "docker" 
         "kubectl" 
-        "asdf" 
         "terraform" 
         "history" 
         "history-substring-search" 

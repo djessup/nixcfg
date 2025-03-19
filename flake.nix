@@ -83,13 +83,11 @@
             # Include all necessary configuration modules
             modules = [
               ./darwin                            # System-wide Darwin settings
-              home-manager.darwinModules.home-manager  # User environment management
               ./user                              # User-specific settings
+              home-manager.darwinModules.home-manager  # User environment management
               nix-homebrew.darwinModules.nix-homebrew  # Homebrew integration
-              {
-                # Empty module - can be used for ad-hoc configuration
-              }
               lix-module.nixosModules.default     # Lix module configuration
+              # nixvim.nixDarwinModules.nixvim
             ];
           };
         };
