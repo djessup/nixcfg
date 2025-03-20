@@ -26,18 +26,17 @@ in
 
   # Nix package manager configuration
   nix = {
-       extraOptions = ''
-        !include ${config.sops.secrets.nixAccessTokens.path}
-      '';
+    # Inject access tokens from SOPS
+    extraOptions = ''
+      !include ${config.sops.secrets.nixAccessTokens.path}
+    '';
+
+    linux-builder.enable = true;
+
     # Enable flakes and nix-command features
     settings = {
       experimental-features = "nix-command flakes";
-      trusted-users = [ "root" "${user}" ]; # Allow specified users to perform privileged Nix operations
-
-      # extra-access-tokens = [
-      #   # "github.com=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"
-      #   "!include ${config.sops.secrets.nixAccessTokens.path}"
-      # ];
+      trusted-users = [ "@admin" "${user}" ]; # Allow specified users to perform privileged Nix operations
 
       # Configure binary caches for faster downloads
       substituters = [
@@ -61,9 +60,9 @@ in
 
     # Garbage collection settings
     gc = {
-      automatic = true; # Enable automatic garbage collection
-      interval = { Hour = 2; }; # Schedule GC for 2:00 AM every day
-      options = "--delete-older-than 14d"; # Remove items older than 14 days
+      automatic = true;                     # Enable automatic garbage collection
+      interval = { Hour = 3; Minute = 0; }; # Schedule GC for 3:00 AM every day
+      options = "--delete-older-than 1w";   # Remove items older than 1 week
     };
   };
 
@@ -73,26 +72,18 @@ in
     config = {
       allowUnfree = true; # Allow installation of non-free/proprietary software packages
       # Allow installation of NUR packages
-      packageOverrides = pkgs: {
-        nur = import (builtins.fetchTarball {
-          # Get the revision by choosing a version from https://github.com/nix-community/NUR/commits/main
-          url = "https://github.com/nix-community/NUR/archive/3a6a6f4da737da41e27922ce2cfacf68a109ebce.tar.gz";
-          # Get the hash by running `nix-prefetch-url --unpack <url>` on the above url
-          sha256 = "04387gzgl8y555b3lkz9aiw9xsldfg4zmzp930m62qw8zbrvrshd";
-        }) {
-          inherit pkgs;
-        };
-      };
+      # packageOverrides = pkgs: {
+      #   nur = import (builtins.fetchTarball {
+      #     # Get the revision by choosing a version from https://github.com/nix-community/NUR/commits/main
+      #     url = "https://github.com/nix-community/NUR/archive/3a6a6f4da737da41e27922ce2cfacf68a109ebce.tar.gz";
+      #     # Get the hash by running `nix-prefetch-url --unpack <url>` on the above url
+      #     sha256 = "04387gzgl8y555b3lkz9aiw9xsldfg4zmzp930m62qw8zbrvrshd";
+      #   }) {
+      #     inherit pkgs;
+      #   };
+      # };
     };
   };
-
-  # nur = import (builtins.fetchTarball {
-  #   url = "https://github.com/nix-community/NUR/archive/f5ada523d9f9f295d15a601997f2ec41e0b85028.tar.gz";
-  #   sha256 = "0pf4rr0pf6g8rbk6wwh09sipp2bfjm5qn07yi63gr2g3xfyg78lq";
-  # }) {
-  #   inherit pkgs;
-  # };
-
 
   # Shell configuration
   programs.zsh = {
