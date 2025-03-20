@@ -86,6 +86,7 @@
     sonar-scanner-cli            # Code quality scanner
     sops                         # Secrets management
     rops                         # SOPS in Rust
+    ollama                       # LLM runtime
 
     #
     # Programming languages and environments
