@@ -10,6 +10,7 @@
     nixfmt-rfc-style             # Nix code formatter
     nix-inspect                  # Nix inspector
     nix-output-monitor           # Nix output monitor
+    home-manager                 # Home manager
     
     #
     # Shell utilities and enhancements
