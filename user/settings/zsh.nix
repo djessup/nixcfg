@@ -19,8 +19,10 @@
     };
 
     shellAliases = {
-      nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.#";
+      nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -vv";
       nixup = "pushd /etc/nix-darwin; nix flake update; nixswitch; popd";
+
+      nomb = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-mbp.config.system.build.toplevel";
 
       # Git shortcuts
       g = "git";
@@ -38,7 +40,7 @@
       # ll = "ls -lahrts";
       # l = "ls -l";
 
-      cat = "bat";
+      # cat = "bat";
       watch = "hwatch";
       
       # vi = "nvim";
