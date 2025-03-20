@@ -70,37 +70,19 @@ in
   nixpkgs = {
     hostPlatform = "aarch64-darwin"; # Target Apple Silicon architecture
     config = {
-      allowUnfree = true; # Allow installation of non-free/proprietary software packages
-      # Allow installation of NUR packages
-      # packageOverrides = pkgs: {
-      #   nur = import (builtins.fetchTarball {
-      #     # Get the revision by choosing a version from https://github.com/nix-community/NUR/commits/main
-      #     url = "https://github.com/nix-community/NUR/archive/3a6a6f4da737da41e27922ce2cfacf68a109ebce.tar.gz";
-      #     # Get the hash by running `nix-prefetch-url --unpack <url>` on the above url
-      #     sha256 = "04387gzgl8y555b3lkz9aiw9xsldfg4zmzp930m62qw8zbrvrshd";
-      #   }) {
-      #     inherit pkgs;
-      #   };
-      # };
+      allowUnfree = true;            # Allow installation of non-free/proprietary software packages
     };
   };
 
   # Shell configuration
   programs.zsh = {
     enable = true;
-    # Commented options can be enabled if needed:
-    # enableCompletion = true;
-    # enableBashCompletion = true;
-    # enableLsColors = true;
-    # enableFzfCompletion = true;
-    # enableFzfGit = true;
-    # enableFzfHistory = true;
   };
 
   # Additional system program configurations
   programs.bash.completion.enable = true; # Enable bash completion for bash shell
-  programs.man.enable = true; # Enable man pages for documentation
-  programs.nix-index.enable = true; # Enable nix-index for command-not-found functionality
+  programs.man.enable = true;             # Enable man pages for documentation
+  programs.nix-index.enable = true;       # Enable nix-index for command-not-found functionality
 
   # Import modular configuration files
   imports = [
