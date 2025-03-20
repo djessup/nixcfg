@@ -1,0 +1,31 @@
+# eval "$(zoxide init zsh)"
+# eval "$(devbox global shellenv --init-hook)"
+# eval "$(direnv hook zsh)"
+# eval "$(starship init zsh)"
+
+export TERM=xterm-256color
+export LANG=en_US.UTF-8
+
+source <(kubectl completion zsh)
+
+# AMSTOOL completions
+eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+
+# SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# iTerm2 shell integration
+[[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
+
+# Key bindings
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search 

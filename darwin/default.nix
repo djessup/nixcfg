@@ -31,7 +31,7 @@ in
       !include ${config.sops.secrets.nixAccessTokens.path}
     '';
 
-    linux-builder.enable = true;
+    # linux-builder.enable = true;
 
     # Enable flakes and nix-command features
     settings = {
