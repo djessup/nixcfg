@@ -51,7 +51,7 @@
   };
 
   # Build darwin flake using:
-  # $ darwin-rebuild build --flake .#jessup-mbp
+  # $ darwin-rebuild build --flake .#jessup-m3
   outputs =
     inputs@{
       self,
@@ -70,7 +70,7 @@
         in
         {
           # MacBook Pro configuration
-          jessup-mbp = darwin.lib.darwinSystem {
+          jessup-m3 = darwin.lib.darwinSystem {
             system = "aarch64-darwin"; # Apple Silicon (e.g. M3 Max)
             # Forward arguments to modules
             specialArgs = { inherit inputs user; };

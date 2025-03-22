@@ -1,7 +1,7 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, inputs, ... }:
 {
   networking = {
     computerName = "Jessup's M3";
-    hostName = "jessup-mbp";
+    hostName = "jessup-m3";
   };
 }
