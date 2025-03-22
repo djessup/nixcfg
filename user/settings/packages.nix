@@ -11,6 +11,7 @@
     nix-inspect                  # Nix inspector
     nix-output-monitor           # Nix output monitor
     home-manager                 # Home manager
+    nix-search                   # Nix package search
     
     #
     # Shell utilities and enhancements
@@ -19,11 +20,13 @@
     coreutils                    # GNU core utilities
     direnv                       # Environment manager
     eza                          # Modern replacement for ls
+    fd                           # Fast directory listing
     fzf                          # Fuzzy finder
     htop                         # Interactive process viewer
     hwatch                       # Modern watch command
     jq                           # JSON processor
-    neovim                       # Vim-fork focused on extensibility and usability
+    dust                         # Disk usage analyzer
+    ncdu                         # Disk usage analyzer
     nodePackages.neovim          # Neovim Node runtime
     nix-zsh-completions          # Zsh completions for Nix
     ripgrep                      # Fast grep
@@ -86,6 +89,10 @@
     sonar-scanner-cli            # Code quality scanner
     sops                         # Secrets management
     rops                         # SOPS in Rust
+
+    #
+    # AI tools
+    #
     ollama                       # LLM runtime
 
     #
@@ -94,7 +101,6 @@
     asdf-vm                      # Version manager
     micromamba                   # Conda package manager
     nodejs                       # Node.js runtime
-    
     pnpm                         # Fast npm alternative
     python3                      # Python language
     uv                           # Python package manager
