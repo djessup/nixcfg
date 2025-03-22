@@ -20,8 +20,8 @@
 
     shellAliases = {
       nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -vv |& nom";
-      nixup = "pushd /etc/nix-darwin; nix flake update |& nom; nixswitch; popd";
-
+      nixfluff = "nix flake --log-format internal-json -v update |& nom --json";
+      nixup = "pushd /etc/nix-darwin; nixfluff; nixswitch; popd";
       nomb = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-mbp.config.system.build.toplevel";
 
       # Git shortcuts
