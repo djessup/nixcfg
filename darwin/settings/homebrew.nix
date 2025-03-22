@@ -1,5 +1,5 @@
 # Homebrew configuration
-{ config, pkgs, user, ... }:
+{ inputs, config, pkgs, user, ... }:
 {
 
    nix-homebrew = {
@@ -12,11 +12,13 @@
     # User owning the Homebrew prefix
     user = user;
 
-    # Optional: Declarative tap management
+    # autoMigrate = true;
+
+    # # Optional: Declarative tap management
     # taps = {
-    #   "homebrew/homebrew-core" = homebrew-core;
-    #   "homebrew/homebrew-cask" = homebrew-cask;
-    #   "homebrew/homebrew-bundle" = homebrew-bundle;
+    #   "homebrew/homebrew-core" = inputs.homebrew-core;
+    #   "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    #   "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
     # };
 
     # Optional: Enable fully-declarative tap management
@@ -32,9 +34,9 @@
     brewPrefix = "/opt/homebrew/bin";
 
     onActivation = {
-      autoUpdate = true;
+      # autoUpdate = true;
       upgrade = true;
-      cleanup = "uninstall";
+      cleanup = "zap";
       extraFlags = [ "--verbose" ];
     };
 
@@ -45,57 +47,6 @@
       "mvnvm"
       "nvm"
       "mas"
-      # "arm-none-eabi-gcc"
-      # "asdf"
-      # "autoconf"
-      # "automake"
-      # "avr-gcc@9"
-      # "avrdude"
-      # "aws-sam-cli"
-      # "awscli"
-      # "azcopy"
-      # "bash"
-      # "bash-completion@2"
-      # "btop"
-      # "cmake"
-      # "coreutils"
-      # "cw"
-      # "dfu-util"
-      # "git"
-      # "helm"
-      # "jq"
-      # "derailed/k9s/k9s"
-      # "libssh"
-      # "libssh2"
-      # "libusb"
-      # "libuv"
-      # "llvm"
-      # "localstack/tap/localstack-cli"
-      # "lsusb"
-      # "micromamba"
-      # "minicom"
-      # "ninja"
-      # "open-ocd"
-      # "openjdk@11"
-      # "openssl@1.1"
-      # "openssl@3"
-      # "hashicorp/tap/packer"
-      # "pkgconf"
-      # "probe-rs/probe-rs/probe-rs"
-      # "python@3.13"
-      # "python@3.9"
-      # "qemu"
-      # "sdl2"
-      # "skopeo"
-      # "sonar-scanner"
-      # "hudochenkov/sshpass/sshpass"
-      # "tree"
-      # "uv"
-      # "watch"
-      # "wget"
-      # "yq"
-      # "zsh"
-      # "zsh-completions"
     ];
 
     casks = [
@@ -103,26 +54,11 @@
       "monitorcontrol" # Brightness and volume controls for external monitors.
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
       "okta-advanced-server-access"
-      # "gcc-arm-embedded"
       # "ghidra"
-      # "iterm2"
-      # "ngrok"
-      # "visual-studio-code"
-      # "warp"
-      # "utm" # Virtual Machine Manager
     ];
 
     taps = [
-      "armmbed/formulae"
-      # "derailed/k9s"
-      # "hashicorp/tap"
-      "homebrew/bundle"
-      "homebrew/services"
       "hudochenkov/sshpass"
-      # "localstack/tap"
-      # "lucagrulla/tap"
-      "osx-cross/avr"
-      # "probe-rs/probe-rs"
       "wouterdebie/repo"
       {
         name = "Pyramid/homebrew";
