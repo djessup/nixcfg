@@ -66,6 +66,12 @@
       url = "github:djessup/nix-secrets";
       flake = false;
     };
+    
+
+    flox = {
+      url = "github:flox/flox/v1.3.16";
+    };
+
   };
 
   # Build darwin flake using:
@@ -85,6 +91,7 @@
       sops-nix,
       nix-secrets,
       nur,
+      flox,
       ...
     }:
     {

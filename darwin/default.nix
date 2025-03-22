@@ -91,5 +91,6 @@ in
     ./settings/security.nix    # Security-related settings
     ./settings/network.nix     # Network configuration
     ./settings/homebrew.nix    # Homebrew package management
+    ./settings/flox.nix        # Flox dev environment manager
   ];
 }
