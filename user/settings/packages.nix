@@ -103,6 +103,7 @@
     nodejs                       # Node.js runtime
     pnpm                         # Fast npm alternative
     python3                      # Python language
+    virtualenv                   # Python virtual environment
     uv                           # Python package manager
     
     # Java (uncomment as needed)
