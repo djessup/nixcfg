@@ -19,8 +19,8 @@
     };
 
     shellAliases = {
-      nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -vv";
-      nixup = "pushd /etc/nix-darwin; nix flake update; nixswitch; popd";
+      nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -vv |& nom";
+      nixup = "pushd /etc/nix-darwin; nix flake update |& nom; nixswitch; popd";
 
       nomb = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-mbp.config.system.build.toplevel";
 
