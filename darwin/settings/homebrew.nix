@@ -1,7 +1,7 @@
 # Homebrew configuration
-{ inputs, config, pkgs, user, ... }:
+{ user, ... }:
 {
-
+   # Use nix-homebrew to manage the homebrew installation
    nix-homebrew = {
     # Install Homebrew under the default prefix
     enable = true;
@@ -12,25 +12,21 @@
     # User owning the Homebrew prefix
     user = user;
 
+    # Enable if there is an existing non-Nix Homebrew installation we want to import
     # autoMigrate = true;
-
-    # # Optional: Declarative tap management
-    # taps = {
-    #   "homebrew/homebrew-core" = inputs.homebrew-core;
-    #   "homebrew/homebrew-cask" = inputs.homebrew-cask;
-    #   "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-    # };
 
     # Optional: Enable fully-declarative tap management
     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
     mutableTaps = true;
+    # # Optional: Declarative tap management
+    # taps = { };
   };
 
-  # Let nix install packages via homebrew
+  # Let nix-darwin install Homebrew packages (brews), taps, casks, and Mac App Store (mas) apps.
   homebrew = {
     enable = true;
 
-    # Use the Apple Silicon prefix for Homebrew
+    # Use the Apple Silicon prefix for Homebrew instead of the Intel one
     brewPrefix = "/opt/homebrew/bin";
 
     onActivation = {
@@ -40,6 +36,7 @@
       extraFlags = [ "--verbose" ];
     };
 
+    # !! – Where possible, prefer nixpkgs packages over homebrew for better portability. - !!
     brews = [
       "amstool"
       "i2cssh"

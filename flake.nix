@@ -6,19 +6,16 @@
   inputs = {
     # Core Nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
-    # Darwin system configuration framework
+    # Darwin (macOS) system configuration framework
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-
     # User environment management framework
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-
     # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
       # url = "github:zhaofengli-wip/nix-homebrew";
@@ -26,54 +23,31 @@
       url = "github:zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-
-    # Homebrew package repositories (flake = false means these are not Nix flakes)
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-
     # Nix User Repository for community packages
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-
-    # Lix project module
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
-    };
-
     # Nixvim module
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
-
-    # SOPS-nix
+    # SOPS-nix secrets module
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-secrets = {
-      url = "github:djessup/nix-secrets";
-      flake = false;
-    };
-    
-
+    # Flox dev environment manager
     flox = {
       url = "github:flox/flox/v1.3.16";
     };
 
+    # Private secrets repo
+    nix-secrets = {
+      url = "github:djessup/nix-secrets";
+      flake = false;
+    };
   };
 
   # Build darwin flake using:
@@ -82,18 +56,9 @@
     inputs@{
       self,
       darwin,
-      nixpkgs,
       home-manager,
       nix-homebrew,
-      homebrew-core,
-      homebrew-cask,
-      homebrew-bundle,
-      lix-module,
-      nixvim,
       sops-nix,
-      nix-secrets,
-      nur,
-      flox,
       ...
     }:
     {
@@ -104,19 +69,18 @@
           user = "jessup";
         in
         {
-          # Configuration for jessup's MacBook Pro
+          # MacBook Pro configuration
           jessup-mbp = darwin.lib.darwinSystem {
-            system = "aarch64-darwin"; # apple silicon
-            # Pass special arguments to all modules
+            system = "aarch64-darwin"; # Apple Silicon (e.g. M3 Max)
+            # Forward arguments to modules
             specialArgs = { inherit inputs user; };
-
-            # Include all necessary configuration modules
+            # Include configuration modules
             modules = [
-              ./darwin                            # System-wide Darwin settings
-              ./user                              # User-specific settings
-              home-manager.darwinModules.home-manager  # User environment management
-              nix-homebrew.darwinModules.nix-homebrew  # Homebrew integration
-              sops-nix.darwinModules.sops
+              ./darwin                                  # System-wide Darwin settings
+              ./user                                    # User-specific settings
+              home-manager.darwinModules.home-manager   # User home environment management
+              nix-homebrew.darwinModules.nix-homebrew   # Homebrew integration
+              sops-nix.darwinModules.sops               # Secrets module (SOPS)
             ];
           };
         };
