@@ -112,7 +112,14 @@
       transparent.enable = true;
 
       web-devicons.enable = true;
-
+      mini = {
+        enable = true;
+        modules = {
+          icons = {
+            style = "glyph";
+          };
+        };
+      };
       nvim-autopairs.enable = true;
       none-ls.enable = true;
       nvim-surround.enable = true;
