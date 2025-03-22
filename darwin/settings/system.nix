@@ -27,8 +27,8 @@
       dock = {
         # Visibility settings
         autohide = true;                # Automatically hide and show the Dock
-        autohide-delay = 0.1;           # Dock autohide delay in seconds (default: 0.24)
-        autohide-time-modifier = 0.5;   # Dock autohide animation duration  (default: 1.0)
+        autohide-delay = 0.025;           # Dock autohide delay in seconds (default: 0.24)
+        autohide-time-modifier = 0.3;   # Dock autohide animation duration  (default: 1.0)
         # Dock position and behavior
         orientation = "bottom"; # Place dock at the bottom of the screen
         show-recents = false;   # Don't show recently used applications
