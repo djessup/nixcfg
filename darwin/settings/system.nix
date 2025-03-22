@@ -1,5 +1,5 @@
 # macOS system settings configuration
-{ pkgs, inputs, ... }: {
+{ inputs, ... }: {
 
   system = {
     # Keyboard mappings

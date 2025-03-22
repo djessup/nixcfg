@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   security = {
     pam.services.sudo_local = {

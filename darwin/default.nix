@@ -1,11 +1,8 @@
 # System-wide configuration for Darwin (macOS)
 {
   config,
-  pkgs,
   inputs,
-  home-manager,
   user,
-  sops-nix,
   ...
 }:
 let
