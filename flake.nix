@@ -77,7 +77,7 @@
   };
 
   # Build darwin flake using:
-  # $ darwin-rebuild build --flake .#jessup
+  # $ darwin-rebuild build --flake .#jessup-mbp
   outputs =
     inputs@{
       self,
@@ -116,7 +116,6 @@
               ./user                              # User-specific settings
               home-manager.darwinModules.home-manager  # User environment management
               nix-homebrew.darwinModules.nix-homebrew  # Homebrew integration
-              lix-module.nixosModules.default     # Lix module configuration
               sops-nix.darwinModules.sops
             ];
           };
