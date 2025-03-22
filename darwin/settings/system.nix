@@ -11,7 +11,7 @@
       # Global domain settings (NSGlobalDomain)
       NSGlobalDomain = {
         # UI appearance settings
-        # AppleInterfaceStyle = "Dark"; # Enable Dark Mode
+        AppleInterfaceStyle = "Dark"; # Enable Dark Mode
 
         # File extension visibility
         AppleShowAllExtensions = true; # Show all file extensions in Finder
