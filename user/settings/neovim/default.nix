@@ -10,33 +10,11 @@
   ];
   /**
   programs.nixvim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-    luaLoader.enable = true;
 
-    colorschemes.kanagawa = {
-      enable = true;
-      settings.colors.theme.all.ui = {
-        bg = "#0D1014";
-        fg = "#DCD7BA";
-      };
-    };
 
-    performance.byteCompileLua.enable = true;
 
     plugins = {
-      nvim-tree.enable = true;
-      oil.enable = true;
-      diffview.enable = true;
-      gitsigns.enable = true;
-      gitlinker.enable = true;
-      conjure.enable = true;
-      telescope.enable = true;
-      presence-nvim.enable = true;
-      copilot-vim.enable = true;
-      web-devicons.enable = true;
+
       
       lualine = {
         enable = true;

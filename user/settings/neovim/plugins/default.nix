@@ -1,22 +1,24 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
-    ./barbar.nix
+    # ./barbar.nix
     ./comment.nix
     ./dap.nix
     ./gitblame.nix
-    ./harpoon.nix
+    # ./harpoon.nix
     ./indent-o-matic.nix
     ./lazygit.nix
     ./lint.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown-preview.nix
+    ./mini.nix
     ./neoscroll.nix
-    ./nightfox.nix
+    # ./nightfox.nix
     ./nix.nix
     ./noice.nix
     ./oil.nix
-    ./tagbar.nix
+    # ./tagbar.nix
     ./telescope.nix
     ./tree-sitter.nix
     ./trouble.nix
@@ -24,7 +26,14 @@
     ./web-devicons.nix
   ];
 
+  # Neovim
   programs.nixvim = {
+
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    luaLoader.enable = true;
 
     colorschemes = {
       nightfox = {
@@ -42,17 +51,16 @@
           transparent_mode = false;
         };
       };
-
       catppuccin = {
         enable = false;
         settings = {
-        flavour = "mocha";
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          nvimtree = true;
-          treesitter = true;
-          notify = false;
+          flavour = "mocha";
+          integrations = {
+            cmp = true;
+            gitsigns = true;
+            nvimtree = true;
+            treesitter = true;
+            notify = false;
           };
         };
       };
@@ -99,8 +107,19 @@
       };
     };
 
+
+    # performance.byteCompileLua.enable = true;
+
     plugins = {
 
+      # nvim-tree.enable = true;
+
+      # diffview.enable = true;
+      # gitsigns.enable = true;
+      # gitlinker.enable = true;
+      # presence-nvim.enable = true;
+      # copilot-vim.enable = true;
+      
       gitsigns = {
         enable = true;
         settings.signs = {
@@ -110,16 +129,6 @@
       };
 
       transparent.enable = true;
-
-      web-devicons.enable = true;
-      mini = {
-        enable = true;
-        modules = {
-          icons = {
-            style = "glyph";
-          };
-        };
-      };
       nvim-autopairs.enable = true;
       none-ls.enable = true;
       nvim-surround.enable = true;
