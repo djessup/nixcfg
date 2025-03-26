@@ -103,7 +103,7 @@
       {
         path = "${config.users.users.${user}.home}/Downloads";
         section = "others";
-        options = "--sort name --view fan --display stack";
+        options = "--sort dateadded --view fan --display stack";
       }
     ];
   };
