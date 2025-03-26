@@ -18,9 +18,7 @@
     };
     # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
-      # url = "github:zhaofengli-wip/nix-homebrew";
-      # Hotfix for nix-homebrew issue: https://github.com/zhaofengli/nix-homebrew/issues/70
-      url = "github:zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
+       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
     # Nix User Repository for community packages
