@@ -72,7 +72,7 @@
       { path = "${pkgs.iterm2}/Applications/iTerm2.app/"; }
       { path = "${pkgs.warp-terminal}/Applications/Warp.app/"; }
       { type = "spacer"; }
-      
+
       # Development IDEs
       { path = "/Applications/Cursor.app/"; }
       { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
@@ -93,7 +93,7 @@
       { path = "/Applications/Notes.app/"; }
       { path = "/System/Applications/Podcasts.app/"; }
       { type = "spacer"; }
-      
+
       # Folders
       {
         path = "/Applications";
