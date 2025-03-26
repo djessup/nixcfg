@@ -113,7 +113,6 @@
     plugins = {
 
       # nvim-tree.enable = true;
-
       # diffview.enable = true;
       # gitsigns.enable = true;
       # gitlinker.enable = true;
