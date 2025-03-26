@@ -14,7 +14,6 @@
     ./markdown-preview.nix
     ./mini.nix
     ./neoscroll.nix
-    # ./nightfox.nix
     ./nix.nix
     ./noice.nix
     ./oil.nix
@@ -118,7 +117,7 @@
       # gitlinker.enable = true;
       # presence-nvim.enable = true;
       # copilot-vim.enable = true;
-      
+
       gitsigns = {
         enable = true;
         settings.signs = {
