@@ -6,10 +6,11 @@
   ...
 }:
 let
+  # Path to the secrets repository
   secretspath = builtins.toString inputs.nix-secrets;
 in
 {
-  # Sops configuration
+  # SOPS configuration
   sops = {
     defaultSopsFile = "${secretspath}/secrets.yaml";
     age = {
