@@ -74,7 +74,7 @@
       { type = "spacer"; }
       
       # Development IDEs
-      { path = "${pkgs.code-cursor}/Applications/Cursor.app/"; }
+      { path = "/Applications/Cursor.app/"; }
       { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
       { path = "${pkgs.jetbrains.clion}/Applications/CLion.app/"; }
       { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
