@@ -3,7 +3,7 @@
     # nixvim.homeManagerModules.nixvim
     ./autocommands.nix
     ./completion.nix
-    ./keymappings.nix
+#    ./keymappings.nix
     ./options.nix
     ./plugins
     ./todo.nix
@@ -15,7 +15,7 @@
 
     plugins = {
 
-      
+
       lualine = {
         enable = true;
         settings = {
@@ -99,7 +99,7 @@
         key = "<leader>n";
       }
     ];
-    
+
     autoCmd = [
       # Vertically center document when entering insert mode
       {
@@ -123,7 +123,7 @@
         command = "setlocal spell spelllang=en";
       }
     ];
-    
+
     extraPlugins = with pkgs.vimPlugins; [
       {
         plugin = vim-dispatch;
@@ -159,6 +159,6 @@
 
     globals.mapleader = " ";
     globals.maplocalleader = ",";
-    
+
   }; */
 }
