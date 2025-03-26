@@ -22,7 +22,7 @@
       nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -vv |& nom";
       nixfluff = "nix flake --log-format internal-json -v update |& nom --json";
       nixup = "pushd /etc/nix-darwin; nixfluff; nixswitch; popd";
-      nomb = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-mbp.config.system.build.toplevel";
+      nomb = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-m3.config.system.build.toplevel";
 
       # Git shortcuts
       g = "git";
