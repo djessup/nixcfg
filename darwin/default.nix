@@ -24,12 +24,29 @@ in
 
   # Nix package manager configuration
   nix = {
+
+    # Enable Linux builder for cross-compilation
+    linux-builder = {
+      enable = true;
+      ephemeral = true;
+      maxJobs = 4;
+      # May need to disable this config and/or run `nix run nixpkgs#darwin.linux-builder` first, if build fails
+      config = {
+        virtualisation = {
+          darwin-builder = {
+            diskSize = 40 * 1024; # 40 GB
+            memorySize = 8 * 1024; # 8 GB
+            hostPort = 33022;
+          };
+          cores = 6;
+        };
+      };
+    };
+
     # Inject access tokens from SOPS
     extraOptions = ''
       !include ${config.sops.secrets.nixAccessTokens.path}
     '';
-
-    # linux-builder.enable = true;
 
     # Enable flakes and nix-command features
     settings = {
