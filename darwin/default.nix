@@ -26,17 +26,16 @@ in
   nix = {
 
     # Enable Linux builder for cross-compilation
+    # May need to disable this config and/or run `nix run nixpkgs#darwin.linux-builder`
+    # first, if build fails, or after rebuild to setup ssh keys
     linux-builder = {
       enable = true;
       ephemeral = true;
-      maxJobs = 4;
-      # May need to disable this config and/or run `nix run nixpkgs#darwin.linux-builder` first, if build fails
       config = {
         virtualisation = {
           darwin-builder = {
             diskSize = 40 * 1024; # 40 GB
             memorySize = 8 * 1024; # 8 GB
-            hostPort = 33022;
           };
           cores = 6;
         };
