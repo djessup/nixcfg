@@ -47,7 +47,14 @@
         _FXShowPosixPathInTitle = false;    # Show full POSIX path in window title
         QuitMenuItem = true;                # Show Quit Finder in Finder menu
       };
+
     };
+
+    # source: https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
+    activationScripts.postUserActivation.text = ''
+      # Activate system settings immediately after user activation, without requiring a reboot
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
   };
 
   # Store Git commit hash for configuration tracking

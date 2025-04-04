@@ -49,8 +49,14 @@
     casks = [
       "docker"
       "monitorcontrol" # Brightness and volume controls for external monitors.
-      "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
+      "nordic-nrf-command-line-tools"
+      "nrf-connect"
+      "nrfutil"
       "okta-advanced-server-access"
+      "keyguard"
+      "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
+      "ubar" # Dock replacement
+      "xquartz" # X11 server
       # "ghidra"
     ];
 
@@ -76,6 +82,7 @@
       Xcode = 497799835;
       "Apple Configurator" = 1037126344;
       Enchanted = 6474268307;
+      DaisyDisk = 411643860;
     };
   };
 }
