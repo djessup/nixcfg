@@ -1,8 +1,3 @@
-# eval "$(zoxide init zsh)"
-# eval "$(devbox global shellenv --init-hook)"
-# eval "$(direnv hook zsh)"
-# eval "$(starship init zsh)"
-
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 

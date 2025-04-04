@@ -29,7 +29,7 @@
       gs = "git status -sb";
       gd = "git diff";
       gl = "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-      
+
       # Directory navigation
       ".." = "cd ..";
       "..." = "cd ../..";
@@ -42,7 +42,7 @@
 
       # cat = "bat";
       watch = "hwatch";
-      
+
       # vi = "nvim";
       python = "python3";
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
@@ -56,16 +56,19 @@
     oh-my-zsh = {
       enable = true;
       extraConfig = builtins.readFile ./extraConfig.zsh;
-      plugins = [ 
+      plugins = [
         "aws"
         "brew"
-        "git" 
+        "git"
         "direnv"
-        "docker" 
-        "kubectl" 
-        "terraform" 
-        "history" 
-        "history-substring-search" 
+        "docker"
+        "fzf"
+        "history"
+        "iterm2"
+        "kubectl"
+        "macos"
+        "terraform"
+        "zsh-interactive-cd"
       ];
     };
   };
