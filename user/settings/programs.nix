@@ -31,6 +31,7 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      enableBashIntegration = true;
     };
 
     eza.enable = true;
