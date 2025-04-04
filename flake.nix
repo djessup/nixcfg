@@ -2,6 +2,11 @@
   # Main system description
   description = "Work MacBook Pro (Darwin) system flake";
 
+  /*
+    TODO:
+    - Setup https://github.com/aloshy-ai/nix-mcp-servers/
+   */
+
   # External dependencies and inputs
   inputs = {
     # Core Nix packages
@@ -40,6 +45,8 @@
     flox = {
       url = "github:flox/flox/v1.3.16";
     };
+    # Mise-in-place dev environment manager
+    mise-flake.url = "github:jdx/mise";
 
     # Private secrets repo
     nix-secrets = {
