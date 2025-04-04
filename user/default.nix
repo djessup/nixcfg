@@ -9,7 +9,8 @@
 {
   # Import dock configuration
   imports = [
-    ./dock # Dock configuration for macOS
+    ./dock # Dock management utility
+    ./settings/dock.nix # Dock and uBar user configuration
   ];
 
   # System-level user definition
@@ -35,13 +36,16 @@
         inputs.nixvim.homeManagerModules.nixvim
         ./settings/programs.nix # Program-specific configurations
         ./settings/zsh.nix      # ZSH shell configuration
-        ./settings/neovim   # Neovim configuration
+        ./settings/neovim       # Neovim configuration
+#        ./settings/ssh.nix      # SSH configuration
       ];
+
+#      openssh.authorizedKeys = [];
 
       # Home configuration
       home = {
         # Install packages defined in packages.nix
-        packages = (import ./settings/packages.nix { inherit pkgs; }).packages;
+        packages = (import ./settings/packages.nix { inherit inputs pkgs; }).packages;
 
         # Dotfiles
         file.".inputrc".source = ./settings/inputrc;
@@ -59,52 +63,4 @@
     };
   };
 
-  # Dock configuration using custom module
-  local.dock = {
-    enable = true;
-    entries = [
-      # System applications
-      # (Finder appears first, by default)
-      { path = "/System/Applications/System Settings.app/"; }
-      { type = "spacer"; }
-
-      # Terminal applications
-      { path = "${pkgs.iterm2}/Applications/iTerm2.app/"; }
-      { path = "${pkgs.warp-terminal}/Applications/Warp.app/"; }
-      { type = "spacer"; }
-
-      # Development IDEs
-      { path = "/Applications/Cursor.app/"; }
-      { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
-      { path = "${pkgs.jetbrains.clion}/Applications/CLion.app/"; }
-      { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
-      { path = "/Applications/Github Desktop.app/"; }
-      { type = "spacer"; }
-
-      # Communication applications
-      { path = "/Applications/Microsoft Teams.app/"; }
-      { path = "/Applications/Slack.app/"; }
-      { path = "/Applications/Microsoft Outlook.app/"; }
-      { path = "/Applications/Microsoft Edge.app/"; }
-      { type = "spacer"; }
-
-      # Productivity applications
-      { path = "/Applications/ChatGPT.app/"; }
-      { path = "/Applications/Notes.app/"; }
-      { path = "/System/Applications/Podcasts.app/"; }
-      { type = "spacer"; }
-
-      # Folders
-      {
-        path = "/Applications";
-        section = "others";
-        options = "--sort name --view grid --display folder";
-      }
-      {
-        path = "${config.users.users.${user}.home}/Downloads";
-        section = "others";
-        options = "--sort dateadded --view fan --display stack";
-      }
-    ];
-  };
 }
