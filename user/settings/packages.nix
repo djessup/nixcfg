@@ -57,18 +57,30 @@
     awscli2 # AWS command line interface v2
     awslogs # AWS CloudWatch logs viewer
     cw # CloudWatch logs tool
+    eksctl # EKS cluster management
+    aws-iam-authenticator # Authenticate to EKS with IAM
     nodePackages.aws-cdk # AWS Cloud Development Kit
     okta-aws-cli # Okta authentication for AWS
 
     #
     # Infrastructure and deployment
     #
+    atmos # Infrastructure as code tool
     cloudlens # Cloud resource explorer
     k9s # Kubernetes CLI UI
     kubectl # Kubernetes command line
     packer # Machine image builder
+    opentofu # OpenTofu (Terraform alternative)
     terraform # Infrastructure as code
-
+    terraformer # Infrastructure as code generator
+    terraforming # Export existing cloud resources to Terraform
+    terraform-docs # Generate documentation for Terraform modules
+    tfsec # Terraform security scanner
+    tflint # Terraform linter
+    terraform-landscape # Terraform code formatter
+    terraform-compliance # Terraform compliance testing
+    checkov # Static code analysis for Terraform
+    terragrunt # Terraform wrapper for managing multiple modules
     #
     # Azure tools
     #
@@ -142,14 +154,11 @@
     dfu-util # Device firmware upgrade
     gcc-arm-embedded # ARM compiler
     libtool
-    llvm # Compiler infrastructure
-    # mspds                        # MSP430 debugger
-    #    msp430GccSupport             # MSP430 C headers and linker scripts
+    llvm
     mspdebug # MSP430 programmer, debugger, gdb proxy
     mspds-bin # MSP430 debugger (binary version)
     ninja # Build system
     nrf5-sdk # Nordic SDK
-    #    nrfutil                      # Nordic nRF Util
     openocd # On-chip debugger
     pkgconf # Package compiler configuration
     probe-rs # Embedded debugging toolkit
@@ -198,17 +207,14 @@
     #
     darwin.lsusb # USB device lister
     dockutil # macOS dock utility
-    #    asitop                       # Apple Silicon System monitor
+    sox # Sound processing tool
 
     #
     # Security tools
     #
     bws # Official Bitwarden Secrets Manager CLI
-    #    bitwarden-cli                # Bitwarden password manager CLI
     rbw # Unofficial Rust-based Bitwarden client
     vaultwarden # Self-hosted Bitwarden server replacement
-    #    goldwarden                   # Alternate Bitwarden Desktop client
-    #    keyguard                     # Alternate Bitwarden Desktop client
     pinentry_mac # Secure pin/passphrase input for GPG
     teleport # SSH and Kubernetes secure access manager
   ];

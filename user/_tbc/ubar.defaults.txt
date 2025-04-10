@@ -1,0 +1,58 @@
+/*
+      "ca.brawer.uBar" = {
+        # uBar settings
+         singleWindowUsesTitle = true; # Use the title of the active window in uBar
+
+
+         {
+             allowDockOverlap = 1;
+             appearance = 1;
+             autoHide = 0;
+             menuFoldersFirst = 1;
+             barMenuIcon = 1;
+             barMenuUseIcon = 1;
+             clickActiveAppToHide = 1;
+             developerMode = 0;
+             dockAutohide = 1;
+             dockAutohideDelay = "0.025";
+             dockNoBouncing = 0;
+             dockOrientation = right;
+             favourites =     (
+                 "$desktop",
+                 "/Applications/WhatsApp.app",
+                 "/Applications/Microsoft Edge.app",
+                 "/nix/store/ll9hrmj6d5m4iapn811f8qafc10vql46-iterm2-3.5.11/Applications/iTerm2.app",
+                 "/Applications/Slack.app",
+                 "/Applications/GitHub Desktop.app",
+                 "/Applications/Microsoft Outlook.app",
+                 "/nix/store/m7vri3102s8j657ys73zxd2j6xlgc515-idea-ultimate-2024.3.5/Applications/IntelliJ IDEA.app",
+                 "/Applications/Microsoft Teams.app"
+             );
+             favouritesTrans =     (
+                 "$ca.brawer.uBar.Battery",
+                 "$ca.brawer.uBar.Spaces",
+                 "$trash",
+                 "/Users/jessup/Applications/Edge Apps.localized/YouTube.app"
+             );
+             menuPaths = (
+             );
+             leftClickToDisplayGroupedWindowList = 1;
+             lines = 1;
+             pinBottom = 1;
+             pinLeft = 1;
+             pinRight = 1;
+             position = 0;
+             rimless = 0;
+             screen = "-2";
+             showAreaSeparators = 0;
+             showBadge = 1;
+             showClock = 1;
+             showSound = 0;
+             showTitle = 1;
+             showUserAccount = 1;
+             windowGrouping = 1;
+             windowPreview = 1;
+             windowPreviewDelayed = 0;
+         }
+      };
+         */
