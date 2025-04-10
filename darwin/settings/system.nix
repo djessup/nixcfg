@@ -1,5 +1,6 @@
 # macOS system settings configuration
-{ inputs, ... }: {
+{ inputs, ... }:
+{
 
   system = {
     # Keyboard mappings
@@ -26,26 +27,26 @@
       # Dock settings
       dock = {
         # Visibility settings
-        autohide = true;                # Automatically hide and show the Dock
-        autohide-delay = 0.025;           # Dock autohide delay in seconds (default: 0.24)
-        autohide-time-modifier = 0.3;   # Dock autohide animation duration  (default: 1.0)
+        autohide = true; # Automatically hide and show the Dock
+        autohide-delay = 0.025; # Dock autohide delay in seconds (default: 0.24)
+        autohide-time-modifier = 0.3; # Dock autohide animation duration  (default: 1.0)
         # Dock position and behavior
-        orientation = "bottom"; # Place dock at the bottom of the screen
-        show-recents = false;   # Don't show recently used applications
+        orientation = "right"; # Place dock at the right of the screen
+        show-recents = false; # Don't show recently used applications
       };
 
       # Finder settings
       finder = {
-        AppleShowAllFiles = true;           # Show hidden files in Finder
-        AppleShowAllExtensions = true;      # Show all file extensions in Finder
-        FXRemoveOldTrashItems = true;       # Remove items from the Trash after 30 days
-        NewWindowTarget = "Home";           # Open new Finder windows in the home directory
-        ShowStatusBar = true;               # Show status bar at the bottom of Finder windows
-        ShowPathbar = true;                 # Show path breadcrumbs in finder windows
-        ShowHardDrivesOnDesktop = true;     # Show hard drives on the desktop
+        AppleShowAllFiles = true; # Show hidden files in Finder
+        AppleShowAllExtensions = true; # Show all file extensions in Finder
+        FXRemoveOldTrashItems = true; # Remove items from the Trash after 30 days
+        NewWindowTarget = "Home"; # Open new Finder windows in the home directory
+        ShowStatusBar = true; # Show status bar at the bottom of Finder windows
+        ShowPathbar = true; # Show path breadcrumbs in finder windows
+        ShowHardDrivesOnDesktop = true; # Show hard drives on the desktop
         ShowMountedServersOnDesktop = true; # Show connected servers on the desktop
-        _FXShowPosixPathInTitle = false;    # Show full POSIX path in window title
-        QuitMenuItem = true;                # Show Quit Finder in Finder menu
+        _FXShowPosixPathInTitle = false; # Show full POSIX path in window title
+        QuitMenuItem = true; # Show Quit Finder in Finder menu
       };
 
     };
