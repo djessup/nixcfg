@@ -46,6 +46,8 @@
       # vi = "nvim";
       python = "python3";
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
+
+      tfgo = "terraform plan -out tfplan && terraform apply tfplan";
     };
 
     sessionVariables = {
