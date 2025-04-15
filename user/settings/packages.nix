@@ -1,5 +1,4 @@
-{ inputs, pkgs, ... }:
-{
+{ inputs, pkgs, ... }:{
   packages = with pkgs; [
     #
     # Nix development tools
@@ -63,29 +62,33 @@
     okta-aws-cli # Okta authentication for AWS
 
     #
-    # Infrastructure and deployment
-    #
-    atmos # Infrastructure as code tool
-    cloudlens # Cloud resource explorer
-    k9s # Kubernetes CLI UI
-    kubectl # Kubernetes command line
-    packer # Machine image builder
-    opentofu # OpenTofu (Terraform alternative)
-    terraform # Infrastructure as code
-    terraformer # Infrastructure as code generator
-    terraforming # Export existing cloud resources to Terraform
-    terraform-docs # Generate documentation for Terraform modules
-    tfsec # Terraform security scanner
-    tflint # Terraform linter
-    terraform-landscape # Terraform code formatter
-    terraform-compliance # Terraform compliance testing
-    checkov # Static code analysis for Terraform
-    terragrunt # Terraform wrapper for managing multiple modules
-    #
     # Azure tools
     #
     azure-cli # Azure command line interface
     azure-storage-azcopy # Azure file transfer utility
+
+    #
+    # Infrastructure and deployment
+    #
+    atmos # Infrastructure as code tool
+    checkov # Static code analysis for Terraform
+    cloudlens # Cloud resource explorer
+    k9s # Kubernetes CLI UI
+    kubectl # Kubernetes command line
+    opentofu # OpenTofu (Terraform alternative)
+    packer # Machine image builder
+    terraform # Infrastructure as code
+    terraformer # Infrastructure as code generator
+    terraforming # Export existing cloud resources to Terraform
+    terraform-docs # Generate documentation for Terraform modules
+    terraform-landscape # Terraform code formatter
+    terraform-compliance # Terraform compliance testing
+    terragrunt # Terraform wrapper for managing multiple modules
+    tfsec # Terraform security scanner
+    tflint # Terraform linter
+    trunk-io # Trunk.io CLI (polyglot linter, formatter, etc)
+
+
 
     #
     # Development tools

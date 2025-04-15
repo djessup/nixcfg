@@ -21,3 +21,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # iTerm2 shell integration
 [[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
+# Trunk
+[[ -s "$HOME/.cache/trunk/shell-hooks/zsh.rc" ]] && source "$HOME/.cache/trunk/shell-hooks/zsh.rc"
