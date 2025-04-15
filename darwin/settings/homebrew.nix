@@ -76,7 +76,6 @@
     masApps = {
       reMarkable = 1276493162;
       "The Unarchiver" = 425424353;
-      EtreCheck = 1423715984;
       Bitwarden = 1352778147;
       WhatsApp = 310633997;
       Xcode = 497799835;
