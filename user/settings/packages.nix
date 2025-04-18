@@ -119,10 +119,19 @@
     sonar-scanner-cli # Code quality scanner
     sops # Secrets management
     srecord # Collection of tools for manipulating EEPROM load files
-    tcl # Tool Command Language
-    tk # Toolkit for Tcl
     rops # SOPS in Rust
-    uncrustify # Code beautifier
+
+    #
+    # Database tools
+    #
+    sqlite # Official SQLite CLI
+    sqlite-utils # SQLite utilities
+    sqlitebrowser # SQLite database browser
+    sqlite-web # Web-based SQLite database browser
+    sqlite-interactive # Interactive SQLite shell
+    sqlite-analyzer # SQLite database analyzer
+    github-to-sqlite # Save data from GitHub to SQLite
+    litecli # SQLite CLI with autocompletion and syntax highlighting
 
     #
     # AI tools
@@ -155,7 +164,7 @@
     avrdude # AVR programmer
     cmake # Build system generator
     dfu-util # Device firmware upgrade
-    gcc-arm-embedded # ARM compiler
+    # gcc-arm-embedded # ARM compiler (disabled due to issues with porting.info)
     libtool
     llvm
     mspdebug # MSP430 programmer, debugger, gdb proxy
@@ -179,11 +188,12 @@
     #
     # Applications and IDEs
     #
-    #    code-cursor                  # AI code editor (disabled in favour of unmanaged version)
+    #    code-cursor                  # AI code editor (disabled in favour of unmanaged version for faster updates)
     iterm2 # Terminal emulator
     jetbrains.clion # C/C++ IDE
     jetbrains.idea-ultimate # JVM/general IDE
     jetbrains.rust-rover # Rust IDE
+    jetbrains.datagrip # Database IDE
     jetbrains.writerside # Documentation IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
