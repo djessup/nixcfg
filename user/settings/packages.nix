@@ -195,6 +195,7 @@
     jetbrains.rust-rover # Rust IDE
     jetbrains.datagrip # Database IDE
     jetbrains.writerside # Documentation IDE
+    jetbrains.aqua # Polyglot IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
     obsidian # Knowledge base

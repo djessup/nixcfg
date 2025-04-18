@@ -44,6 +44,7 @@
       "mvnvm"
       "nvm"
       "mas"
+      "sqlean"
     ];
 
     casks = [
