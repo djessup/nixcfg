@@ -31,7 +31,7 @@
         autohide-delay = 0.025; # Dock autohide delay in seconds (default: 0.24)
         autohide-time-modifier = 0.3; # Dock autohide animation duration  (default: 1.0)
         # Dock position and behavior
-        orientation = "right"; # Place dock at the right of the screen
+        orientation = "bottom"; # Place dock at the right of the screen
         show-recents = false; # Don't show recently used applications
       };
 

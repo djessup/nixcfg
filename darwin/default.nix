@@ -3,6 +3,7 @@
   config,
   inputs,
   user,
+   pkgs,
   ...
 }:
 let
@@ -75,7 +76,7 @@ in
     # Garbage collection settings
     gc = {
       automatic = true;                     # Enable automatic garbage collection
-      interval = { Hour = 3; Minute = 0; }; # Schedule GC for 3:00 AM every day
+      interval = { Hour = 2; Minute = 0; }; # Schedule GC for 2:00 AM every day
       options = "--delete-older-than 1w";   # Remove items older than 1 week
     };
   };
@@ -86,17 +87,31 @@ in
     config = {
       allowUnfree = true;            # Allow installation of non-free/proprietary software packages
     };
+
+    # Package overlays
+    overlays = [ ];
+
   };
 
-  # Shell configuration
-  programs.zsh = {
-    enable = true;
+  # App configs
+  programs = {
+    zsh.enable = true;              # ZSH as default shell
+    bash.completion.enable = true;  # Enable bash completion for bash shell
+    man.enable = true;              # Enable man pages for documentation
+    nix-index.enable = true;        # Enable nix-index for command-not-found functionality
+    gnupg.agent.enable = true;      # Enable GPG agent for cryptographic operations
+    # tmux settings
+    tmux = {
+      enable = true;
+      enableMouse = true; # Enable mouse support in tmux
+      enableFzf = true; # Enable fzf integration in tmux
+      enableVim = true; # Enable vim style keybindings in tmux
+      enableSensible = true; # Enable sensible defaults for tmux
+      iTerm2 = true; # iTerm2 integration
+    };
   };
 
   # Additional system program configurations
-  programs.bash.completion.enable = true; # Enable bash completion for bash shell
-  programs.man.enable = true;             # Enable man pages for documentation
-  programs.nix-index.enable = true;       # Enable nix-index for command-not-found functionality
 
   # Import modular configuration files
   imports = [
@@ -105,6 +120,6 @@ in
     ./settings/security.nix    # Security-related settings
     ./settings/network.nix     # Network configuration
     ./settings/homebrew.nix    # Homebrew package management
-    ./settings/flox.nix        # Flox dev environment manager
+    # ./settings/flox.nix        # Flox dev environment manager (disabled for now, not using it)
   ];
 }

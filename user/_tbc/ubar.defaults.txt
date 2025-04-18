@@ -16,7 +16,7 @@
              dockAutohide = 1;
              dockAutohideDelay = "0.025";
              dockNoBouncing = 0;
-             dockOrientation = right;
+             dockOrientation = bottom;
              favourites =     (
                  "$desktop",
                  "/Applications/WhatsApp.app",
