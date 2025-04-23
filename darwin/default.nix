@@ -3,7 +3,6 @@
   config,
   inputs,
   user,
-   pkgs,
   ...
 }:
 let
@@ -107,7 +106,6 @@ in
       enableFzf = true; # Enable fzf integration in tmux
       enableVim = true; # Enable vim style keybindings in tmux
       enableSensible = true; # Enable sensible defaults for tmux
-      iTerm2 = true; # iTerm2 integration
     };
   };
 

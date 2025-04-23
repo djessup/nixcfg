@@ -44,11 +44,11 @@
       "mvnvm"
       "nvm"
       "mas"
-      "sqlean"
     ];
 
     casks = [
-      "docker"
+      "docker" # Docker Desktop
+      "ghidra"
       "monitorcontrol" # Brightness and volume controls for external monitors.
       "nordic-nrf-command-line-tools"
       "nrf-connect"
@@ -58,7 +58,6 @@
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
       "ubar" # Dock replacement
       "xquartz" # X11 server
-      # "ghidra"
     ];
 
     taps = [

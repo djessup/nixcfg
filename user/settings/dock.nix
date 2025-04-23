@@ -16,7 +16,7 @@
       # Development IDEs
       { path = "/Applications/Cursor.app/"; }
       { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
-      { path = "${pkgs.jetbrains.clion}/Applications/CLion.app/"; }
+      { path = "${pkgs.jetbrains.aqua}/Applications/Aqua.app/"; }
       { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
       { type = "spacer"; }
@@ -31,6 +31,9 @@
       # Productivity applications
       { path = "/Applications/ChatGPT.app/"; }
       { path = "/Applications/Notes.app/"; }
+      { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
+      { path = "${pkgs.notion-app}/Applications/Notion.app/"; }
+      { type = "spacer"; }
       { path = "/System/Applications/Podcasts.app/"; }
       { type = "spacer"; }
 

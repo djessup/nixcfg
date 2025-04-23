@@ -139,25 +139,33 @@
     ollama # LLM runtime
 
     #
-    # Programming languages and environments
+    # Node.js tools
     #
-    micromamba # Conda package manager
     nodejs # Node.js runtime
     pnpm # Fast npm alternative
+
+    #
+    # Python tools
+    #
+    micromamba # Conda package manager
+    virtualenv # Python virtual environment
     poetry # Python packager and dependency manager
     python3 # Python language
-    virtualenv # Python virtual environment
     uv # Python package manager
+    hatch # Modern Python toolchain
     pixi # Polyglot package manager
 
-    # Java (uncomment as needed)
-    # jdk11
+
+    #
+    # Java JDKs
+    #
     jdk17
+    # jdk11
     # jdk21
     # openjdk8
 
     #
-    # Embedded development
+    # Embedded dev
     #
     autoconf # Source config creator
     automake # Makefile generator
@@ -178,7 +186,7 @@
     zlib # Compression library
 
     #
-    # Rust development
+    # Rust dev
     #
     cargo-bloat # Find code bloat
     cargo-diet # Crate size optimizer
@@ -186,7 +194,7 @@
     rustup # Rust toolchain installer
 
     #
-    # Applications and IDEs
+    # Applications / IDEs
     #
     #    code-cursor                  # AI code editor (disabled in favour of unmanaged version for faster updates)
     iterm2 # Terminal emulator
@@ -194,11 +202,12 @@
     jetbrains.idea-ultimate # JVM/general IDE
     jetbrains.rust-rover # Rust IDE
     jetbrains.datagrip # Database IDE
-    jetbrains.writerside # Documentation IDE
     jetbrains.aqua # Polyglot IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
+    notion-app # Notion workspace
     obsidian # Knowledge base
+    obsidian-export # Obsidian vault export tool
     raycast # Productivity launcher
     slack # Team communication
     utm # Virtual machines
