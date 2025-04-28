@@ -23,3 +23,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Trunk
 [[ -s "$HOME/.cache/trunk/shell-hooks/zsh.rc" ]] && source "$HOME/.cache/trunk/shell-hooks/zsh.rc"
+
+# UV binary installs to ~/.local/bin
+export PATH="$HOME/.local/bin:$PATH"

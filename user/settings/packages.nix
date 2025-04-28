@@ -137,6 +137,7 @@
     # AI tools
     #
     ollama # LLM runtime
+    oterm # Ollama terminal client
 
     #
     # Node.js tools
