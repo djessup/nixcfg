@@ -3,22 +3,22 @@
     #
     # Nix development tools
     #
+    home-manager # Home manager
     nil # Nix language server
-    nixd # Nix language server
     nix-direnv # Direnv integration with Nix
-    nixfmt-rfc-style # Nix code formatter
     nix-inspect # Nix inspector
     nix-output-monitor # Nix output monitor
-    home-manager # Home manager
     nix-search # Nix package search
+    nixd # Nix language server
+    nixfmt-rfc-style # Nix code formatter
 
     #
     # Shell utilities and enhancements
     #
     btop # Resource monitor
     coreutils # GNU core utilities
-    dust # Disk usage analyzer
     direnv # Environment manager
+    dust # Disk usage analyzer
     eza # Modern replacement for ls
     fd # Fast directory listing
     fortune # Fortune cookie
@@ -28,13 +28,13 @@
     hwatch # Modern watch command
     jq # JSON processor
     lolcat # Rainbows and unicorns!
+    makerpm # simple rpm package builder
     ncdu # Disk usage analyzer
     neo-cowsay # Go port of cowsay
-    nodePackages.neovim # Neovim Node runtime
-    nix-zsh-completions # Zsh completions for Nix
-    ripgrep # Fast grep
     nfpm # deb and rpm package builder
-    makerpm # simple rpm package builder
+    nix-zsh-completions # Zsh completions for Nix
+    nodePackages.neovim # Neovim Node runtime
+    ripgrep # Fast grep
     sshpass # Non-interactive ssh password auth
     tree # Directory structure visualizer
     watch # Execute commands periodically
@@ -49,6 +49,7 @@
     # AWS tools
     #
     aws-gate # AWS SSH and port forwarding
+    aws-iam-authenticator # Authenticate to EKS with IAM
     aws-rotate-key # AWS access key rotator
     aws-sam-cli # AWS Serverless Application Model CLI
     aws-shell # AWS shell
@@ -57,9 +58,7 @@
     awslogs # AWS CloudWatch logs viewer
     cw # CloudWatch logs tool
     eksctl # EKS cluster management
-    aws-iam-authenticator # Authenticate to EKS with IAM
     nodePackages.aws-cdk # AWS Cloud Development Kit
-    okta-aws-cli # Okta authentication for AWS
 
     #
     # Azure tools
@@ -78,17 +77,15 @@
     opentofu # OpenTofu (Terraform alternative)
     packer # Machine image builder
     terraform # Infrastructure as code
-    terraformer # Infrastructure as code generator
-    terraforming # Export existing cloud resources to Terraform
+    terraform-compliance # Terraform compliance testing
     terraform-docs # Generate documentation for Terraform modules
     terraform-landscape # Terraform code formatter
-    terraform-compliance # Terraform compliance testing
+    terraformer # Infrastructure as code generator
+    terraforming # Export existing cloud resources to Terraform
     terragrunt # Terraform wrapper for managing multiple modules
-    tfsec # Terraform security scanner
     tflint # Terraform linter
+    tfsec # Terraform security scanner
     trunk-io # Trunk.io CLI (polyglot linter, formatter, etc)
-
-
 
     #
     # Development tools
@@ -148,43 +145,43 @@
     #
     # Python tools
     #
+    hatch # Modern Python toolchain
     micromamba # Conda package manager
-    virtualenv # Python virtual environment
+    pixi # Polyglot package manager
     poetry # Python packager and dependency manager
     python3 # Python language
+    rye # Python toolchain
     uv # Python package manager
-    hatch # Modern Python toolchain
-    pixi # Polyglot package manager
-
+    virtualenv # Python virtual environment
 
     #
     # Java JDKs
     #
-    jdk17
     # jdk11
     # jdk21
     # openjdk8
+    jdk17
 
     #
     # Embedded dev
     #
+    # gcc-arm-embedded # ARM compiler (disabled due to issues with porting.info)
     autoconf # Source config creator
     automake # Makefile generator
     avrdude # AVR programmer
     cmake # Build system generator
     dfu-util # Device firmware upgrade
-    # gcc-arm-embedded # ARM compiler (disabled due to issues with porting.info)
     libtool
     llvm
     mspdebug # MSP430 programmer, debugger, gdb proxy
     mspds-bin # MSP430 debugger (binary version)
     ninja # Build system
     nrf5-sdk # Nordic SDK
-    openocd # On-chip debugger
+    # openocd # On-chip debugger (disabled due to SDL dependency issue)
     pkgconf # Package compiler configuration
     probe-rs # Embedded debugging toolkit
-    SDL2 # Simple DirectMedia Layer
     zlib # Compression library
+    SDL2 # Simple DirectMedia Layer
 
     #
     # Rust dev
@@ -199,11 +196,12 @@
     #
     #    code-cursor                  # AI code editor (disabled in favour of unmanaged version for faster updates)
     iterm2 # Terminal emulator
-    jetbrains.clion # C/C++ IDE
-    jetbrains.idea-ultimate # JVM/general IDE
-    jetbrains.rust-rover # Rust IDE
-    jetbrains.datagrip # Database IDE
     jetbrains.aqua # Polyglot IDE
+    jetbrains.clion # C/C++ IDE
+    jetbrains.datagrip # Database IDE
+    jetbrains.idea-ultimate # JVM/general IDE
+    jetbrains.pycharm-professional # Python IDE
+    jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
     notion-app # Notion workspace
@@ -237,9 +235,10 @@
     # Security tools
     #
     bws # Official Bitwarden Secrets Manager CLI
-    rbw # Unofficial Rust-based Bitwarden client
-    vaultwarden # Self-hosted Bitwarden server replacement
     pinentry_mac # Secure pin/passphrase input for GPG
+    rbw # Unofficial Rust-based Bitwarden client
     teleport # SSH and Kubernetes secure access manager
+    vaultwarden # Self-hosted Bitwarden server replacement
+
   ];
 }

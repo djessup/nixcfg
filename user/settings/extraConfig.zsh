@@ -30,6 +30,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # ScaleFT/ASA completions
 if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete" ]]; then
   export PROG=sft
-  source "$HOME/Library/Application Support/ScaleFT/sft_zsh_autocomplete"
+  source "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete"
   unset PROG
 fi
