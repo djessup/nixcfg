@@ -27,6 +27,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # UV binary installs to ~/.local/bin
 export PATH="$HOME/.local/bin:$PATH"
 
+# Rye
+[[ -s "$HOME/.rye/env" ]] && source "$HOME/.rye/env"
+
 # ScaleFT/ASA completions
 if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete" ]]; then
   export PROG=sft
