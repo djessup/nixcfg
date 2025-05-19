@@ -36,6 +36,7 @@
     nodePackages.neovim # Neovim Node runtime
     ripgrep # Fast grep
     sshpass # Non-interactive ssh password auth
+    telnet # Telnet client
     tree # Directory structure visualizer
     watch # Execute commands periodically
     wget # File downloader
