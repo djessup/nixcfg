@@ -61,10 +61,10 @@
       plugins = [
         "aws"
         "brew"
-        "git"
         "direnv"
         "docker"
         "fzf"
+        "git"
         "history"
         "iterm2"
         "kubectl"
