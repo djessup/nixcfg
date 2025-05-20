@@ -7,11 +7,7 @@
   ...
 }:
 {
-  # Import dock configuration
-  imports = [
-    ./dock # Dock management utility
-    ./settings/dock.nix # Dock and uBar user configuration
-  ];
+
 
   # System-level user definition
   users.users.${user} = {
@@ -23,10 +19,10 @@
 
   # Home-manager configuration
   home-manager = {
-    useGlobalPkgs = true; # Use packages from system nixpkgs
-    useUserPackages = true; # Install packages to the user profile
+    useGlobalPkgs = true;      # Use packages from system nixpkgs
+    useUserPackages = true;    # Install packages to the user profile
     backupFileExtension = "before-hm"; # Suffix for backed up files
-    verbose = true; # Enable verbose output during operations
+    verbose = true;            # Enable verbose output during operations
 
     # User-specific home-manager settings
     users.${user} =
@@ -36,14 +32,15 @@
         lib,
         ...
       }:
-      {
-        # Import modular configuration files
+      {  # Import dock configuration
         imports = [
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixvim.homeManagerModules.nixvim
+          ./dock # Dock management utility
+          ./settings/dock.nix # Dock and uBar user configuration
           ./settings/programs.nix # Program-specific configurations
-          ./settings/zsh.nix # ZSH shell configuration
-          ./settings/neovim # Neovim configuration
+          ./settings/zsh.nix      # ZSH shell configuration
+          ./settings/neovim       # Neovim configuration
           # ./settings/ssh.nix      # SSH configuration
         ];
 

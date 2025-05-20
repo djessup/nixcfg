@@ -1,0 +1,26 @@
+run "Setting up the Dock..."
+get_current_dock_entries() {
+  ${dockutil}/bin/dockutil --list | while read -r line; do
+    if echo "$line" | grep -q "spacer"; then
+      spacer_type=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $3}')
+      section=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $NF}' | tr -d '()')
+      echo "SPACER|$spacer_type|$section"
+    else
+      uri=$(echo "$line" | ${pkgs.coreutils}/bin/cut -f2)
+      section=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $NF}' | tr -d '()')
+      options=""
+      echo "$uri|$section|$options"
+    fi
+  done
+}
+
+haveEntries="$(get_current_dock_entries)"
+
+if ! diff -wB <(echo -n "$haveEntries") <(echo -n '@wantEntries@') >/dev/null ; then
+  verbose "Dock configuration has changed. Updating..."
+  ${dockutil}/bin/dockutil --no-restart --remove all
+  @createEntries@
+  killall Dock
+else
+  verbose "Dock setup complete."
+fi 

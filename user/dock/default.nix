@@ -69,7 +69,7 @@ in
 
         Items will appear in the order specified. Applications go in the apps section by default,
         while folders and files can be placed in the "others" section.
-        
+
         You can use spacers to visually organize your dock by setting type to one of:
         - "spacer": Regular-sized spacer
         - "small-spacer": Small-sized spacer
@@ -123,14 +123,14 @@ in
           ]
           (normalize path)
         );
-        
+
       # Check if an entry is a spacer type
       isSpacerType = type: type == "spacer" || type == "small-spacer" || type == "flex-spacer";
 
       # Generate a more comprehensive comparison string that includes section and options
       # This improves idempotence by detecting changes to section or options
       wantEntries = concatMapStrings (
-        entry: 
+        entry:
         if isSpacerType entry.type then
           "SPACER|${entry.type}|${entry.section}\n"
         else
@@ -145,45 +145,21 @@ in
         else
           "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}\n"
       ) cfg.entries;
+
+      # Generate the dock setup script with interpolated variables
+      setupDockScript = pkgs.substituteAll {
+        src = ./setup-dock.sh.template;
+        wantEntries = wantEntries;
+        createEntries = createEntries;
+        dockutil = dockutil;
+        pkgs = pkgs;
+      };
     in
     {
-      # Run during system activation
-      system.activationScripts.postUserActivation.text = ''
-        echo >&2 "Setting up the Dock..."
-
-        # Create a function to get current dock items with their sections
-        get_current_dock_entries() {
-          ${dockutil}/bin/dockutil --list | while read -r line; do
-            # Check if this is a spacer
-            if echo "$line" | grep -q "spacer"; then
-              spacer_type=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $3}')
-              section=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $NF}' | tr -d '()')
-              echo "SPACER|$spacer_type|$section"
-            else
-              uri=$(echo "$line" | ${pkgs.coreutils}/bin/cut -f2)
-              section=$(echo "$line" | ${pkgs.gawk}/bin/awk '{print $NF}' | tr -d '()')
-              options=""
-              echo "$uri|$section|$options"
-            fi
-          done
-        }
-
-        # Get current dock entries in a comparable format
-        haveEntries="$(get_current_dock_entries)"
-
-        # Compare current dock state with desired state (ignoring whitespace differences)
-        if ! diff -wB <(echo -n "$haveEntries") <(echo -n '${wantEntries}') >/dev/null ; then
-          echo >&2 "Dock configuration has changed. Updating..."
-          # Remove all existing items
-          ${dockutil}/bin/dockutil --no-restart --remove all
-          # Add each configured entry in order
-          ${createEntries}
-          # Restart the Dock to apply changes
-          killall Dock
-        else
-          echo >&2 "Dock setup complete."
-        fi
-      '';
+      # Run during user activation via home-manager
+      home.activation.setupDock = lib.hm.dag.entryAfter [ "writeBoundary" ] (
+        builtins.readFile setupDockScript
+      );
     }
   );
 }
