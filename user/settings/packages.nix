@@ -36,7 +36,7 @@
     nodePackages.neovim # Neovim Node runtime
     ripgrep # Fast grep
     sshpass # Non-interactive ssh password auth
-    telnet # Telnet client
+
     tree # Directory structure visualizer
     watch # Execute commands periodically
     wget # File downloader
@@ -208,7 +208,7 @@
     notion-app # Notion workspace
     obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
-    raycast # Productivity launcher
+    # raycast # Productivity launcher (disabled due to version lag, now install via brew)
     slack # Team communication
     utm # Virtual machines
     vlc-bin # VLC media player

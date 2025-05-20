@@ -55,6 +55,7 @@
       "nrfutil"
       "okta-advanced-server-access"
       "keyguard"
+      "raycast" # Productivity launcher
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
       "ubar" # Dock replacement
       "xquartz" # X11 server
