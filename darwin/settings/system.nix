@@ -1,8 +1,9 @@
 # macOS system settings configuration
-{ inputs, ... }:
+{ inputs, user, ... }:
 {
 
   system = {
+    primaryUser = user; #nix-darwin 
     # Keyboard mappings
     # keyboard.enableKeyMapping = true;
     # keyboard.remapCapsLockToEscape = true;
@@ -51,11 +52,13 @@
 
     };
 
-    # source: https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-    activationScripts.postUserActivation.text = ''
-      # Activate system settings immediately after user activation, without requiring a reboot
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+    # # source: https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
+    # activationScripts.postUserActivation = {
+    #   text = ''
+    #     # Activate system settings immediately after user activation, without requiring a reboot
+    #     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    #   '';
+    # };
   };
 
   # Store Git commit hash for configuration tracking

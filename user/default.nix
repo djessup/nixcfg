@@ -23,38 +23,50 @@
 
   # Home-manager configuration
   home-manager = {
-    useGlobalPkgs = true;      # Use packages from system nixpkgs
-    useUserPackages = true;    # Install packages to the user profile
+    useGlobalPkgs = true; # Use packages from system nixpkgs
+    useUserPackages = true; # Install packages to the user profile
     backupFileExtension = "before-hm"; # Suffix for backed up files
-    verbose = true;            # Enable verbose output during operations
+    verbose = true; # Enable verbose output during operations
 
     # User-specific home-manager settings
-    users.${user} = { pkgs, config, lib, ... }: {
-      # Import modular configuration files
-      imports = [
-        inputs.sops-nix.homeManagerModules.sops
-        inputs.nixvim.homeManagerModules.nixvim
-        ./settings/programs.nix # Program-specific configurations
-        ./settings/zsh.nix      # ZSH shell configuration
-        ./settings/neovim       # Neovim configuration
-        # ./settings/ssh.nix      # SSH configuration
-      ];
+    users.${user} =
+      {
+        pkgs,
+        config,
+        lib,
+        ...
+      }:
+      {
+        # Import modular configuration files
+        imports = [
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.nixvim.homeManagerModules.nixvim
+          ./settings/programs.nix # Program-specific configurations
+          ./settings/zsh.nix # ZSH shell configuration
+          ./settings/neovim # Neovim configuration
+          # ./settings/ssh.nix      # SSH configuration
+        ];
 
-      # openssh.authorizedKeys = [];
+        # openssh.authorizedKeys = [];
 
-      # Home configuration
-      home = {
-        # Install packages defined in packages.nix
-        packages = (import ./settings/packages.nix { inherit inputs pkgs; }).packages;
+        # Home configuration
+        home = {
+          # Install packages defined in packages.nix
+          packages = (import ./settings/packages.nix { inherit inputs pkgs; }).packages;
 
-        # Dotfiles
-        file.".inputrc".source = ./settings/inputrc;
+          # Dotfiles
+          file.".inputrc".source = ./settings/inputrc;
 
-        # Required by home-manager, do not change
-        stateVersion = "24.11";
+          # Required by home-manager, do not change
+          stateVersion = "24.11";
 
+          # Activate system settings immediately after user activation, without requiring a reboot
+          activation.activateSystemSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+            run \
+                /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+          '';
+        };
       };
-    };
 
     # Pass special arguments to home-manager modules
     extraSpecialArgs = {
