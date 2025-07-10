@@ -118,6 +118,7 @@ in
     ./settings/security.nix    # Security-related settings
     ./settings/network.nix     # Network configuration
     ./settings/homebrew.nix    # Homebrew package management
+    ./settings/devenv.nix      # Devenv dev environment manager
     # ./settings/flox.nix        # Flox dev environment manager (disabled for now, not using it)
   ];
 }

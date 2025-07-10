@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  # Add ~/.local/bin to PATH for tools like uv, rye, etc.
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   programs = {
     direnv = {

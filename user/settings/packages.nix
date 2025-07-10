@@ -53,7 +53,6 @@
     aws-iam-authenticator # Authenticate to EKS with IAM
     aws-rotate-key # AWS access key rotator
     aws-sam-cli # AWS Serverless Application Model CLI
-    aws-shell # AWS shell
     aws-vault # AWS credentials manager
     awscli2 # AWS command line interface v2
     awslogs # AWS CloudWatch logs viewer
@@ -101,6 +100,7 @@
     git # Version control system
     git-cliff # Changelog generator
     gnumake # GNU make
+    go # Go programming language
     graphviz # Graph visualization
     kubernetes-helm # Helm package manager for Kubernetes
     httpie # HTTP client
@@ -237,9 +237,7 @@
     #
     bws # Official Bitwarden Secrets Manager CLI
     pinentry_mac # Secure pin/passphrase input for GPG
-    rbw # Unofficial Rust-based Bitwarden client
     teleport # SSH and Kubernetes secure access manager
-    vaultwarden # Self-hosted Bitwarden server replacement
 
   ];
 }
