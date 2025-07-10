@@ -19,10 +19,11 @@
     };
 
     shellAliases = {
-      nixswitch = "darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -vv |& nom";
+      nixbuild = "darwin-rebuild build --flake /etc/nix-darwin/.# --show-trace -L -v |& nom";
+      nixswitch = "sudo darwin-rebuild switch --flake /etc/nix-darwin/.# --show-trace -L -v |& nom";
       nixfluff = "nix flake --log-format internal-json -v update |& nom --json";
       nixup = "pushd /etc/nix-darwin; nixfluff; nixswitch; popd";
-      nomb = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-m3.config.system.build.toplevel";
+      nombuild = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-m3.config.system.build.toplevel";
 
       # Git shortcuts
       g = "git";
@@ -43,7 +44,9 @@
       # cat = "bat";
       watch = "hwatch";
 
+      # Editor shortcuts
       # vi = "nvim";
+      cursor = "/Applications/Cursor.app/Contents/MacOS/Cursor";
       python = "python3";
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
 
@@ -53,6 +56,8 @@
     sessionVariables = {
       ARTIFACTORY_USER = "jessup";
       ASDF_DATA_DIR = "$HOME/.asdf";
+      TERM = "xterm-256color";
+      LANG = "en_US.UTF-8";
     };
 
     oh-my-zsh = {

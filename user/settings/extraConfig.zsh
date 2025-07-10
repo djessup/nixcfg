@@ -1,6 +1,4 @@
-export TERM=xterm-256color
-export LANG=en_US.UTF-8
-
+# Kubectl completions (Note: kubectl plugin in oh-my-zsh already provides this)
 source <(kubectl completion zsh)
 
 # AMSTOOL completions
@@ -9,6 +7,9 @@ eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+# Maven home
+export M2_HOME="$(mvn --home --quiet)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -24,9 +25,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Trunk
 [[ -s "$HOME/.cache/trunk/shell-hooks/zsh.rc" ]] && source "$HOME/.cache/trunk/shell-hooks/zsh.rc"
 
-# UV binary installs to ~/.local/bin
-export PATH="$HOME/.local/bin:$PATH"
-
 # Rye
 [[ -s "$HOME/.rye/env" ]] && source "$HOME/.rye/env"
 
@@ -39,7 +37,7 @@ fi
 
 # Micromamba Conda
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
+# !! Contents within this block are managed by 'conda init' !! (not really.. cuz, nix)
 __conda_setup="$('$HOME/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
