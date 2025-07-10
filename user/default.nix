@@ -41,7 +41,7 @@
           ./settings/programs.nix # Program-specific configurations
           ./settings/zsh.nix      # ZSH shell configuration
           ./settings/neovim       # Neovim configuration
-          # ./settings/ssh.nix      # SSH configuration
+          ./settings/ssh.nix      # SSH configuration
         ];
 
         # openssh.authorizedKeys = [];

@@ -157,9 +157,9 @@ in
     in
     {
       # Run during user activation via home-manager
-      home.activation.setupDock = lib.hm.dag.entryAfter [ "writeBoundary" ] (
-        builtins.readFile setupDockScript
-      );
+#      home.activation.setupDock = lib.hm.dag.entryAfter [ "writeBoundary" ] (
+#        builtins.readFile setupDockScript
+#      );
     }
   );
 }

@@ -10,15 +10,19 @@
 
       # Terminal applications
       { path = "${pkgs.iterm2}/Applications/iTerm2.app/"; }
-      { path = "${pkgs.warp-terminal}/Applications/Warp.app/"; }
       { type = "spacer"; }
 
       # Development IDEs
       { path = "/Applications/Cursor.app/"; }
       { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
-      { path = "${pkgs.jetbrains.aqua}/Applications/Aqua.app/"; }
       { path = "${pkgs.jetbrains.pycharm-professional}/Applications/PyCharm.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
+      { type = "spacer"; }
+
+      # Productivity applications
+      { path = "/Applications/ChatGPT.app/"; }
+      { path = "/Applications/Notes.app/"; }
+      { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
       { type = "spacer"; }
 
       # Communication applications
@@ -28,12 +32,7 @@
       { path = "/Applications/Microsoft Edge.app/"; }
       { type = "spacer"; }
 
-      # Productivity applications
-      { path = "/Applications/ChatGPT.app/"; }
-      { path = "/Applications/Notes.app/"; }
-      { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
-      { path = "${pkgs.notion-app}/Applications/Notion.app/"; }
-      { type = "spacer"; }
+      # Media
       { path = "/System/Applications/Podcasts.app/"; }
       { type = "spacer"; }
 
