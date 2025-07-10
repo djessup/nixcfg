@@ -1,53 +1,43 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
     compression = true;
-#
-#    extraConfig = "";
-#    extraOptionOverrides = { };
 
-  };
-
-}
-
-/*
+    # SSH configuration for all hosts - Apple Keychain integration
+    extraConfig = ''
 Host *
   AddKeysToAgent yes
   UseKeychain yes
 
-ssh-add --apple-use-keychain ~/.ssh/id_rsa-2025-01-06
-
-{
-  programs.ssh = {
-    enable = true;
-    # SSH configuration for all hosts:
-    config = ''
-      Host *
-        AddKeysToAgent yes
-        UseKeychain yes
+# ScaleFT/Okta Advanced Server Access configuration
+Match exec "/usr/local/bin/sft resolve -q %h"
+  ProxyCommand "/usr/local/bin/sft" proxycommand %h
+  UserKnownHostsFile "/Users/jessup/Library/Application Support/ScaleFT/proxycommand_known_hosts"
     '';
-    agent = {
-      enable = true;
-      keys = [
-        "~/.ssh/id_rsa"
-        "~/.ssh/another_key"
+  };
+
+  # Create a launchd user agent to automatically load SSH keys from keychain at login
+  launchd.agents.ssh-add-keychain = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "/usr/bin/ssh-add"
+        "--apple-use-keychain"
+        "/Users/jessup/.ssh/id_rsa-2025-04-08"
       ];
+      RunAtLoad = true;
+      KeepAlive = false;
+      Label = "id.jessup.ssh-add-keychain";
     };
   };
+
+  # Alternative approach: Use home activation script
+  home.activation.loadSSHKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    # Load SSH key into Apple Keychain
+    $DRY_RUN_CMD /usr/bin/ssh-add --apple-use-keychain /Users/jessup/.ssh/id_rsa-2025-04-08 2>/dev/null || true
+  '';
 }
----OR---
-{
-  programs.ssh = {
-    enable = true;
-    config = ''
-      Host *
-        AddKeysToAgent yes
-        UseKeychain yes
-    '';
-    # Optionally, you can enable the agent without specifying keys.
-    agent.enable = true;
-  };
-}
-*/
+
+
