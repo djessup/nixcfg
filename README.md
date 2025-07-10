@@ -23,6 +23,8 @@ shell environment, and development tools.
 - macOS (on Apple Silicon)
 - [Nix Package Manager](https://nixos.org/download.html) with flakes enabled
 - [nix-darwin](https://github.com/LnL7/nix-darwin) installed
+- **SOPS age private key** (available in Bitwarden vault)
+- Access to the private `github:djessup/nix-secrets` repository
 
 ### Quick Nix Installation
 
@@ -36,18 +38,48 @@ nix run nix-darwin -- switch --flake github:djessup/nix-darwin
 
 ## 🛠️ Installation
 
-1. **Clone this repository**:
-   ```bash
-   git clone <repository-url> /etc/nix-darwin
-   cd /etc/nix-darwin
-   ```
+### 1. **Setup SOPS Secrets Management**
 
-2. **Apply the configuration**:
-   ```bash
-   darwin-rebuild switch --flake .#jessup-m3
-   ```
+Before building the configuration, you need to set up the age encryption key for secrets management:
 
-3. **Restart your terminal** to load the new shell configuration.
+```bash
+# Create the SOPS directory
+mkdir -p ~/.config/sops/age
+
+# Retrieve the age private key from Bitwarden vault
+# Look for "nix-darwin age private key" in your Bitwarden vault
+# Copy the key content to the keys.txt file
+nano ~/.config/sops/age/keys.txt
+
+# Set proper permissions (critical for security)
+chmod 600 ~/.config/sops/age/keys.txt
+```
+
+**Key format** (3 lines):
+```
+# created: 2025-03-19T10:10:27+11:00
+# public key: age1frpdm7hsq3r23cz3u8ua6p289pcxd05lwjhw0ejs4dk6a9ez337sx7tz7k
+AGE-SECRET-KEY-[PRIVATE_KEY_DATA]
+```
+
+### 2. **Clone this repository**:
+```bash
+git clone <repository-url> /etc/nix-darwin
+cd /etc/nix-darwin
+```
+
+### 3. **Verify secrets access**:
+```bash
+# Test that you can access the secrets (optional but recommended)
+nix eval --json .#darwinConfigurations.jessup-m3.config.sops.secrets
+```
+
+### 4. **Apply the configuration**:
+```bash
+darwin-rebuild switch --flake .#jessup-m3
+```
+
+### 5. **Restart your terminal** to load the new shell configuration.
 
 ## 📁 Project Structure
 
@@ -185,9 +217,48 @@ The SSH setup includes automatic Apple Keychain integration:
 - ScaleFT/Okta Advanced Server Access support
 - Modify `user/settings/ssh.nix` to add your SSH key paths
 
+### Secrets Management (SOPS)
+This configuration uses SOPS with age encryption for sensitive data:
+
+**Setup for new machine**:
+1. Retrieve age private key from Bitwarden vault ("nix-darwin age private key")
+2. Save to `~/.config/sops/age/keys.txt` with 600 permissions
+3. Ensure access to private `github:djessup/nix-secrets` repository
+
+**Current secrets**:
+- `nixAccessTokens`: Nix binary cache access tokens
+- Automatically decrypted during system build
+
+**Key management**:
+- Public key: `age1frpdm7hsq3r23cz3u8ua6p289pcxd05lwjhw0ejs4dk6a9ez337sx7tz7k`
+- Private key backed up in Bitwarden vault
+- Used for encrypting/decrypting configuration secrets
+
 ## 🔍 Troubleshooting
 
 ### Common Issues
+
+**SOPS/Secrets Issues**:
+```bash
+# Check if age private key exists and has correct permissions
+ls -la ~/.config/sops/age/keys.txt
+stat -c "%a" ~/.config/sops/age/keys.txt  # Should show 600
+
+# Verify you can decrypt secrets manually
+sops -d /nix/store/[hash]-source/secrets.yaml
+
+# Check if you can access the private secrets repository
+nix flake show github:djessup/nix-secrets
+
+# Get your current age public key (for verification)
+age-keygen -y ~/.config/sops/age/keys.txt
+```
+
+**If secrets fail to decrypt**:
+1. Ensure the age private key is correctly copied from Bitwarden
+2. Verify file permissions are set to 600 (owner read/write only)
+3. Check you have access to the private `nix-secrets` repository
+4. Confirm the key format matches the expected 3-line structure
 
 **Build Failures**:
 ```bash
@@ -196,6 +267,9 @@ nix flake check
 
 # Verbose rebuild for debugging
 darwin-rebuild switch --flake .#jessup-m3 --show-trace -L -vv
+
+# Build without secrets (for testing)
+nix build .#darwinConfigurations.jessup-m3.config.system.build.toplevel --show-trace
 ```
 
 **Package Conflicts**:
@@ -211,6 +285,11 @@ darwin-rebuild switch --flake .#jessup-m3 --show-trace -L -vv
 1. Check the [nix-darwin documentation](https://daiderd.com/nix-darwin/)
 2. Review [home-manager options](https://nix-community.github.io/home-manager/options.html)
 3. Search [nixpkgs packages](https://search.nixos.org/packages)
+4. For SOPS issues, see [SOPS documentation](https://github.com/mozilla/sops)
+
+**Note**: This configuration requires access to private secrets. Ensure you have:
+- The age private key from Bitwarden vault
+- Access to the private `nix-secrets` repository
 
 ## 🎯 Development Workflow
 
@@ -225,6 +304,9 @@ This configuration supports a modern development workflow:
 ## 🔐 Security Features
 
 - **SOPS Integration**: Encrypted secrets management with age encryption
+  - Private age key stored securely in Bitwarden vault
+  - Secrets repository: `github:djessup/nix-secrets`
+  - Used for Nix access tokens and sensitive configuration
 - **SSH Key Management**: Apple Keychain integration with automatic key loading
 - **TouchID/WatchID**: Biometric authentication for sudo operations
 - **GPG Integration**: Cryptographic operations with pinentry support
