@@ -7,3 +7,6 @@ result
 keys/builder_ed25519
 keys/builder_ed25519.pub
 nixos.qcow2
+.cursor/
++.devenv/
++.direnv/

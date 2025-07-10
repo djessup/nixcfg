@@ -5,7 +5,7 @@
   /*
     TODO:
     - Setup https://github.com/aloshy-ai/nix-mcp-servers/
-   */
+  */
 
   # External dependencies and inputs
   inputs = {
@@ -23,7 +23,7 @@
     };
     # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
-       url = "github:zhaofengli-wip/nix-homebrew";
+      url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
     # Nix User Repository for community packages
