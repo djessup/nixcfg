@@ -7,10 +7,10 @@
       loaded_python_provider = 0; # Python 2
     };
 
+    # Simple clipboard configuration for macOS
     clipboard = {
-      # Use system clipboard
-      register = "unnamedplus";
-      providers.wl-copy.enable = true;
+      register = "unnamedplus";  # Use system clipboard
+      # No providers specified - let nixvim use macOS defaults
     };
 
     opts = {
