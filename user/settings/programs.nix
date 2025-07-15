@@ -46,6 +46,11 @@
       extraConfig = {
         init.defaultBranch = "master";
         credential."https://git.cloudmanager.adobe.com".provider = "generic";
+        pager = {
+          diff = false;
+          show = false;
+          blame = false;
+        };
       };
     };
 
