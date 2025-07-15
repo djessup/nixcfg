@@ -113,6 +113,8 @@
     openssl # SSL/TLS toolkit
     qemu # Machine emulator
     rlwrap # Readline wrapper
+    shellcheck # Shell script linter
+    shfmt # Shell script formatter
     skopeo # Container image tool
     sonar-scanner-cli # Code quality scanner
     sops # Secrets management
@@ -237,7 +239,5 @@
     #
     bws # Official Bitwarden Secrets Manager CLI
     pinentry_mac # Secure pin/passphrase input for GPG
-    teleport # SSH and Kubernetes secure access manager
-
   ];
 }
