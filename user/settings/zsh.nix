@@ -25,6 +25,9 @@
       nixup = "pushd /etc/nix-darwin; nixfluff; nixswitch; popd";
       nombuild = "nom build /etc/nix-darwin/.#darwinConfigurations.jessup-m3.config.system.build.toplevel";
 
+      # Nix garbage collection and space optimization
+      nix-gc = "nix-cleanup --user-only";  # Use the comprehensive cleanup script
+
       # Git shortcuts
       g = "git";
       gs = "git status -sb";
