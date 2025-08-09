@@ -48,16 +48,17 @@
 
     casks = [
       "docker" # Docker Desktop
+      "block-goose"
       "ghidra"
       "monitorcontrol" # Brightness and volume controls for external monitors.
-      "nordic-nrf-command-line-tools"
-      "nrf-connect"
-      "nrfutil"
+#      "nordic-nrf-command-line-tools"
+#      "nrf-connect"
+#      "nrfutil"
       "okta-advanced-server-access"
       "keyguard"
       "raycast" # Productivity launcher
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
-      "ubar" # Dock replacement
+#      "ubar" # Dock replacement
       "xquartz" # X11 server
     ];
 
@@ -81,7 +82,6 @@
       WhatsApp = 310633997;
       Xcode = 497799835;
       "Apple Configurator" = 1037126344;
-      Enchanted = 6474268307;
       DaisyDisk = 411643860;
     };
   };
