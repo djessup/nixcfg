@@ -4,27 +4,10 @@
   inputs,
   user,
   ...
-}:
-let
-  # Path to the secrets repository
-  secretspath = builtins.toString inputs.nix-secrets;
-in
-{
-  # SOPS configuration
-  sops = {
-    defaultSopsFile = "${secretspath}/secrets.yaml";
-    age = {
-      keyFile = "${config.users.users.${user}.home}/.config/sops/age/keys.txt";
-    };
-    secrets.nixAccessTokens = {
-      mode = "0400";
-      owner = config.users.users.${user}.name;
-    };
-  };
+}: {
 
   # Nix package manager configuration
   nix = {
-
     # Enable Linux builder for cross-compilation
     # May need to disable this config and/or run `nix run nixpkgs#darwin.linux-builder`
     # first, if build fails, or after rebuild to setup ssh keys
@@ -113,12 +96,14 @@ in
 
   # Import modular configuration files
   imports = [
-    ./settings/system.nix      # System settings for macOS
-    ./settings/environment.nix # Environment variables and paths
-    ./settings/security.nix    # Security-related settings
-    ./settings/network.nix     # Network configuration
-    ./settings/homebrew.nix    # Homebrew package management
-    ./settings/devenv.nix      # Devenv dev environment manager
+    ./settings/secrets.nix       # Secret management w/ SOPS
+    ./settings/system.nix        # System settings for macOS
+    ./settings/environment.nix   # Environment variables and paths
+    ./settings/security.nix      # Security-related settings
+    ./settings/network.nix       # Network configuration
+    ./settings/homebrew.nix      # Homebrew package management
+    ./settings/devenv.nix        # Devenv dev environment manager
+    # ./settings/github-runners.nix # GitHub self-hosted runners
     # ./settings/flox.nix        # Flox dev environment manager (disabled for now, not using it)
   ];
 }
