@@ -7,16 +7,20 @@
     autosuggestion.enable = true;
     syntaxHighlighting = {
       enable = true;
-      highlighters = ["all"];
+      highlighters = ["brackets" "regexp" ];
     };
+
     # enableVteIntegration = true;
 
     history = {
+      append = true;
       expireDuplicatesFirst = true;
       extended = true;
       ignoreDups = true;
       ignoreAllDups = true;
       ignoreSpace = true;
+      saveNoDups = true;
+      share = true;
       save = 1000000;
       size = 1000000;
     };
