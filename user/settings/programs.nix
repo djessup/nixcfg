@@ -51,6 +51,17 @@
           export IN_DEV_SHELL=1
           export DIRENV_IN_ENVRC=1
         }
+
+        # Function to use specific Node.js version
+        use_nvm() {
+          local node_version=$1
+
+          nvm_sh=$HOME/.nvm/nvm.sh
+          if [[ -e $nvm_sh ]]; then
+            source $nvm_sh
+            nvm use $node_version
+          fi
+        }
       '';
     };
 
