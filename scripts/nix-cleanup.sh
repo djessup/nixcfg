@@ -66,52 +66,50 @@ print_header() {
 }
 
 print_usage() {
-    cat << EOF
-${BOLD}USAGE:${NC}
-    $SCRIPT_NAME [OPTIONS]
-
-${BOLD}DESCRIPTION:${NC}
-    A nix store cleanup tool that safely removes old generations,
-    performs garbage collection, and optimizes the store for maximum space recovery.
-
-${BOLD}OPTIONS:${NC}
-    ${BOLD}Core Operations:${NC}
-    -u, --user-only         Clean only user profiles (no sudo required)
-    -f, --full              Full cleanup including system profiles (requires sudo)
-    -t, --threshold TIME    Time threshold for cleanup (default: $DEFAULT_THRESHOLD)
-                           Examples: 1h, 6h, 1d, 7d, 30d, 1m
-    -k, --keep NUM          Keep NUM most recent generations regardless of time
-    
-    ${BOLD}Safety & Control:${NC}
-    -n, --dry-run          Show what would be cleaned without doing it
-    -y, --yes              Skip confirmation prompts (use with caution)
-    -v, --verbose          Show detailed information about operations
-    
-    ${BOLD}Information:${NC}
-    -l, --largest          Show largest store paths before cleanup
-    -i, --info             Show quick store statistics and exit
-    -h, --help             Show this help message
-    --version              Show version information
-
-${BOLD}EXAMPLES:${NC}
-    $SCRIPT_NAME                    # Safe user-only cleanup (1 day threshold)
-    $SCRIPT_NAME --full             # Full cleanup including system profiles
-    $SCRIPT_NAME -t 7d --verbose    # Clean items older than 7 days with details
-    $SCRIPT_NAME --dry-run --full   # Preview what full cleanup would do
-    $SCRIPT_NAME -k 5 --user-only   # Keep 5 recent generations, clean user only
-    $SCRIPT_NAME --largest          # Show space usage before cleaning
-    $SCRIPT_NAME --info             # Quick store statistics
-
-${BOLD}PERFORMANCE NOTES:${NC}
-    • --info uses fast filesystem tools (diskutil, stat) for instant results
-    • --largest may take time on large stores but provides detailed analysis
-    • Store size estimates are based on volume usage and path counts
-
-${BOLD}SAFETY NOTES:${NC}
-    • Default 1-day threshold protects recent generations
-    • System cleanup requires sudo and affects nix-darwin rollback capability
-    • Use --dry-run first to preview changes
-EOF
+    echo -e "${BOLD}USAGE:${NC}"
+    echo "    $SCRIPT_NAME [OPTIONS]"
+    echo
+    echo -e "${BOLD}DESCRIPTION:${NC}"
+    echo "    A nix store cleanup tool that safely removes old generations,"
+    echo "    performs garbage collection, and optimizes the store for maximum space recovery."
+    echo
+    echo -e "${BOLD}OPTIONS:${NC}"
+    echo -e "    ${BOLD}Core Operations:${NC}"
+    echo "    -u, --user-only         Clean only user profiles (no sudo required)"
+    echo "    -f, --full              Full cleanup including system profiles (requires sudo)"
+    echo "    -t, --threshold TIME    Time threshold for cleanup (default: $DEFAULT_THRESHOLD)"
+    echo "                           Examples: 1h, 6h, 1d, 7d, 30d, 1m"
+    echo "    -k, --keep NUM          Keep NUM most recent generations regardless of time"
+    echo "    "
+    echo -e "    ${BOLD}Safety & Control:${NC}"
+    echo "    -n, --dry-run          Show what would be cleaned without doing it"
+    echo "    -y, --yes              Skip confirmation prompts (use with caution)"
+    echo "    -v, --verbose          Show detailed information about operations"
+    echo "    "
+    echo -e "    ${BOLD}Information:${NC}"
+    echo "    -l, --largest          Show largest store paths before cleanup"
+    echo "    -i, --info             Show quick store statistics and exit"
+    echo "    -h, --help             Show this help message"
+    echo "    --version              Show version information"
+    echo
+    echo -e "${BOLD}EXAMPLES:${NC}"
+    echo "    $SCRIPT_NAME                    # Safe user-only cleanup (1 day threshold)"
+    echo "    $SCRIPT_NAME --full             # Full cleanup including system profiles"
+    echo "    $SCRIPT_NAME -t 7d --verbose    # Clean items older than 7 days with details"
+    echo "    $SCRIPT_NAME --dry-run --full   # Preview what full cleanup would do"
+    echo "    $SCRIPT_NAME -k 5 --user-only   # Keep 5 recent generations, clean user only"
+    echo "    $SCRIPT_NAME --largest          # Show space usage before cleaning"
+    echo "    $SCRIPT_NAME --info             # Quick store statistics"
+    echo
+    echo -e "${BOLD}PERFORMANCE NOTES:${NC}"
+    echo "    • --info uses fast filesystem tools (diskutil, stat) for instant results"
+    echo "    • --largest may take time on large stores but provides detailed analysis"
+    echo "    • Store size estimates are based on volume usage and path counts"
+    echo
+    echo -e "${BOLD}SAFETY NOTES:${NC}"
+    echo "    • Default 1-day threshold protects recent generations"
+    echo "    • System cleanup requires sudo and affects nix-darwin rollback capability"
+    echo "    • Use --dry-run first to preview changes"
 }
 
 # Parse command line arguments
