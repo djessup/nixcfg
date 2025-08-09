@@ -10,6 +10,7 @@
   # External dependencies and inputs
   inputs = {
     # Core Nix packages
+#    nixpkgsStable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     # Darwin (macOS) system configuration framework
     darwin = {
@@ -24,7 +25,7 @@
     # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
+#      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
     # Nix User Repository for community packages
     nur = {
@@ -46,8 +47,10 @@
       url = "github:flox/flox/v1.3.16";
     };
     # Mise-in-place dev environment manager
-    mise-flake.url = "github:jdx/mise";
-
+    mise-flake = {
+      url = "github:jdx/mise";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Private secrets repo
     nix-secrets = {
       url = "github:djessup/nix-secrets";
@@ -64,6 +67,7 @@
       home-manager,
       nix-homebrew,
       sops-nix,
+#      github-nix-ci,
       ...
     }:
     {
@@ -86,6 +90,7 @@
               home-manager.darwinModules.home-manager   # User home environment management
               nix-homebrew.darwinModules.nix-homebrew   # Homebrew integration
               sops-nix.darwinModules.sops               # Secrets module (SOPS)
+#              github-nix-ci.darwinModules.default
             ];
           };
         };
