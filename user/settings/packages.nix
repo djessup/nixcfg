@@ -91,7 +91,6 @@
     # Development tools
     #
     age # File encryption
-    aiac # AI Assisted coding
     ant # ant build tool
     asciinema # Terminal recorder
     doxygen # Documentation generator
@@ -99,6 +98,8 @@
     gh # GitHub CLI
     git # Version control system
     git-cliff # Changelog generator
+    git-lfs # Git Large File Storage
+    github-runner # Self-hosted GitHub Runner
     gnumake # GNU make
     go # Go programming language
     graphviz # Graph visualization
@@ -107,7 +108,7 @@
     localstack # Local AWS cloud stack
     libcoap # CoAP library
     minicom # Serial communication program
-    inputs.mise-flake.packages.${system}.mise
+#    inputs.mise-flake.packages.${system}.mise # Mise-in-place dev environment manager
     mosquitto # MQTT broker
     ngrok # Secure tunneling
     openssl # SSL/TLS toolkit
@@ -131,7 +132,6 @@
     sqlite-interactive # Interactive SQLite shell
     sqlite-analyzer # SQLite database analyzer
     github-to-sqlite # Save data from GitHub to SQLite
-    litecli # SQLite CLI with autocompletion and syntax highlighting
 
     #
     # AI tools
@@ -176,10 +176,10 @@
     dfu-util # Device firmware upgrade
     libtool
     llvm
-    mspdebug # MSP430 programmer, debugger, gdb proxy
-    mspds-bin # MSP430 debugger (binary version)
+    # mspdebug # MSP430 programmer, debugger, gdb proxy
+    # mspds-bin # MSP430 debugger (binary version)
     ninja # Build system
-    nrf5-sdk # Nordic SDK
+    # nrf5-sdk # Nordic SDK
     # openocd # On-chip debugger (disabled due to SDL dependency issue)
     pkgconf # Package compiler configuration
     probe-rs # Embedded debugging toolkit
@@ -198,10 +198,11 @@
     # Applications / IDEs
     #
     #    code-cursor                  # AI code editor (disabled in favour of unmanaged version for faster updates)
+    goose-cli # Goose AI IDE (open LLM-assisted IDE)
     iterm2 # Terminal emulator
-    jetbrains.aqua # Polyglot IDE
-    jetbrains.clion # C/C++ IDE
-    jetbrains.datagrip # Database IDE
+    # jetbrains.aqua # Polyglot IDE
+    # jetbrains.clion # C/C++ IDE
+    # jetbrains.datagrip # Database IDE
     jetbrains.idea-ultimate # JVM/general IDE
     jetbrains.pycharm-professional # Python IDE
     jetbrains.rust-rover # Rust IDE
@@ -215,7 +216,7 @@
     utm # Virtual machines
     vlc-bin # VLC media player
     vscode # Code editor
-    warp-terminal # Modern terminal
+    # warp-terminal # Modern terminal
 
     #
     # Fonts
@@ -223,6 +224,7 @@
     font-awesome # Icon font
     hack-font # Programmer font
     meslo-lgs-nf # Powerline font
+    monaspace # Monaspace https://monaspace.githubnext.com/
     nerd-fonts.jetbrains-mono # Developer font with icons
     noto-fonts # Google font family
     noto-fonts-emoji # Emoji font
