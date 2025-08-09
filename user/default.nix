@@ -40,6 +40,7 @@
           ./settings/dock.nix # Dock and uBar user configuration
           ./settings/programs.nix # Program-specific configurations
           ./settings/zsh.nix      # ZSH shell configuration
+          ./settings/shell-init.nix # Development environment shell initialization
           ./settings/neovim       # Neovim configuration
           ./settings/ssh.nix      # SSH configuration
         ];

@@ -1,0 +1,54 @@
+# .envrc template for consistent development environments
+# Copy this file to your project root as .envrc and customize as needed
+
+# Use nix flake or shell.nix for the development environment
+use flake
+# OR: use nix
+
+# Ensure zsh is used and user configuration is loaded
+export SHELL="$(command -v zsh)"
+export IN_DEV_SHELL=1
+export DIRENV_IN_ENVRC=1
+
+# Source user's development shell initialization
+if [[ -f "$HOME/.dev_shell_init" ]]; then
+  source "$HOME/.dev_shell_init"
+fi
+
+# Load user's zsh configuration if not already loaded
+if [[ -n "$ZSH_VERSION" && -f "$HOME/.zshrc" && -z "$ZSHRC_SOURCED" ]]; then
+  export ZSHRC_SOURCED=1
+  source "$HOME/.zshrc"
+fi
+
+# Project-specific environment variables can be added below
+# export PROJECT_NAME="my-project"
+# export DATABASE_URL="postgresql://localhost/myproject_dev"
+
+# Add project-specific paths
+# PATH_add bin
+# PATH_add scripts
+
+# Load project-specific dotenv file if it exists
+# dotenv_if_exists .env.local
+# dotenv_if_exists .env
+
+# Use specific Node.js version (if using Node.js)
+# use node 18
+
+# Use specific Python version (if using Python)
+# use python 3.11
+
+# Use specific Ruby version (if using Ruby)
+# use ruby 3.2.0
+
+# Custom functions for this project
+# my_project_setup() {
+#   echo "Setting up development environment for my project..."
+#   # Add any project-specific setup here
+# }
+
+# Run project setup if function exists
+# if declare -f my_project_setup > /dev/null; then
+#   my_project_setup
+# fi

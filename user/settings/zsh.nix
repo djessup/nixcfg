@@ -5,7 +5,10 @@
     enableCompletion = true;
 
     autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+    syntaxHighlighting = {
+      enable = true;
+      highlighters = ["all"];
+    };
     # enableVteIntegration = true;
 
     history = {
@@ -61,7 +64,46 @@
       ASDF_DATA_DIR = "$HOME/.asdf";
       TERM = "xterm-256color";
       LANG = "en_US.UTF-8";
+
+      # Development environment variables
+      NIX_SHELL_PRESERVE_PROMPT = "1";
+      DIRENV_LOG_FORMAT = "";  # Reduce direnv noise
     };
+
+    # Custom initialization for development environments
+    initExtra = ''
+      # Development environment detection and setup
+      if [[ -n "$IN_NIX_SHELL" || -n "$DIRENV_IN_ENVRC" || -n "$IN_DEV_SHELL" ]]; then
+        # We're in a development environment
+        export DEV_ENV_ACTIVE=1
+
+        # Ensure prompt shows development environment status
+        if [[ -z "$NIX_SHELL_PRESERVE_PROMPT" ]]; then
+          export PS1="(dev) $PS1"
+        fi
+
+        # Load any development-specific aliases or functions
+        if [[ -f "$HOME/.dev_aliases" ]]; then
+          source "$HOME/.dev_aliases"
+        fi
+      fi
+
+      # Ensure direnv is properly initialized in all contexts
+      if command -v direnv >/dev/null 2>&1; then
+        eval "$(direnv hook zsh)"
+      fi
+
+      function sft-connect() {
+        local query=$1
+        local target=$(sft list-servers -columns hostname | grep $query | head -n1)
+        if [[ -z "''${target}" ]]; then
+          echo "No matching server found"
+          return 1
+        fi
+        echo "Connecting to ''${target}"
+        sft ssh "''${target}"
+      }
+    '';
 
     oh-my-zsh = {
       enable = true;
