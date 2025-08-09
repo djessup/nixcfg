@@ -17,6 +17,7 @@ shell environment, and development tools.
 - **SSH Key Management**: Apple Keychain integration with automatic key loading
 - **Secrets Management**: SOPS integration for encrypted configuration
 - **Development Environment Managers**: Support for devenv and mise
+- **Self-Hosted GitHub Runners**: Integrated github-nix-ci for running CI on your own hardware
 
 ## 📋 Prerequisites
 
@@ -216,6 +217,13 @@ The SSH setup includes automatic Apple Keychain integration:
 - SSH keys are automatically loaded from keychain at login
 - ScaleFT/Okta Advanced Server Access support
 - Modify `user/settings/ssh.nix` to add your SSH key paths
+
+### GitHub Self-Hosted Runners
+This configuration includes support for self-hosted GitHub runners via github-nix-ci:
+- Run CI/CD workflows on your own hardware
+- Support for both personal repositories and organizations
+- Automatic runner registration and management
+- See `docs/github-runners-setup.md` for complete setup instructions
 
 ### Secrets Management (SOPS)
 This configuration uses SOPS with age encryption for sensitive data:

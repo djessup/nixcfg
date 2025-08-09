@@ -1,0 +1,77 @@
+# Example GitHub Actions workflow for self-hosted runners
+# Place this file at .github/workflows/nix-ci.yaml in your repositories
+
+name: "Nix CI"
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  # Simple single-system build
+  nix-build:
+    runs-on: aarch64-darwin  # Your self-hosted Darwin runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build with nixci
+        run: |
+          nixci \
+            --extra-access-tokens "github.com=${{ secrets.GITHUB_TOKEN }}" \
+            build \
+            --systems "aarch64-darwin"
+
+  # Advanced matrix build (if you have multiple runner types)
+  nix-matrix:
+    runs-on: ${{ matrix.system }}
+    strategy:
+      matrix:
+        system: [aarch64-darwin]  # Add more systems if you have them
+      fail-fast: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build flake outputs
+        run: |
+          nixci \
+            --extra-access-tokens "github.com=${{ secrets.GITHUB_TOKEN }}" \
+            build \
+            --systems "${{ matrix.system }}"
+
+  # Example for building specific flake outputs
+  nix-specific:
+    runs-on: aarch64-darwin
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build specific outputs
+        run: |
+          # Build default package
+          nix build .#default
+          
+          # Build development shell
+          nix develop --command echo "Dev shell works"
+          
+          # Run checks
+          nix flake check
+
+  # Example with custom runner labels
+  nix-labeled:
+    runs-on: [self-hosted, macOS, nix]  # Use specific labels
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: System info
+        run: |
+          echo "Runner: $(hostname)"
+          echo "System: $(uname -a)"
+          echo "Nix version: $(nix --version)"
+          
+      - name: Build project
+        run: nixci build
