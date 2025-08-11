@@ -104,6 +104,5 @@
     ./settings/homebrew.nix      # Homebrew package management
     ./settings/devenv.nix        # Devenv dev environment manager
     # ./settings/github-runners.nix # GitHub self-hosted runners
-    # ./settings/flox.nix        # Flox dev environment manager (disabled for now, not using it)
   ];
 }

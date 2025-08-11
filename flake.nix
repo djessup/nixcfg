@@ -42,10 +42,6 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Flox dev environment manager
-    flox = {
-      url = "github:flox/flox/v1.3.16";
-    };
     # Mise-in-place dev environment manager
     mise-flake = {
       url = "github:jdx/mise";
