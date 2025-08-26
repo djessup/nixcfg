@@ -75,7 +75,7 @@
     };
 
     # Custom initialization for development environments
-    initExtra = ''
+    initContent = ''
       # Development environment detection and setup
       if [[ -n "$IN_NIX_SHELL" || -n "$DIRENV_IN_ENVRC" || -n "$IN_DEV_SHELL" ]]; then
         # We're in a development environment

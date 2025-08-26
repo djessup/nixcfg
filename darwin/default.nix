@@ -65,9 +65,9 @@
 
   # Platform and package configuration
   nixpkgs = {
-    hostPlatform = "aarch64-darwin"; # Target Apple Silicon architecture
+    hostPlatform = "aarch64-darwin";
     config = {
-      allowUnfree = true;            # Allow installation of non-free/proprietary software packages
+      allowUnfree = true;
     };
 
     # Package overlays

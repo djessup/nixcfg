@@ -8,7 +8,6 @@
 }:
 {
 
-
   # System-level user definition
   users.users.${user} = {
     name = "${user}";
@@ -19,10 +18,10 @@
 
   # Home-manager configuration
   home-manager = {
-    useGlobalPkgs = true;      # Use packages from system nixpkgs
-    useUserPackages = true;    # Install packages to the user profile
+    useGlobalPkgs = true; # Use packages from system nixpkgs
+    useUserPackages = true; # Install packages to the user profile
     backupFileExtension = "before-hm"; # Suffix for backed up files
-    verbose = true;            # Enable verbose output during operations
+    verbose = true; # Enable verbose output during operations
 
     # User-specific home-manager settings
     users.${user} =
@@ -32,18 +31,19 @@
         lib,
         ...
       }:
-      {  # Import dock configuration
+      {
+        # Import dock configuration
         imports = [
           inputs.sops-nix.homeManagerModules.sops
-          inputs.nixvim.homeManagerModules.nixvim
+          inputs.nixvim.homeModules.nixvim
           ./dock # Dock management utility
           ./settings/dock.nix # Dock and uBar user configuration
           ./settings/programs.nix # Program-specific configurations
           ./settings/bash.nix # Bash shell configuration
           ./settings/zsh.nix # ZSH shell configuration
           ./settings/shell-init.nix # Development environment shell initialization
-          ./settings/neovim       # Neovim configuration
-          ./settings/ssh.nix      # SSH configuration
+          ./settings/neovim # Neovim configuration
+          ./settings/ssh.nix # SSH configuration
         ];
 
         # openssh.authorizedKeys = [];

@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }:{
+{ inputs, pkgs, ... }:
+{
   packages = with pkgs; [
     #
     # Nix development tools
@@ -109,7 +110,7 @@
     localstack # Local AWS cloud stack
     libcoap # CoAP library
     minicom # Serial communication program
-#    inputs.mise-flake.packages.${system}.mise # Mise-in-place dev environment manager
+    #    inputs.mise-flake.packages.${system}.mise # Mise-in-place dev environment manager
     mosquitto # MQTT broker
     ngrok # Secure tunneling
     openssl # SSL/TLS toolkit
