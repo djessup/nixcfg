@@ -72,6 +72,7 @@
     atmos # Infrastructure as code tool
     checkov # Static code analysis for Terraform
     cloudlens # Cloud resource explorer
+    google-cloud-sdk # Google Cloud Platform (GCP) CLI
     k9s # Kubernetes CLI UI
     kubectl # Kubernetes command line
     opentofu # OpenTofu (Terraform alternative)
