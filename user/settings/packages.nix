@@ -136,7 +136,7 @@
     #
     # AI tools
     #
-    ollama # LLM runtime
+    pkgsStable.ollama # LLM runtime
     oterm # Ollama terminal client
 
     #

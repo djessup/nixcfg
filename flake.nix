@@ -4,13 +4,13 @@
 
   /*
     TODO:
-    - Setup https://github.com/aloshy-ai/nix-mcp-servers/
+    - Setup https://github.com/aloshy-ai/nix-mcp-servers/ ?
   */
 
   # External dependencies and inputs
   inputs = {
     # Core Nix packages
-#    nixpkgsStable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgsStable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     # Darwin (macOS) system configuration framework
     darwin = {
@@ -25,7 +25,6 @@
     # Integration for managing Homebrew packages with Nix
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-#      inputs.nixpkgs.follows = "nixpkgs"; # Use the same nixpkgs as defined above
     };
     # Nix User Repository for community packages
     nur = {

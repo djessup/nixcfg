@@ -71,7 +71,14 @@
     };
 
     # Package overlays
-    overlays = [ ];
+    overlays = [
+      (final: prev: {
+        pkgsStable = import inputs.nixpkgsStable {
+          inherit (final) system;
+          config = prev.config or {};
+        };
+      })
+    ];
 
   };
 
