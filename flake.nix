@@ -42,11 +42,21 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Mise-in-place dev environment manager
-    mise-flake = {
-      url = "github:jdx/mise";
+    # Agenix module (provides top-level `age.*` options expected by github-nix-ci)
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Mise-in-place dev environment manager
+    # mise-flake = {
+    #   url = "github:jdx/mise";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # Github self-hosted runners
+    github-nix-ci = {
+      url = "github:juspay/github-nix-ci";
+    };
+
     # Private secrets repo
     nix-secrets = {
       url = "github:djessup/nix-secrets";
@@ -63,7 +73,7 @@
       home-manager,
       nix-homebrew,
       sops-nix,
-#      github-nix-ci,
+      agenix,
       ...
     }:
     {
@@ -81,12 +91,13 @@
             specialArgs = { inherit inputs user; };
             # Include configuration modules
             modules = [
-              ./darwin                                  # System-wide Darwin settings
-              ./user                                    # User-specific settings
-              home-manager.darwinModules.home-manager   # User home environment management
-              nix-homebrew.darwinModules.nix-homebrew   # Homebrew integration
-              sops-nix.darwinModules.sops               # Secrets module (SOPS)
-#              github-nix-ci.darwinModules.default
+              ./darwin # System-wide Darwin settings
+              ./user # User-specific settings
+              home-manager.darwinModules.home-manager # User home environment management
+              nix-homebrew.darwinModules.nix-homebrew # Homebrew integration
+              sops-nix.darwinModules.sops # Secrets module (SOPS)
+              agenix.darwinModules.default # Provide `age.*` option namespace
+              inputs.github-nix-ci.darwinModules.default # GitHub self-hosted runners
             ];
           };
         };

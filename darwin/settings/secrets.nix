@@ -27,6 +27,10 @@ in
 
       # GitHub self-hosted runner tokens
       # Format: github-runner-<username-or-org>-token (Must be added to secrets.yaml in nix-secrets)
+      github-runner-djessup-token = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
       github-runner-jessup_adobe-token = {
         mode = "0400";
         owner = config.users.users.${user}.name;
