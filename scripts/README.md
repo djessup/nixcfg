@@ -1,6 +1,6 @@
 # Nix Cleanup Script
 
-A comprehensive Nix store cleanup tool designed for nix-darwin systems that safely removes old generations, performs garbage collection, and optimizes the store for maximum space recovery.
+A Nix store cleanup tool for nix-darwin systems that safely removes old generations, performs garbage collection, and optimizes the store for space recovery.
 
 ## Features
 
@@ -9,6 +9,7 @@ A comprehensive Nix store cleanup tool designed for nix-darwin systems that safe
 - **System-level cleanup**: Clean nix-darwin system profile generations (requires sudo)
 - **Safe time thresholds**: Default 1-day threshold protects recent generations
 - **Store optimization**: Automatic deduplication of identical files
+- **Quick store statistics**: `--info` prints a fast summary and exits
 
 ### User Experience
 - **Clear usage instructions**: Built-in help with `--help` flag
@@ -29,6 +30,7 @@ The script is automatically installed as part of your nix-darwin configuration a
 ## Usage
 
 ### Basic Usage
+
 ```bash
 # Safe user-only cleanup (default)
 nix-cleanup
@@ -41,6 +43,7 @@ nix-cleanup --dry-run --full
 ```
 
 ### Advanced Options
+
 ```bash
 # Custom time threshold
 nix-cleanup -t 7d --verbose
@@ -50,6 +53,9 @@ nix-cleanup -k 5 --user-only
 
 # Show largest store paths before cleanup
 nix-cleanup --largest
+
+# Show quick store statistics and exit
+nix-cleanup --info
 
 # Skip confirmation prompts
 nix-cleanup --full --yes
@@ -67,6 +73,7 @@ nix-cleanup --full --yes
 | `-y, --yes` | Skip confirmation prompts |
 | `-v, --verbose` | Show detailed information about operations |
 | `-l, --largest` | Show largest store paths before cleanup |
+| `-i, --info` | Show quick store statistics and exit |
 | `-h, --help` | Show help message |
 | `--version` | Show version information |
 
@@ -76,6 +83,7 @@ nix-cleanup --full --yes
 - **System cleanup requires sudo** and affects nix-darwin rollback capability
 - **Always use --dry-run first** to preview changes before executing
 - **Automatic store optimization** is already enabled in your nix-darwin configuration
+- **`--keep` with `--dry-run`**: `nix-cleanup` uses `nix-env --delete-generations +N` for keep-mode. `nix-env` has no dry-run flag, so with `--dry-run` the script will only print the intended command and make no changes.
 
 ## Integration with Existing Aliases
 
@@ -89,27 +97,37 @@ nix-gc          # Equivalent to: nix-cleanup --user-only
 ## Examples
 
 ### Quick Daily Cleanup
+
 ```bash
 nix-cleanup
 # Equivalent to: nix-cleanup --user-only --threshold 1d
 ```
 
 ### Weekly Deep Clean
+
 ```bash
 nix-cleanup --full --threshold 7d --verbose
 # Shorthand: nix-cleanup -f -t 7d -v
 ```
 
 ### Conservative Cleanup (Keep More Generations)
+
 ```bash
 nix-cleanup --keep 10 --user-only
 # Shorthand: nix-cleanup -k 10 -u
 ```
 
 ### Space Analysis
+
 ```bash
 nix-cleanup --largest --dry-run
 # Shorthand: nix-cleanup -l -n
+```
+
+### Quick Info Snapshot
+
+```bash
+nix-cleanup --info
 ```
 
 ## Technical Details

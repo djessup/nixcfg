@@ -99,7 +99,7 @@ print_usage() {
     echo "    $SCRIPT_NAME --dry-run --full   # Preview what full cleanup would do"
     echo "    $SCRIPT_NAME -k 5 --user-only   # Keep 5 recent generations, clean user only"
     echo "    $SCRIPT_NAME --largest          # Show space usage before cleaning"
-    echo "    $SCRIPT_NAME --info             # Quick store statistics"
+    echo "    $SCRIPT_NAME --info             # Quick store statistics and exit"
     echo
     echo -e "${BOLD}PERFORMANCE NOTES:${NC}"
     echo "    • --info uses fast filesystem tools (diskutil, stat) for instant results"
@@ -110,6 +110,7 @@ print_usage() {
     echo "    • Default 1-day threshold protects recent generations"
     echo "    • System cleanup requires sudo and affects nix-darwin rollback capability"
     echo "    • Use --dry-run first to preview changes"
+    echo "    • --keep with --dry-run prints intended nix-env command without changes"
 }
 
 # Parse command line arguments
@@ -333,17 +334,25 @@ list_generations() {
 clean_user_profiles() {
     log_info "Cleaning user profiles..."
 
-    local cmd_args="--delete-older-than $THRESHOLD"
+    # If a keep count is provided, prune user generations using nix-env
     if [[ -n "$KEEP_GENERATIONS" ]]; then
-        cmd_args="--delete-generations +$KEEP_GENERATIONS"
-    fi
-
-    if [[ "$DRY_RUN" == "true" ]]; then
-        log_verbose "Would run: nix-collect-garbage $cmd_args --dry-run"
-        nix-collect-garbage $cmd_args --dry-run
+        if [[ "$DRY_RUN" == "true" ]]; then
+            log_verbose "Would run: nix-env --delete-generations +$KEEP_GENERATIONS"
+            # Dry-run: do not execute destructive nix-env command
+        else
+            log_verbose "Running: nix-env --delete-generations +$KEEP_GENERATIONS"
+            nix-env --delete-generations "+$KEEP_GENERATIONS"
+        fi
     else
-        log_verbose "Running: nix-collect-garbage $cmd_args"
-        nix-collect-garbage $cmd_args
+        # Otherwise, use time-based cleanup via nix-collect-garbage
+        local cmd_args="--delete-older-than $THRESHOLD"
+        if [[ "$DRY_RUN" == "true" ]]; then
+            log_verbose "Would run: nix-collect-garbage $cmd_args --dry-run"
+            nix-collect-garbage $cmd_args --dry-run
+        else
+            log_verbose "Running: nix-collect-garbage $cmd_args"
+            nix-collect-garbage $cmd_args
+        fi
     fi
 }
 
@@ -379,8 +388,8 @@ clean_system_profiles() {
     fi
 
     if [[ "$DRY_RUN" == "true" ]]; then
-        log_verbose "Would run: sudo nix-env --profile $SYSTEM_PROFILE $cmd_args --dry-run"
-        sudo nix-env --profile "$SYSTEM_PROFILE" $cmd_args --dry-run 2>/dev/null || true
+        log_verbose "Would run: sudo nix-env --profile $SYSTEM_PROFILE $cmd_args"
+        # Dry-run: do not execute destructive nix-env command
     else
         log_verbose "Running: sudo nix-env --profile $SYSTEM_PROFILE $cmd_args"
         sudo nix-env --profile "$SYSTEM_PROFILE" $cmd_args 2>/dev/null || true
