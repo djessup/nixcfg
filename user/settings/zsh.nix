@@ -5,10 +5,10 @@
     enableCompletion = true;
 
     autosuggestion.enable = true;
-    syntaxHighlighting = {
-      enable = true;
-      highlighters = ["brackets" "regexp" ];
-    };
+    # syntaxHighlighting = {
+    #   enable = false;
+    #   highlighters = ["brackets" "regexp" ];
+    # };
 
     # enableVteIntegration = true;
 

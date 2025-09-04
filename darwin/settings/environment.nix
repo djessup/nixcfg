@@ -49,6 +49,3 @@ in
   };
 }
 
-# TODO: Figure out if this has any value or remove
-# Link zsh completions to /share/zsh
-# environment.pathsToLink = [ "/share/zsh" ];
