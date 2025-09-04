@@ -138,7 +138,9 @@
     #
     # AI tools
     #
+    claude-code # Claude CLI
     pkgsStable.ollama # LLM runtime
+    opencode # AI TUI
     oterm # Ollama terminal client
 
     #
