@@ -54,6 +54,7 @@
 #      "nordic-nrf-command-line-tools"
 #      "nrf-connect"
 #      "nrfutil"
+      "font-monaspace" # Monaspace font
       "okta-advanced-server-access"
       "keyguard"
       "raycast" # Productivity launcher
