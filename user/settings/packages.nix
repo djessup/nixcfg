@@ -229,6 +229,7 @@
     hack-font # Programmer font
     meslo-lgs-nf # Powerline font
     monaspace # Monaspace https://monaspace.githubnext.com/
+    nerd-fonts.monaspace # Monaspace font with icons
     nerd-fonts.jetbrains-mono # Developer font with icons
     noto-fonts # Google font family
     noto-fonts-emoji # Emoji font
