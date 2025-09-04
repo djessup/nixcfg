@@ -4,6 +4,9 @@ source <(kubectl completion zsh)
 # AMSTOOL completions
 eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
 
+# Cargo (Rust)
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
