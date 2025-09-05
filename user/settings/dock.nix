@@ -16,12 +16,12 @@
       { path = "/Applications/Cursor.app/"; }
       { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
       { path = "${pkgs.jetbrains.pycharm-professional}/Applications/PyCharm.app/"; }
+      { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
       { type = "spacer"; }
 
       # Productivity applications
       { path = "/Applications/ChatGPT.app/"; }
-      { path = "/Applications/Notes.app/"; }
       { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
       { type = "spacer"; }
 
@@ -43,7 +43,7 @@
         options = "--sort name --view grid --display folder";
       }
       {
-        path = "${config.users.users.${user}.home}/Downloads";
+        path = "${config.home.homeDirectory}/Downloads";
         section = "others";
         options = "--sort dateadded --view fan --display stack";
       }
