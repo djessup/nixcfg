@@ -103,6 +103,7 @@
 
   # Import modular configuration files
   imports = [
+    ./settings/lix.nix           # Enable Lix as Nix alternative
     ./settings/secrets.nix       # Secret management w/ SOPS
     ./settings/system.nix        # System settings for macOS
     ./settings/environment.nix   # Environment variables and paths
