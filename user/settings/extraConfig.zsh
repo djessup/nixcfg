@@ -8,8 +8,7 @@ eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if command -v jenv >/dev/null 2>&1; then eval "$(jenv init -)"; fi
 
 # Maven home
 export M2_HOME="$(mvn --home --quiet)"
