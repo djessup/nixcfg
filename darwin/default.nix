@@ -103,14 +103,15 @@
 
   # Import modular configuration files
   imports = [
-    ./settings/lix.nix           # Enable Lix as Nix alternative
-    ./settings/secrets.nix       # Secret management w/ SOPS
-    ./settings/system.nix        # System settings for macOS
-    ./settings/environment.nix   # Environment variables and paths
-    ./settings/security.nix      # Security-related settings
-    ./settings/network.nix       # Network configuration
-    ./settings/homebrew.nix      # Homebrew package management
-    ./settings/devenv.nix        # Devenv dev environment manager
+    ./settings/lix.nix            # Enable Lix as Nix alternative
+    ./settings/secrets.nix        # Secret management w/ SOPS
+    ./settings/system.nix         # System settings for macOS
+    ./settings/environment.nix    # Environment variables and paths
+    ./settings/security.nix       # Security-related settings
+    ./settings/network.nix        # Network configuration
+    ./settings/homebrew.nix       # Homebrew package management
+    ./settings/devenv.nix         # Devenv dev environment manager
     ./settings/github-runners.nix # GitHub self-hosted runners
+    ./settings/fonts.nix          # Install system fonts
   ];
 }
