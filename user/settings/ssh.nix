@@ -2,15 +2,19 @@
 {
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
-    compression = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+        compression = true;
+        extraOptions = {
+          UseKeychain = "yes";
+        };
+      };
+    };
 
-    # SSH configuration for all hosts - Apple Keychain integration
+    # Additional SSH configuration
     extraConfig = ''
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-
 # ScaleFT/Okta Advanced Server Access configuration
 Match exec "/usr/local/bin/sft resolve -q %h"
   ProxyCommand "/usr/local/bin/sft" proxycommand %h
