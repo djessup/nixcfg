@@ -47,8 +47,9 @@
     ];
 
     casks = [
+      "block-goose" # Goose AI IDE
       "docker" # Docker Desktop
-      "block-goose"
+      "podman-desktop" # Podman Desktop
       "ghidra"
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
