@@ -7,6 +7,9 @@ eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
 # Cargo (Rust)
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Go binaries
+export PATH="$HOME/go/bin:$PATH"
+
 # jenv
 if command -v jenv >/dev/null 2>&1; then eval "$(jenv init -)"; fi
 
