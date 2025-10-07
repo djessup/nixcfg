@@ -61,8 +61,9 @@
       interval = { Hour = 2; Minute = 0; }; # Schedule GC for 2:00 AM every day
       options = "--delete-older-than 1w";   # Remove items older than 1 week
     };
+    
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
-
   # Platform and package configuration
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
