@@ -9,7 +9,7 @@
 #    font-ubuntu-mono-nerd-font # Ubuntu Mono Nerd Font with programming ligatures and icons
 
     # Programming fonts
-    font-fira-code # Fira Code font with programming ligatures
+    nerd-fonts.fira-code # Fira Code font with programming ligatures
     font-awesome # Icon font
     
     hack-font # Programmer font
@@ -19,8 +19,5 @@
     nerd-fonts.jetbrains-mono # Developer font with icons
     noto-fonts # Google font family
     noto-fonts-emoji # Emoji font
-
-    # Icon fonts
-    nerd-fonts-complete # Complete set of Nerd Fonts for icons in terminal and editors
   ];
 }
