@@ -131,7 +131,7 @@
     sqlite-utils # SQLite utilities
     sqlitebrowser # SQLite database browser
     sqlite-web # Web-based SQLite database browser
-    sqlite-interactive # Interactive SQLite shell
+#    sqlite-interactive # Interactive SQLite shell
     sqlite-analyzer # SQLite database analyzer
     github-to-sqlite # Save data from GitHub to SQLite
 
