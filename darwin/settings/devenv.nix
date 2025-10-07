@@ -1,4 +1,4 @@
-{ inputs, pkgs, user, ... }:
+{ pkgs, user, ... }:
 {
 
   environment.systemPackages = [
