@@ -124,6 +124,7 @@
         "kubectl"
         "macos"
         "terraform"
+        "you-should-use"
         "zsh-interactive-cd"
       ];
     };

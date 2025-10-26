@@ -153,7 +153,7 @@
     # Python tools
     #
     hatch # Modern Python toolchain
-    micromamba # Conda package manager
+    pkgsStable.micromamba # Conda package manager
     pixi # Polyglot package manager
     poetry # Python packager and dependency manager
     python3 # Python language
@@ -216,6 +216,7 @@
     obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
     # raycast # Productivity launcher (disabled due to version lag, now install via brew)
+    signal-desktop-bin # Signal messaging
     slack # Team communication
     utm # Virtual machines
     vlc-bin # VLC media player

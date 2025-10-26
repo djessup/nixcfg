@@ -40,6 +40,9 @@ if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete" ]]; t
   unset PROG
 fi
 
+# Just completions
+[[ command -v just >/dev/null 2>&1 ]] && source <(just --completions zsh)
+
 # Micromamba Conda
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !! (not really.. cuz, nix)
