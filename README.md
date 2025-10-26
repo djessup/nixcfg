@@ -218,6 +218,17 @@ The SSH setup includes automatic Apple Keychain integration:
 - ScaleFT/Okta Advanced Server Access support
 - Modify `user/settings/ssh.nix` to add your SSH key paths
 
+### Git Commit Signing
+This configuration includes SSH-based commit signing with multi-account support:
+- Automatically signs all commits using SSH keys
+- Separate signing keys for work and personal GitHub accounts
+- Automatic key selection based on repository location
+- Integrates with Apple Keychain for key management
+- Keys persist across nix-darwin rebuilds and system restarts
+- Full GitHub/GitLab signature verification support
+- See `docs/git-commit-signing-setup.md` for complete setup instructions
+- Run `./scripts/setup-git-signing.sh` for guided setup
+
 ### GitHub Self-Hosted Runners
 This configuration includes support for self-hosted GitHub runners via github-nix-ci:
 - Run CI/CD workflows on your own hardware

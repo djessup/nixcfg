@@ -8,6 +8,10 @@
 let
   homeDir = "/Users/${user}";
   githubRunnerSvc = "actions.runner.jessup.${user}";
+  # SSH signing key paths (user-managed, not in Nix store)
+  # Default to work key since most repos are work-related
+  defaultSigningKeyPath = "${homeDir}/.ssh/id_ed25519_adobe_signing";
+  personalSigningKeyPath = "${homeDir}/.ssh/id_ed25519_djessup_signing";
 in
 {
 
@@ -17,20 +21,39 @@ in
     lfs.enable = true;
     userName = "David Jessup";
     userEmail = "jessup@adobe.com";
+
+    # Commit signing configuration using SSH keys (default to work key)
+    signing = {
+      key = "${defaultSigningKeyPath}.pub";
+      signByDefault = true;
+    };
+
     extraConfig = {
       init.defaultBranch = "master";
       credential."https://git.cloudmanager.adobe.com".provider = "generic";
+
+      # Configure Git to use SSH for signing instead of GPG
+      gpg.format = "ssh";
+
+      # Optional: Configure allowed signers file for local verification
+      # This allows you to verify commits locally without GitHub
+      gpg.ssh.allowedSignersFile = "${homeDir}/.ssh/allowed_signers";
+
       pager = {
         diff = false;
         show = false;
         blame = false;
       };
+
+      # Conditional includes for different email addresses based on directory
+      # Personal repos use personal config, everything else uses work config (default)
+      includeIf."gitdir:~/Documents/Github/personal/".path = "${homeDir}/.config/git/config-personal";
     };
   };
 
   services.github-runner = {
     globgul = {
-      enable = true;
+      enable = false;
       name = "globgul_runner";
       tokenFile = "${config.sops.secrets.github-runner-jessup_adobe-token.path}";
       url = "https://github.com/jessup_adobe/globgul-mcp";

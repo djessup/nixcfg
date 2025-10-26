@@ -30,6 +30,8 @@ Match exec "/usr/local/bin/sft resolve -q %h"
         "/usr/bin/ssh-add"
         "--apple-use-keychain"
         "/Users/jessup/.ssh/id_rsa-2025-07-18"
+        "/Users/jessup/.ssh/id_rsa-2025-10-16"
+        "/Users/jessup/.ssh/id_ed25519_signing"  # Add signing key
       ];
       RunAtLoad = true;
       KeepAlive = false;
@@ -39,8 +41,9 @@ Match exec "/usr/local/bin/sft resolve -q %h"
 
   # Alternative approach: Use home activation script
   home.activation.loadSSHKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    # Load SSH key into Apple Keychain
+    # Load SSH keys into Apple Keychain
     $DRY_RUN_CMD /usr/bin/ssh-add --apple-use-keychain /Users/jessup/.ssh/id_rsa-2025-07-18 2>/dev/null || true
+    $DRY_RUN_CMD /usr/bin/ssh-add --apple-use-keychain /Users/jessup/.ssh/id_ed25519_signing 2>/dev/null || true
   '';
 }
 
