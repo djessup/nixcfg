@@ -41,7 +41,7 @@ if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete" ]]; t
 fi
 
 # Just completions
-[[ command -v just >/dev/null 2>&1 ]] && source <(just --completions zsh)
+if command -v just >/dev/null 2>&1; then eval "$(just --completions zsh)"; fi
 
 # Micromamba Conda
 # >>> conda initialize >>>
