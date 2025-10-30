@@ -95,6 +95,7 @@
     age # File encryption
     ant # ant build tool
     asciinema # Terminal recorder
+    circleci-cli # CircleCI CLI
     doxygen # Documentation generator
     docker-compose
     gh # GitHub CLI
