@@ -39,6 +39,7 @@
     # !! – Where possible, prefer nixpkgs packages over homebrew for better portability. - !!
     brews = [
       "amstool"
+      "gittower/tap/git-flow-next"
       "i2cssh"
       "jenv"
       "mvnvm"
@@ -51,6 +52,7 @@
       "docker" # Docker Desktop
       "podman-desktop" # Podman Desktop
       "ghidra"
+
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
 #      "nrf-connect"
