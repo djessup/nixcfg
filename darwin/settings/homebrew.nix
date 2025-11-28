@@ -52,6 +52,7 @@
       "docker" # Docker Desktop
       "podman-desktop" # Podman Desktop
       "ghidra"
+      "vault"
 
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
