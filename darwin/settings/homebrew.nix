@@ -41,18 +41,19 @@
       "amstool"
       "gittower/tap/git-flow-next"
       "i2cssh"
-      "jenv"
-      "mvnvm"
-      "nvm"
-      "mas"
+      "jenv" # java version manager
+      "mvnvm" # maven version manager
+      "mas" # mac app store cli
+      "nvm" # node version manager
+      "tombi" # toml utils
     ];
 
     casks = [
       "block-goose" # Goose AI IDE
       "docker" # Docker Desktop
       "podman-desktop" # Podman Desktop
-      "ghidra"
-      "vault"
+      "ghidra" # Reverse engineering tool
+      "vault" # Hashicorp Vault
 
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
