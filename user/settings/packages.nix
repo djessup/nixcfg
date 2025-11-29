@@ -92,12 +92,13 @@
     #
     # Development tools
     #
+    # inputs.mise-flake.packages.${system}.mise # Mise-in-place dev environment manager
     age # File encryption
     ant # ant build tool
     asciinema # Terminal recorder
     circleci-cli # CircleCI CLI
-    doxygen # Documentation generator
     docker-compose
+    doxygen # Documentation generator
     gh # GitHub CLI
     git # Version control system
     git-cliff # Changelog generator
@@ -106,25 +107,24 @@
     gnumake # GNU make
     go # Go programming language
     graphviz # Graph visualization
-    kubernetes-helm # Helm package manager for Kubernetes
     httpie # HTTP client
-    localstack # Local AWS cloud stack
+    kubernetes-helm # Helm package manager for Kubernetes
     libcoap # CoAP library
+    localstack # Local AWS cloud stack
     minicom # Serial communication program
-    #    inputs.mise-flake.packages.${system}.mise # Mise-in-place dev environment manager
     mosquitto # MQTT broker
     ngrok # Secure tunneling
     openssl # SSL/TLS toolkit
     qemu # Machine emulator
     rlwrap # Readline wrapper
+    rops # SOPS in Rust
     shellcheck # Shell script linter
     shfmt # Shell script formatter
     skopeo # Container image tool
     sonar-scanner-cli # Code quality scanner
     sops # Secrets management
     srecord # Collection of tools for manipulating EEPROM load files
-    rops # SOPS in Rust
-
+    
     #
     # Database tools
     #
