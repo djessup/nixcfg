@@ -46,6 +46,7 @@
       "mas" # mac app store cli
       "nvm" # node version manager
       "tombi" # toml utils
+      "hashicorp/tap/vault" # Hashicorp Vault
     ];
 
     casks = [
@@ -53,7 +54,7 @@
       "docker" # Docker Desktop
       "podman-desktop" # Podman Desktop
       "ghidra" # Reverse engineering tool
-      "vault" # Hashicorp Vault
+      "vault" # Jackrabbit FileVault CLI
 
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
@@ -71,6 +72,7 @@
     taps = [
       "hudochenkov/sshpass"
       "wouterdebie/repo"
+      "hashicorp/tap"
       {
         name = "Pyramid/homebrew";
         clone_target = "git@git.corp.adobe.com:Pyramid/homebrew.git";
