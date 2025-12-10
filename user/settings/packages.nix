@@ -187,7 +187,7 @@
     # nrf5-sdk # Nordic SDK
     # openocd # On-chip debugger (disabled due to SDL dependency issue)
     pkgconf # Package compiler configuration
-    probe-rs # Embedded debugging toolkit
+    probe-rs-tools # Embedded debugging toolkit
     zlib # Compression library
     SDL2 # Simple DirectMedia Layer
 
