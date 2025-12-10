@@ -53,7 +53,7 @@
     aws-gate # AWS SSH and port forwarding
     aws-iam-authenticator # Authenticate to EKS with IAM
     aws-rotate-key # AWS access key rotator
-    aws-sam-cli # AWS Serverless Application Model CLI
+    pkgsStable.aws-sam-cli # AWS Serverless Application Model CLI
     aws-vault # AWS credentials manager
     awscli2 # AWS command line interface v2
     awslogs # AWS CloudWatch logs viewer
@@ -234,7 +234,7 @@
     nerd-fonts.monaspace # Monaspace font with icons
     nerd-fonts.jetbrains-mono # Developer font with icons
     noto-fonts # Google font family
-    noto-fonts-emoji # Emoji font
+    noto-fonts-color-emoji # Emoji font
 
     #
     # Utilities
