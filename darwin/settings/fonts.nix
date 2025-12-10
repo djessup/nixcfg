@@ -18,6 +18,6 @@
     nerd-fonts.monaspace # Monaspace font with icons
     nerd-fonts.jetbrains-mono # Developer font with icons
     noto-fonts # Google font family
-    noto-fonts-emoji # Emoji font
+    noto-fonts-color-emoji # Emoji font
   ];
 }
