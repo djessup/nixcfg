@@ -16,6 +16,7 @@
     #
     # Shell utilities and enhancements
     #
+    bats # Bash test harness
     btop # Resource monitor
     coreutils # GNU core utilities
     direnv # Environment manager
@@ -37,7 +38,6 @@
     nodePackages.neovim # Neovim Node runtime
     ripgrep # Fast grep
     sshpass # Non-interactive ssh password auth
-
     tree # Directory structure visualizer
     watch # Execute commands periodically
     wget # File downloader
@@ -124,6 +124,7 @@
     sonar-scanner-cli # Code quality scanner
     sops # Secrets management
     srecord # Collection of tools for manipulating EEPROM load files
+    zig # Zig programming language
     
     #
     # Database tools
@@ -149,6 +150,7 @@
     #
     nodejs # Node.js runtime
     pnpm # Fast npm alternative
+    bun # Fast npm alternative
 
     #
     # Python tools
