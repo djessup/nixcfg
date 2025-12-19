@@ -102,6 +102,7 @@
     gh # GitHub CLI
     git # Version control system
     git-cliff # Changelog generator
+    git-extras # Git extras
     git-lfs # Git Large File Storage
     github-runner # Self-hosted GitHub Runner
     gnumake # GNU make
