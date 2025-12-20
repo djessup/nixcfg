@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: 
+{ pkgs, ... }: 
 {
   fonts.packages = with pkgs; [
 #    font-jetbrains-mono # JetBrains Mono font with programming ligatures
