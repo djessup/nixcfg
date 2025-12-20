@@ -30,6 +30,9 @@ in
 
       # Make sure development shells load the user's zsh configuration
       NIX_SHELL_PRESERVE_PROMPT = "1";
+
+      # Prevent Homebrew from automatically updating when installing packages
+      HOMEBREW_NO_AUTO_UPDATE = "1";
     };
 
     # Shell initialization that will be available to all shells
