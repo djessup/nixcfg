@@ -3,6 +3,7 @@
   config,
   inputs,
   user,
+  pkgs,
   ...
 }: {
 
@@ -97,6 +98,10 @@
       enableFzf = true; # Enable fzf integration in tmux
       enableVim = true; # Enable vim style keybindings in tmux
       enableSensible = true; # Enable sensible defaults for tmux
+      extraConfig = ''
+        set -g status-right '#[fg=black,bg=color15] #{cpu_percentage}  %H:%M '
+        run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+      '';
     };
   };
 

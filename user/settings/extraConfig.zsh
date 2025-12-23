@@ -28,7 +28,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
 # Trunk
-[[ -s "$HOME/.cache/trunk/shell-hooks/zsh.rc" ]] && source "$HOME/.cache/trunk/shell-hooks/zsh.rc"
+# [[ -s "$HOME/.cache/trunk/shell-hooks/zsh.rc" ]] && source "$HOME/.cache/trunk/shell-hooks/zsh.rc"
 
 # Rye
 [[ -s "$HOME/.rye/env" ]] && source "$HOME/.rye/env"
@@ -38,6 +38,26 @@ if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete" ]]; t
   export PROG=sft
   source "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete"
   unset PROG
+fi
+
+# Auto-attach tmux on interactive SSH login
+# if command -v tmux >/dev/null 2>&1; then
+#   if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
+#     tmux attach -t main || tmux new -s main
+#   fi
+# fi
+# ---- tmux auto-attach on SSH, session = "<user>@<host>" ----
+if command -v tmux >/dev/null 2>&1; then
+  if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ] && [ -t 1 ]; then
+    host="${HOSTNAME:-$(hostname -s 2>/dev/null || hostname)}"
+    user="${USER:-$(id -un)}"
+    sess="${user}@${host}"
+
+    # Attach if exists, else create
+    tmux has-session -t "$sess" 2>/dev/null \
+      && exec tmux attach -t "$sess" \
+      || exec tmux new -s "$sess"
+  fi
 fi
 
 # Just completions
