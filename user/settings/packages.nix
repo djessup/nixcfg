@@ -84,7 +84,7 @@
     terraform-landscape # Terraform code formatter
     terraformer # Infrastructure as code generator
     terraforming # Export existing cloud resources to Terraform
-    terragrunt # Terraform wrapper for managing multiple modules
+    pkgsStable.terragrunt # Terraform wrapper for managing multiple modules
     tflint # Terraform linter
     tfsec # Terraform security scanner
     trunk-io # Trunk.io CLI (polyglot linter, formatter, etc)
