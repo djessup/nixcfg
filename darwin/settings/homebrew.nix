@@ -46,6 +46,7 @@
       "mas" # mac app store cli
       "nvm" # node version manager
       "tombi" # toml utils
+      "signal" # Signal messaging
       "hashicorp/tap/vault" # Hashicorp Vault
     ];
 

@@ -220,7 +220,7 @@
     obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
     # raycast # Productivity launcher (disabled due to version lag, now install via brew)
-    signal-desktop-bin # Signal messaging
+    # signal-desktop-bin # Signal messaging (disabled, using brew instead)
     slack # Team communication
     utm # Virtual machines
     vlc-bin # VLC media player
