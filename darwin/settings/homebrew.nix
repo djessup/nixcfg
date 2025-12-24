@@ -46,7 +46,6 @@
       "mas" # mac app store cli
       "nvm" # node version manager
       "tombi" # toml utils
-      "signal" # Signal messaging
       "hashicorp/tap/vault" # Hashicorp Vault
     ];
 
@@ -55,6 +54,7 @@
       "docker" # Docker Desktop
       "podman-desktop" # Podman Desktop
       "ghidra" # Reverse engineering tool
+      "signal" # Signal messaging
       "vault" # Jackrabbit FileVault CLI
 
       "monitorcontrol" # Brightness and volume controls for external monitors.
