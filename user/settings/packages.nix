@@ -211,8 +211,8 @@
     # jetbrains.aqua # Polyglot IDE
     # jetbrains.clion # C/C++ IDE
     # jetbrains.datagrip # Database IDE
-    jetbrains.idea-ultimate # JVM/general IDE
-    jetbrains.pycharm-professional # Python IDE
+    jetbrains.idea # JVM/general IDE
+    jetbrains.pycharm # Python IDE
     jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI

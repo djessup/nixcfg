@@ -14,8 +14,8 @@
 
       # Development IDEs
       { path = "/Applications/Cursor.app/"; }
-      { path = "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app/"; }
-      { path = "${pkgs.jetbrains.pycharm-professional}/Applications/PyCharm.app/"; }
+      { path = "${pkgs.jetbrains.idea}/Applications/IntelliJ IDEA.app/"; }
+      { path = "${pkgs.jetbrains.pycharm}/Applications/PyCharm.app/"; }
       { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
       { type = "spacer"; }
