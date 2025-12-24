@@ -89,6 +89,14 @@
       TERM = "xterm-256color";
       LANG = "en_US.UTF-8";
 
+      # OMZ speedups (must be set before oh-my-zsh loads)
+      DISABLE_AUTO_UPDATE = "true";
+      DISABLE_MAGIC_FUNCTIONS = "true";
+      DISABLE_COMPFIX = "true";
+      # Autosuggest speedups
+      ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE = "20";
+      ZSH_AUTOSUGGEST_USE_ASYNC = "1";
+
       # Development environment variables
       NIX_SHELL_PRESERVE_PROMPT = "1";
       DIRENV_LOG_FORMAT = "";  # Reduce direnv noise
