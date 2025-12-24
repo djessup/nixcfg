@@ -20,7 +20,7 @@
   home-manager = {
     useGlobalPkgs = true; # Use packages from system nixpkgs
     useUserPackages = true; # Install packages to the user profile
-    backupFileExtension = "before-hm"; # Suffix for backed up files
+    backupFileExtension = "before-hm-$(date +%Y-%m-%d-%H%M)"; # Suffix for backed up files with timestamp
     verbose = true; # Enable verbose output during operations
 
     # User-specific home-manager settings
