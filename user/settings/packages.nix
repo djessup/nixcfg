@@ -96,6 +96,7 @@
     age # File encryption
     ant # ant build tool
     asciinema # Terminal recorder
+    bashly # Bash command line framework
     circleci-cli # CircleCI CLI
     docker-compose
     doxygen # Documentation generator
