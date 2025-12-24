@@ -13,49 +13,55 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 # jenv - lazy-loaded
+# Unset wrapper function before initialization to prevent recursion
 _jenv_init() {
+  unset -f jenv
   if command -v jenv >/dev/null 2>&1; then
     eval "$(jenv init -)"
-    unfunction _jenv_init
   fi
+  unfunction _jenv_init 2>/dev/null || true
 }
 # Trigger on first jenv command
-jenv() { _jenv_init; command jenv "$@"; }
+jenv() { _jenv_init; jenv "$@"; }
 
 # Maven home - lazy-loaded
 _maven_home() {
+  unset -f mvn
   if command -v mvn >/dev/null 2>&1 && [[ -z "$M2_HOME" ]]; then
-    export M2_HOME="$(mvn --home --quiet)"
-    unfunction _maven_home
+    export M2_HOME="$(command mvn --home --quiet)"
   fi
+  unfunction _maven_home 2>/dev/null || true
 }
 # Trigger on first mvn command
-mvn() { _maven_home; command mvn "$@"; }
+mvn() { _maven_home; mvn "$@"; }
 
 # NVM - lazy-loaded (saves ~1.2s on startup)
 export NVM_DIR="$HOME/.nvm"
+# Unset all wrapper functions before loading nvm.sh to prevent circular dependencies
 _nvm_init() {
+  unset -f nvm node npm npx
   if [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
     \. "/opt/homebrew/opt/nvm/nvm.sh"
-    unfunction _nvm_init
   fi
+  unfunction _nvm_init 2>/dev/null || true
 }
 # Lazy-load on first use of node, npm, npx, or nvm
-node() { _nvm_init; command node "$@"; }
-npm() { _nvm_init; command npm "$@"; }
-npx() { _nvm_init; command npx "$@"; }
-nvm() { _nvm_init; command nvm "$@"; }
+node() { _nvm_init; node "$@"; }
+npm() { _nvm_init; npm "$@"; }
+npx() { _nvm_init; npx "$@"; }
+nvm() { _nvm_init; nvm "$@"; }
 
 # SDKMAN - lazy-loaded
 export SDKMAN_DIR="$HOME/.sdkman"
 _sdkman_init() {
+  unset -f sdk
   if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
-    unfunction _sdkman_init
   fi
+  unfunction _sdkman_init 2>/dev/null || true
 }
 # Trigger on first sdk command
-sdk() { _sdkman_init; command sdk "$@"; }
+sdk() { _sdkman_init; sdk "$@"; }
 
 # iTerm2 shell integration
 [[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
@@ -100,6 +106,7 @@ fi
 
 # Micromamba Conda - lazy-loaded
 _conda_init() {
+  unset -f conda
   if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
     __conda_setup="$('$HOME/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
@@ -112,8 +119,8 @@ _conda_init() {
       fi
     fi
     unset __conda_setup
-    unfunction _conda_init
   fi
+  unfunction _conda_init 2>/dev/null || true
 }
 # Trigger on first conda command
-conda() { _conda_init; command conda "$@"; }
+conda() { _conda_init; conda "$@"; }
