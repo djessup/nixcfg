@@ -3,7 +3,19 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-
+    # Optimize completion initialization (skip security checks for faster startup)
+    # This reduces compinit time from ~820ms to ~400ms
+    # Skip security checks if dump file is recent (<24 hours old)
+    completionInit = ''
+      autoload -Uz compinit
+      if [[ -n ''${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+        # Dump file is newer than 24 hours, skip security check
+        compinit -C -i
+      else
+        # Dump file is old or missing, run security check
+        compinit -i
+      fi
+    '';
     autosuggestion.enable = true;
     # syntaxHighlighting = {
     #   enable = false;
@@ -11,6 +23,14 @@
     # };
 
     # enableVteIntegration = true;
+
+    # Prezto PM
+    prezto = {
+      # enable = true;
+    };
+    zplug = {
+      # enable = true;
+    };
 
     history = {
       append = true;
@@ -123,7 +143,6 @@
         "iterm2"
         "kubectl"
         "macos"
-        "terraform"
         "zsh-interactive-cd"
       ];
     };

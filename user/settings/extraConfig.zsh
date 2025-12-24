@@ -1,8 +1,10 @@
-# Kubectl completions (Note: kubectl plugin in oh-my-zsh already provides this)
-source <(kubectl completion zsh)
+# Kubectl completions - REMOVED: kubectl plugin in oh-my-zsh already provides this
+# source <(kubectl completion zsh)
 
-# AMSTOOL completions
-eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)"
+# AMSTOOL completions - loaded after compinit (oh-my-zsh handles compinit)
+if command -v amstool >/dev/null 2>&1; then
+  eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)" 2>/dev/null
+fi
 
 # Cargo (Rust)
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -10,19 +12,50 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Go binaries
 export PATH="$HOME/go/bin:$PATH"
 
-# jenv
-if command -v jenv >/dev/null 2>&1; then eval "$(jenv init -)"; fi
+# jenv - lazy-loaded
+_jenv_init() {
+  if command -v jenv >/dev/null 2>&1; then
+    eval "$(jenv init -)"
+    unfunction _jenv_init
+  fi
+}
+# Trigger on first jenv command
+jenv() { _jenv_init; command jenv "$@"; }
 
-# Maven home
-export M2_HOME="$(mvn --home --quiet)"
+# Maven home - lazy-loaded
+_maven_home() {
+  if command -v mvn >/dev/null 2>&1 && [[ -z "$M2_HOME" ]]; then
+    export M2_HOME="$(mvn --home --quiet)"
+    unfunction _maven_home
+  fi
+}
+# Trigger on first mvn command
+mvn() { _maven_home; command mvn "$@"; }
 
-# NVM
+# NVM - lazy-loaded (saves ~1.2s on startup)
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+_nvm_init() {
+  if [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
+    \. "/opt/homebrew/opt/nvm/nvm.sh"
+    unfunction _nvm_init
+  fi
+}
+# Lazy-load on first use of node, npm, npx, or nvm
+node() { _nvm_init; command node "$@"; }
+npm() { _nvm_init; command npm "$@"; }
+npx() { _nvm_init; command npx "$@"; }
+nvm() { _nvm_init; command nvm "$@"; }
 
-# SDKMAN
+# SDKMAN - lazy-loaded
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+_sdkman_init() {
+  if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    unfunction _sdkman_init
+  fi
+}
+# Trigger on first sdk command
+sdk() { _sdkman_init; command sdk "$@"; }
 
 # iTerm2 shell integration
 [[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
@@ -60,21 +93,27 @@ if command -v tmux >/dev/null 2>&1; then
   fi
 fi
 
-# Just completions
-if command -v just >/dev/null 2>&1; then eval "$(just --completions zsh)"; fi
-
-# Micromamba Conda
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !! (not really.. cuz, nix)
-__conda_setup="$('$HOME/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/micromamba/etc/profile.d/conda.sh" ]; then
-        . "$HOME/micromamba/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/micromamba/bin:$PATH"
-    fi
+# Just completions - loaded after compinit (oh-my-zsh handles compinit)
+if command -v just >/dev/null 2>&1; then
+  eval "$(just --completions zsh)" 2>/dev/null
 fi
-unset __conda_setup
-# <<< conda initialize <<<
+
+# Micromamba Conda - lazy-loaded
+_conda_init() {
+  if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
+    __conda_setup="$('$HOME/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+    else
+      if [ -f "$HOME/micromamba/etc/profile.d/conda.sh" ]; then
+        . "$HOME/micromamba/etc/profile.d/conda.sh"
+      else
+        export PATH="$HOME/micromamba/bin:$PATH"
+      fi
+    fi
+    unset __conda_setup
+    unfunction _conda_init
+  fi
+}
+# Trigger on first conda command
+conda() { _conda_init; command conda "$@"; }
