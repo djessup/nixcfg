@@ -55,7 +55,6 @@
       "podman-desktop" # Podman Desktop
       "ghidra" # Reverse engineering tool
       "signal" # Signal messaging
-      "vault" # Jackrabbit FileVault CLI
 
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
