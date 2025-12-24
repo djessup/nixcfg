@@ -90,11 +90,20 @@
       LANG = "en_US.UTF-8";
 
       # OMZ speedups (must be set before oh-my-zsh loads)
+      # Disables automatic update checks; manual updates via 'omz update'
       DISABLE_AUTO_UPDATE = "true";
+      # Disables bracketed-paste-magic and url-quote-magic functions
+      # Useful if experiencing issues when pasting URLs or text
       DISABLE_MAGIC_FUNCTIONS = "true";
+      # Disables security checks for completion-dependent directories
+      # Suppresses warnings about insecure $fpath directories
       DISABLE_COMPFIX = "true";
       # Autosuggest speedups
+      # Maximum buffer size (KB) to process for suggestions (default: 20)
+      # Smaller values improve performance by avoiding large buffer processing
       ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE = "20";
+      # Enable asynchronous suggestion generation to prevent shell blocking
+      # Improves responsiveness by generating suggestions in background
       ZSH_AUTOSUGGEST_USE_ASYNC = "1";
 
       # Development environment variables
