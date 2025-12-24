@@ -52,12 +52,7 @@ in
   };
 
   services.github-runner = {
-    globgul = {
-      enable = false;
-      name = "globgul_runner";
-      tokenFile = "${config.sops.secrets.github-runner-jessup_adobe-token.path}";
-      url = "https://github.com/jessup_adobe/globgul-mcp";
-    };
+
   };
 
   # Github Self-hosted runner
