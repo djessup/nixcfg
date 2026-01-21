@@ -32,6 +32,9 @@ in
       init.defaultBranch = "master";
       credential."https://git.cloudmanager.adobe.com".provider = "generic";
 
+      # Rewrite HTTPS GitHub URLs to use SSH
+      url."ssh://git@github.com/".insteadOf = "https://github.com/";
+
       # Configure Git to use SSH for signing instead of GPG
       gpg.format = "ssh";
 
