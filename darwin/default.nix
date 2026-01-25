@@ -77,7 +77,9 @@
       (final: prev: {
         pkgsStable = import inputs.nixpkgsStable {
           inherit (final) system;
-          config = prev.config or {};
+          config = {
+            allowUnfree = true;
+          };
         };
       })
     ];
