@@ -11,6 +11,20 @@
           UseKeychain = "yes";
         };
       };
+
+      "github-work" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_rsa";
+        identitiesOnly = true;
+      };
+
+      "github-personal" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_rsa-djessup-gh";
+        identitiesOnly = true;
+      };
     };
 
     # Additional SSH configuration
