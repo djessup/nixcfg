@@ -117,6 +117,7 @@
     mosquitto # MQTT broker
     ngrok # Secure tunneling
     openssl # SSL/TLS toolkit
+    prek # Rust pre-commit alternative
     qemu # Machine emulator
     rlwrap # Readline wrapper
     rops # SOPS in Rust
