@@ -11,7 +11,7 @@
     nix-output-monitor # Nix output monitor
     nix-search # Nix package search
     nixd # Nix language server
-    nixfmt-rfc-style # Nix code formatter
+    nixfmt # Nix code formatter
 
     #
     # Shell utilities and enhancements
@@ -161,7 +161,7 @@
     hatch # Modern Python toolchain
     pkgsStable.micromamba # Conda package manager
     pixi # Polyglot package manager
-    poetry # Python packager and dependency manager
+    pkgsStable.poetry # Python packager and dependency manager (pinned: rapidfuzz build failure on aarch64-darwin unstable)
     python3 # Python language
     rye # Python toolchain
     uv # Python package manager
@@ -218,7 +218,7 @@
     jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
-    notion-app # Notion workspace
+    # notion-app # Notion workspace
     obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
     # raycast # Productivity launcher (disabled due to version lag, now install via brew)
@@ -228,6 +228,7 @@
     vlc-bin # VLC media player
     vscode # Code editor
     # warp-terminal # Modern terminal
+    
 
     #
     # Fonts
