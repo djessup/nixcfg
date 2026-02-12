@@ -25,6 +25,10 @@ in
         owner = config.users.users.${user}.name;
       };
 
+      azure-openai-api-key = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
       # GitHub self-hosted runner tokens
       # Format: github-runner-<username-or-org>-token (Must be added to secrets.yaml in nix-secrets)
       github-runner-djessup-token = {

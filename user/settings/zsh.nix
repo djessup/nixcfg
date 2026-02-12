@@ -113,6 +113,11 @@
 
     # Custom initialization for development environments
     initContent = ''
+      # Export Azure OpenAI API key from SOPS-mounted secret
+      if [[ -r /run/secrets.d/azure-openai-api-key ]]; then
+        export AZURE_OPENAI_API_KEY="$(</run/secrets.d/azure-openai-api-key)"
+      fi
+
       # Development environment detection and setup
       if [[ -n "$IN_NIX_SHELL" || -n "$DIRENV_IN_ENVRC" || -n "$IN_DEV_SHELL" ]]; then
         # We're in a development environment
