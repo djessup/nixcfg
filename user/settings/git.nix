@@ -35,6 +35,14 @@ in
       # Rewrite HTTPS GitHub URLs to use SSH
       url."ssh://git@github.com/".insteadOf = "https://github.com/";
 
+      # Rewrite personal (djessup) GitHub URLs to use the github-personal
+      # SSH host alias, which maps to the personal SSH key in ~/.ssh/config.
+      # Longest-match wins, so these override the generic rule above.
+      url."git@github-personal:djessup/".insteadOf = [
+        "git@github.com:djessup/"
+        "https://github.com/djessup/"
+      ];
+
       # Configure Git to use SSH for signing instead of GPG
       gpg.format = "ssh";
 
