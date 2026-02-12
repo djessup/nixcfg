@@ -34,7 +34,6 @@
       {
         # Import dock configuration
         imports = [
-          inputs.sops-nix.homeManagerModules.sops
           inputs.nixvim.homeModules.nixvim
           ./dock # Dock management utility
           ./settings/dock.nix # Dock and uBar user configuration
