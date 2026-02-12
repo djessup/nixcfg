@@ -32,7 +32,7 @@
 # ScaleFT/Okta Advanced Server Access configuration
 Match exec "/usr/local/bin/sft resolve -q %h"
   ProxyCommand "/usr/local/bin/sft" proxycommand %h
-  UserKnownHostsFile "/Users/jessup/Library/Application Support/ScaleFT/proxycommand_known_hosts"
+  UserKnownHostsFile "~/Library/Application Support/ScaleFT/proxycommand_known_hosts"
     '';
   };
 
