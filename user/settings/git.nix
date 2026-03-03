@@ -11,11 +11,12 @@ let
   # SSH signing key paths (user-managed, not in Nix store)
   # Default to work key since most repos are work-related
   defaultSigningKeyPath = "${homeDir}/.ssh/id_ed25519_adobe_signing";
+  # workSigningKeyPath = defaultSigningKeyPath;
   personalSigningKeyPath = "${homeDir}/.ssh/id_ed25519_djessup_signing";
 in
 {
 
-  # Git config
+  # Git config (see; https://nix-community.github.io/home-manager/options.xhtml#opt-programs.git.enable)
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -29,7 +30,7 @@ in
     };
 
     extraConfig = {
-      init.defaultBranch = "master";
+      init.defaultBranch = "main";
       credential."https://git.cloudmanager.adobe.com".provider = "generic";
 
       # Rewrite HTTPS GitHub URLs to use SSH
@@ -42,6 +43,19 @@ in
         "git@github.com:djessup/"
         "https://github.com/djessup/"
       ];
+      # Work repositories
+      url."git@github-work:jessup_adobe/".insteadOf = [
+        "git@github.com:jessup_adobe/"
+        "https://github.com/jessup_adobe/"
+      ];
+      url."git@github-work:AdobeManagedServices/".insteadOf = [
+        "git@github.com:AdobeManagedServices/"
+        "https://github.com/AdobeManagedServices/"
+      ];
+      url."git@github-work:OneAdobe/".insteadOf = [
+        "git@github.com:OneAdobe/"
+        "https://github.com/OneAdobe/"
+      ];
 
       # Configure Git to use SSH for signing instead of GPG
       gpg.format = "ssh";
@@ -50,6 +64,7 @@ in
       # This allows you to verify commits locally without GitHub
       gpg.ssh.allowedSignersFile = "${homeDir}/.ssh/allowed_signers";
 
+      # Disable git pagers
       pager = {
         diff = false;
         show = false;

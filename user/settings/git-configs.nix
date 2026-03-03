@@ -13,6 +13,7 @@ in
         email = 866649+djessup@users.noreply.github.com
         name = David Jessup
         signingkey = ${homeDir}/.ssh/id_ed25519_djessup_signing.pub
+        identityFile = "${homeDir}/.ssh/id_rsa-djessup-gh";
     '';
 
     # Work repositories configuration
@@ -21,6 +22,7 @@ in
         email = jessup@adobe.com
         name = David Jessup
         signingkey = ${homeDir}/.ssh/id_ed25519_adobe_signing.pub
+        identityFile = "${homeDir}/.ssh/id_rsa";
     '';
   };
 }
