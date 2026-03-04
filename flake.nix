@@ -10,7 +10,7 @@
   # External dependencies and inputs
   inputs = {
     # Core Nix packages
-    nixpkgsStable.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgsStable.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     # Darwin (macOS) system configuration framework
     darwin = {

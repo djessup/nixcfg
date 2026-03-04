@@ -13,9 +13,7 @@ in
 
   # Configure the _github-runner user with the correct home directory
   # This must match the existing user's home directory or nix-darwin will fail
-  users.users."_github-runner" = {
-    # home = "/var/lib/github-runners";
-  };
+  # users.users._github-runner.home = "/var/lib/github-runners";
 
   # Self-hosted GitHub runners using github-nix-ci
   services.github-nix-ci = {

@@ -119,7 +119,7 @@
     ./settings/network.nix        # Network configuration
     ./settings/homebrew.nix       # Homebrew package management
     ./settings/devenv.nix         # Devenv dev environment manager
-    ./settings/github-runners.nix # GitHub self-hosted runners
+    # ./settings/github-runners.nix # GitHub self-hosted runners
     ./settings/fonts.nix          # Install system fonts
   ];
 }
