@@ -53,7 +53,7 @@
     aws-gate # AWS SSH and port forwarding
     aws-iam-authenticator # Authenticate to EKS with IAM
     aws-rotate-key # AWS access key rotator
-    pkgsStable.aws-sam-cli # AWS Serverless Application Model CLI
+    aws-sam-cli # AWS Serverless Application Model CLI
     aws-vault # AWS credentials manager
     awscli2 # AWS command line interface v2
     awslogs # AWS CloudWatch logs viewer
@@ -112,7 +112,7 @@
     httpie # HTTP client
     kubernetes-helm # Helm package manager for Kubernetes
     libcoap # CoAP library
-    localstack # Local AWS cloud stack
+    pkgsStable.localstack # Local AWS cloud stack
     minicom # Serial communication program
     mosquitto # MQTT broker
     ngrok # Secure tunneling
