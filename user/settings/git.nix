@@ -20,8 +20,6 @@ in
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "David Jessup";
-    userEmail = "jessup@adobe.com";
 
     # Commit signing configuration using SSH keys (default to work key)
     signing = {
@@ -29,25 +27,21 @@ in
       signByDefault = true;
     };
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "David Jessup";
+        email = "jessup@adobe.com";
+      };
+
       init.defaultBranch = "main";
+      
       credential."https://git.cloudmanager.adobe.com".provider = "generic";
 
-      # Rewrite HTTPS GitHub URLs to use SSH
-      url."ssh://git@github.com/".insteadOf = "https://github.com/";
-
-      # Rewrite personal (djessup) GitHub URLs to use the github-personal
-      # SSH host alias, which maps to the personal SSH key in ~/.ssh/config.
+      # Rewrite GitHub URLs to use the github-personal/github-work SSH host aliases,
+      # which maps to the personal/work SSH keys in ~/.ssh/config.
       # Longest-match wins, so these override the generic rule above.
-      url."git@github-personal:djessup/".insteadOf = [
-        "git@github.com:djessup/"
-        "https://github.com/djessup/"
-      ];
-      # Work repositories
-      url."git@github-work:jessup_adobe/".insteadOf = [
-        "git@github.com:jessup_adobe/"
-        "https://github.com/jessup_adobe/"
-      ];
+      url."git@github-personal:djessup/".insteadOf = [ "git@github.com:djessup/" "https://github.com/djessup/" ];
+      url."git@github-work:jessup_adobe/".insteadOf = [ "git@github.com:jessup_adobe/" "https://github.com/jessup_adobe/" ];
       url."git@github-work:AdobeManagedServices/".insteadOf = [
         "git@github.com:AdobeManagedServices/"
         "https://github.com/AdobeManagedServices/"
@@ -74,12 +68,18 @@ in
       # Conditional includes for different email addresses based on directory
       # Personal repos use personal config, everything else uses work config (default)
       includeIf."gitdir:~/Documents/Github/personal/".path = "${homeDir}/.config/git/config-personal";
+      # Personal remotes
+      includeIf."hasconfig:remote.*.url:git@github.com:djessup/**".path = "${homeDir}/.config/git/config-personal";
+      includeIf."hasconfig:remote.*.url:git@github-personal:djessup/**".path = "${homeDir}/.config/git/config-personal";
+      includeIf."hasconfig:remote.*.url:https://github.com/djessup/**".path = "${homeDir}/.config/git/config-personal";
+
+      # Work remotes
+      includeIf."hasconfig:remote.*.url:git@github.com:jessup_adobe/**".path = "${homeDir}/.config/git/config-work";
+      includeIf."hasconfig:remote.*.url:git@github.com:AdobeManagedServices/**".path = "${homeDir}/.config/git/config-work";
+      includeIf."hasconfig:remote.*.url:git@github.com:OneAdobe/**".path = "${homeDir}/.config/git/config-work";
     };
   };
 
-  services.github-runner = {
-
-  };
 
   # Github Self-hosted runner
 #  launchd.agents.github-runner = {

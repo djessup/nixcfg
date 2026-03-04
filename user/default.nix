@@ -43,6 +43,7 @@
           ./settings/shell-init.nix # Development environment shell initialization
           ./settings/neovim # Neovim configuration
           ./settings/ssh.nix # SSH configuration
+          ./settings/git.nix # Git configuration (URL rewrites, signing, identity)
           ./settings/git-configs.nix # Conditional Git configurations for different emails
         ];
 
