@@ -41,6 +41,7 @@
           ./settings/bash.nix # Bash shell configuration
           ./settings/zsh.nix # ZSH shell configuration
           ./settings/shell-init.nix # Development environment shell initialization
+          ./settings/aws-key-rotation.nix # Declarative AWS key rotation jobs
           ./settings/neovim # Neovim configuration
           ./settings/ssh.nix # SSH configuration
           ./settings/git.nix # Git configuration (URL rewrites, signing, identity)
@@ -48,6 +49,36 @@
         ];
 
         # openssh.authorizedKeys = [];
+        services.awsKeyRotation = {
+          enable = true;
+          logRetentionDays = 90;
+
+          jobs.ausgovstg = {
+            enable = true;
+            profile = "ausgovstg";
+            rotation = {
+              every.months = 3;
+              anchorDate = "2026-01-12";
+            };
+            trigger = {
+              time = "03:00";
+              runAtLoad = true;
+            };
+          };
+
+          jobs.ausgovprd = {
+            enable = true;
+            profile = "ausgovprd";
+            rotation = {
+              every.days = 60;
+              anchorDate = "2026-01-20";
+            };
+            trigger = {
+              time = "04:00";
+              runAtLoad = true;
+            };
+          };
+        };
 
         # Home configuration
         home = {

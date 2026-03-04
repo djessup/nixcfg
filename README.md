@@ -218,6 +218,13 @@ The SSH setup includes automatic Apple Keychain integration:
 - ScaleFT/Okta Advanced Server Access support
 - Modify `user/settings/ssh.nix` to add your SSH key paths
 
+### AWS Access Key Rotation
+This repo includes a declarative Home Manager module for per-profile AWS key
+rotation jobs using `aws-rotate-key` with launchd scheduling and audit logs.
+
+- Module file: `user/settings/aws-key-rotation.nix`
+- Setup and operations guide: `docs/aws-key-rotation.md`
+
 ### Git Commit Signing
 This configuration includes SSH-based commit signing with multi-account support:
 - Automatically signs all commits using SSH keys
