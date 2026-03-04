@@ -180,6 +180,57 @@ validate_threshold() {
     fi
 }
 
+# Convert human-readable size strings to byte counts for arithmetic operations
+size_to_bytes() {
+    local size="$1"
+    local cleaned normalized output parser
+    local number unit
+
+    # Remove annotations such as "(estimated)" and trim whitespace
+    cleaned=$(echo "$size" | sed -E 's/[[:space:]]*\([^)]*\)//g')
+    cleaned=$(echo "$cleaned" | xargs 2>/dev/null || echo "$cleaned")
+
+    # Normalize known human-readable formats to numfmt-friendly inputs
+    if [[ "$cleaned" =~ ^([0-9]+([.][0-9]+)?)\ ([KMGTPEZY])[bB]$ ]]; then
+        number="${BASH_REMATCH[1]}"
+        unit="${BASH_REMATCH[3]}"
+        normalized="${number}${unit}"
+        parser="si"
+    elif [[ "$cleaned" =~ ^([0-9]+([.][0-9]+)?)\ ([KMGTPEZY])[iI][bB]$ ]]; then
+        number="${BASH_REMATCH[1]}"
+        unit="${BASH_REMATCH[3]}"
+        normalized="${number}${unit}"
+        parser="iec"
+    elif [[ "$cleaned" =~ ^[0-9]+([.][0-9]+)?[KMGTPEZY]$ ]]; then
+        normalized="$cleaned"
+        parser="iec"
+    elif [[ "$cleaned" =~ ^[0-9]+$ ]]; then
+        echo "$cleaned"
+        return
+    else
+        echo "0"
+        return
+    fi
+
+    case "$parser" in
+        si)
+            output=$(numfmt --from=si "$normalized" 2>/dev/null || true)
+            ;;
+        iec)
+            output=$(numfmt --from=iec "$normalized" 2>/dev/null || true)
+            ;;
+        *)
+            output=""
+            ;;
+    esac
+
+    if [[ "$output" =~ ^[0-9]+$ ]]; then
+        echo "$output"
+    else
+        echo "0"
+    fi
+}
+
 # Get disk usage of /nix/store (using fast filesystem methods)
 get_store_size() {
     # Method 1: Use diskutil on macOS (instant results)
@@ -446,10 +497,10 @@ show_space_savings() {
     # Try to calculate savings (basic implementation)
     if command -v numfmt &> /dev/null; then
         local before_bytes after_bytes savings_bytes
-        before_bytes=$(echo "$before_size" | numfmt --from=iec 2>/dev/null || echo "0")
-        after_bytes=$(echo "$after_size" | numfmt --from=iec 2>/dev/null || echo "0")
+        before_bytes=$(size_to_bytes "$before_size")
+        after_bytes=$(size_to_bytes "$after_size")
 
-        if [[ "$before_bytes" -gt 0 ]] && [[ "$after_bytes" -gt 0 ]] && [[ "$before_bytes" -gt "$after_bytes" ]]; then
+        if [[ "$before_bytes" =~ ^[0-9]+$ ]] && [[ "$after_bytes" =~ ^[0-9]+$ ]] && (( before_bytes > 0 && after_bytes > 0 && before_bytes > after_bytes )); then
             savings_bytes=$((before_bytes - after_bytes))
             local savings_human
             savings_human=$(numfmt --to=iec "$savings_bytes" 2>/dev/null || echo "unknown")
