@@ -254,5 +254,12 @@
     #
     bws # Official Bitwarden Secrets Manager CLI
     pinentry_mac # Secure pin/passphrase input for GPG
+
+    #
+    # PACKAGES BELOW THIS LINE WERE ADDED WITH:
+    #   nixstall add <pkg>
+    #
+    colima
+    tailscale
   ];
 }
