@@ -8,32 +8,27 @@
       { path = "/System/Applications/System Settings.app/"; }
       { type = "spacer"; }
 
-      # Terminal applications
+      # Terminal
       { path = "${pkgs.iterm2}/Applications/iTerm2.app/"; }
       { type = "spacer"; }
 
-      # Development IDEs
+      # Development
       { path = "/Applications/Cursor.app/"; }
-      { path = "${pkgs.jetbrains.idea}/Applications/IntelliJ IDEA.app/"; }
-      { path = "${pkgs.jetbrains.pycharm}/Applications/PyCharm.app/"; }
-      { path = "${pkgs.jetbrains.rust-rover}/Applications/RustRover.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
+      { path = "/Applications/Codex.app/"; }
+      { path = "${pkgs.jetbrains.idea}/Applications/IntelliJ IDEA.app/"; }
       { type = "spacer"; }
 
-      # Productivity applications
+      # Productivity
       { path = "/Applications/ChatGPT.app/"; }
       { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
       { type = "spacer"; }
 
-      # Communication applications
-      { path = "/Applications/Microsoft Teams.app/"; }
-      { path = "/Applications/Slack.app/"; }
-      { path = "/Applications/Microsoft Outlook.app/"; }
+      # Communication
       { path = "/Applications/Microsoft Edge.app/"; }
-      { type = "spacer"; }
-
-      # Media
-      { path = "/System/Applications/Podcasts.app/"; }
+      { path = "/Applications/Slack.app/"; }
+      { path = "/Applications/Microsoft Teams.app/"; }
+      { path = "/Applications/Microsoft Outlook.app/"; }
       { type = "spacer"; }
 
       # Folders
