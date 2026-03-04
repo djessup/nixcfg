@@ -151,7 +151,7 @@ let
                   local message="$3"
                   local data="''${4:-{}}"
 
-                  jq -nc \
+                  if ! jq -nc \
                     --arg timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
                     --arg job "$JOB_NAME" \
                     --arg profile "$PROFILE" \
@@ -176,6 +176,9 @@ let
                         )
                       )
                     }' >>"$AUDIT_FILE"
+                  then
+                    printf '%s\n' "Audit serialization failed for event=$event status=$status" >>"$RUN_LOG" || true
+                  fi
                 }
 
                 prune_old_logs() {
