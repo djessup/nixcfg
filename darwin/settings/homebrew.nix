@@ -27,7 +27,7 @@
     enable = true;
 
     # Use the Apple Silicon prefix for Homebrew instead of the Intel one
-    brewPrefix = "/opt/homebrew/bin";
+    prefix = "/opt/homebrew";
 
     onActivation = {
       # autoUpdate = true;
@@ -80,8 +80,6 @@
       }
     ];
 
-    whalebrews = [ ];
-
     # Install apps from the Mac App Store
     masApps = {
       reMarkable = 1276493162;
@@ -89,7 +87,6 @@
       Bitwarden = 1352778147;
       WhatsApp = 310633997;
       Xcode = 497799835;
-      "Apple Configurator" = 1037126344;
       DaisyDisk = 411643860;
     };
   };
