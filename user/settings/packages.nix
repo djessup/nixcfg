@@ -261,5 +261,7 @@
     #
     colima
     tailscale
+    glow
+    duti
   ];
 }
