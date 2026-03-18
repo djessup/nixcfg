@@ -10,3 +10,4 @@ nixos.qcow2
 .cursor/
 +.devenv/
 +.direnv/
+.packages.nix.nixstall.lock
