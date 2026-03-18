@@ -171,6 +171,7 @@
   };
 
   programs.atuin = {
+    # Disabled because I prefer fzf in default form. May revisit this, has legs (maybe?)
     enable = false;
     settings = {
       auto_sync = true;
