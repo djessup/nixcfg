@@ -82,6 +82,21 @@
           };
         };
       })
+      
+      (final: prev: {
+        python3Packages = prev.python3Packages.overrideScope (_pyfinal: pyprev: {
+          pydocket = pyprev.pydocket.overridePythonAttrs (_old: rec {
+            version = "0.17.2";
+            src = final.fetchFromGitHub {
+              owner = "chrisguidry";
+              repo = "docket";
+              tag = version;
+              hash = "sha256-3Q5xvmiuVdRGnHQfSXt00TCqrqNkXKMEudRlLGt0/n4=";
+            };
+          });
+        });
+      })
+
     ];
 
   };
