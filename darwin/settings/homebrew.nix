@@ -47,6 +47,7 @@
       "nvm" # node version manager
       "tombi" # toml utils
       "hashicorp/tap/vault" # Hashicorp Vault
+      "portaudio"
     ];
 
     casks = [

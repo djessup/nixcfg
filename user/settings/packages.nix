@@ -263,5 +263,6 @@
     tailscale
     glow
     duti
+    devenv
   ];
 }
