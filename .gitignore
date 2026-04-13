@@ -11,3 +11,4 @@ nixos.qcow2
 +.devenv/
 +.direnv/
 .packages.nix.nixstall.lock
+.devenv
