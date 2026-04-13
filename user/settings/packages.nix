@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   packages = with pkgs; [
     #
@@ -35,7 +35,6 @@
     neo-cowsay # Go port of cowsay
     nfpm # deb and rpm package builder
     nix-zsh-completions # Zsh completions for Nix
-    nodePackages.neovim # Neovim Node runtime
     ripgrep # Fast grep
     sshpass # Non-interactive ssh password auth
     tree # Directory structure visualizer
@@ -59,7 +58,6 @@
     awslogs # AWS CloudWatch logs viewer
     cw # CloudWatch logs tool
     eksctl # EKS cluster management
-    nodePackages.aws-cdk # AWS Cloud Development Kit
 
     #
     # Azure tools
@@ -245,10 +243,9 @@
     #
     # Utilities
     #
-    darwin.lsusb # USB device lister
     dockutil # macOS dock utility
     sox # Sound processing tool
-
+    inputs.nixstall.packages.${pkgs.system}.default # nixstall
     #
     # Security tools
     #
@@ -264,5 +261,10 @@
     glow
     duti
     devenv
+    godot
+    godot-mcp
+    neovim
+    aws-cdk-cli
+    plantuml
   ];
 }
