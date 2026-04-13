@@ -40,8 +40,14 @@ in
       # Rewrite GitHub URLs to use the github-personal/github-work SSH host aliases,
       # which maps to the personal/work SSH keys in ~/.ssh/config.
       # Longest-match wins, so these override the generic rule above.
-      url."git@github-personal:djessup/".insteadOf = [ "git@github.com:djessup/" "https://github.com/djessup/" ];
-      url."git@github-work:jessup_adobe/".insteadOf = [ "git@github.com:jessup_adobe/" "https://github.com/jessup_adobe/" ];
+      url."git@github-personal:djessup/".insteadOf = [ 
+        "git@github.com:djessup/" 
+        "https://github.com/djessup/" 
+      ];
+      url."git@github-work:jessup_adobe/".insteadOf = [ 
+        "git@github.com:jessup_adobe/" 
+        "https://github.com/jessup_adobe/" 
+      ];
       url."git@github-work:AdobeManagedServices/".insteadOf = [
         "git@github.com:AdobeManagedServices/"
         "https://github.com/AdobeManagedServices/"
@@ -49,6 +55,10 @@ in
       url."git@github-work:OneAdobe/".insteadOf = [
         "git@github.com:OneAdobe/"
         "https://github.com/OneAdobe/"
+      ];      
+      url."git@github-work:AdobeManagedServices-Innovation/".insteadOf = [
+        "git@github.com:AdobeManagedServices-Innovation/"
+        "https://github.com/AdobeManagedServices-Innovation/"
       ];
 
       # Configure Git to use SSH for signing instead of GPG
