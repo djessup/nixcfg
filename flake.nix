@@ -61,6 +61,11 @@
       url = "github:djessup/nix-secrets";
       flake = false;
     };
+
+    nixstall = {
+      # TODO: load from github instead of local path
+      url = "path:/Users/jessup/Documents/GitHub/personal/nixstall";
+    };
   };
 
   # Build darwin flake using:
