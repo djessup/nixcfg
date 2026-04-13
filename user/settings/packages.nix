@@ -206,7 +206,6 @@
     # Applications / IDEs
     #
     #    code-cursor                  # AI code editor (disabled in favour of unmanaged version for faster updates)
-    goose-cli # Goose AI IDE (open LLM-assisted IDE)
     iterm2 # Terminal emulator
     # jetbrains.aqua # Polyglot IDE
     # jetbrains.clion # C/C++ IDE
