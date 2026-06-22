@@ -48,6 +48,12 @@
       "tombi" # toml utils
       "hashicorp/tap/vault" # Hashicorp Vault
       "portaudio"
+      "ffmpeg"
+      "opus"
+      "espeak-ng"
+      "helm"
+      "skopeo"
+      "sccache"
     ];
 
     casks = [
@@ -56,6 +62,7 @@
       "podman-desktop" # Podman Desktop
       "ghidra" # Reverse engineering tool
       "signal" # Signal messaging
+      "omlx" # OMLX inference engine
 
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
@@ -74,6 +81,7 @@
       "hudochenkov/sshpass"
       "wouterdebie/repo"
       "hashicorp/tap"
+      "jundot/omlx"
       {
         name = "Pyramid/homebrew";
         clone_target = "git@git.corp.adobe.com:Pyramid/homebrew.git";

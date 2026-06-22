@@ -109,7 +109,6 @@
     go # Go programming language
     graphviz # Graph visualization
     httpie # HTTP client
-    kubernetes-helm # Helm package manager for Kubernetes
     libcoap # CoAP library
     pkgsStable.localstack # Local AWS cloud stack
     minicom # Serial communication program
@@ -122,7 +121,6 @@
     rops # SOPS in Rust
     shellcheck # Shell script linter
     shfmt # Shell script formatter
-    skopeo # Container image tool
     sonar-scanner-cli # Code quality scanner
     sops # Secrets management
     srecord # Collection of tools for manipulating EEPROM load files
@@ -266,5 +264,7 @@
     neovim
     aws-cdk-cli
     plantuml
+    signal-cli
+    dos2unix
   ];
 }
