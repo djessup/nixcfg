@@ -23,6 +23,26 @@
         "type": "github"
       }
     },
+    "aws-klam-wrapper": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782110838,
+        "narHash": "sha256-0LJniPDCxC86H2cDJWE0eeHMUaVxersjohlwxd2LcAc=",
+        "ref": "refs/heads/main",
+        "rev": "ff1599da6f551ba2a13164271d57db7c53332bb3",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/jessup_adobe/aws-klam-wrapper.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/jessup_adobe/aws-klam-wrapper.git"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {

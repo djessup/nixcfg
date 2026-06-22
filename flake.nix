@@ -56,6 +56,12 @@
       url = "github:juspay/github-nix-ci";
     };
 
+    # AWS credential_process wrapper for Adobe KLAM CLI
+    aws-klam-wrapper = {
+      url = "git+ssh://git@github.com/jessup_adobe/aws-klam-wrapper.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Private secrets repo
     nix-secrets = {
       url = "github:djessup/nix-secrets";
