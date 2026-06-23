@@ -1,29 +1,28 @@
-{ config, pkgs, lib, ... }:
+{ lib, ... }:
 {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
-        compression = true;
-        extraOptions = {
-          UseKeychain = "yes";
-        };
+        AddKeysToAgent = "yes";
+        Compression = true;
+        UseKeychain = "yes";
       };
 
       "github-work" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/id_rsa";
-        identitiesOnly = true;
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/id_rsa";
+        IdentitiesOnly = true;
       };
 
       "github-personal" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/id_rsa-djessup-gh";
-        identitiesOnly = true;
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/id_rsa-djessup-gh";
+        IdentitiesOnly = true;
       };
     };
 
