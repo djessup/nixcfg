@@ -1,5 +1,7 @@
 { inputs, pkgs, ... }:
 {
+
+  nixpkgs.config.allowUnfree = true;
   packages = with pkgs; [
     #
     # Nix development tools
@@ -70,7 +72,7 @@
     # Infrastructure and deployment
     #
     atmos # Infrastructure as code tool
-    checkov # Static code analysis for Terraform
+    # pkgsStable.checkov # Static code analysis for Terraform
     cloudlens # Cloud resource explorer
     google-cloud-sdk # Google Cloud Platform (GCP) CLI
     k9s # Kubernetes CLI UI
@@ -167,7 +169,6 @@
     pixi # Polyglot package manager
     pkgsStable.poetry # Python packager and dependency manager (pinned: rapidfuzz build failure on aarch64-darwin unstable)
     python3 # Python language
-    rye # Python toolchain
     uv # Python package manager
     virtualenv # Python virtual environment
 
@@ -211,7 +212,6 @@
     #
     # Applications / IDEs
     #
-    #    code-cursor                  # AI code editor (disabled in favour of unmanaged version for faster updates)
     iterm2 # Terminal emulator
     # jetbrains.aqua # Polyglot IDE
     # jetbrains.clion # C/C++ IDE
@@ -221,16 +221,11 @@
     jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
-    # notion-app # Notion workspace
     obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
-    # raycast # Productivity launcher (disabled due to version lag, now install via brew)
-    # signal-desktop-bin # Signal messaging (disabled, using brew instead)
     slack # Team communication
     utm # Virtual machines
     vlc-bin # VLC media player
-    vscode # Code editor
-    # warp-terminal # Modern terminal
     
 
     #
