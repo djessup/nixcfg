@@ -141,7 +141,14 @@
     # AI tools
     #
     claude-code # Claude CLI
-    pkgsStable.ollama # LLM runtime
+    (pkgsStable.ollama.overrideAttrs (old: {
+      # nixpkgs-25.11-darwin's ollama 0.21.1 tries to remove this Darwin-only
+      # test unconditionally, but the upstream source no longer contains it.
+      postPatch = builtins.replaceStrings
+        [ "rm model/models/nemotronh/model_omni_test.go" ]
+        [ "rm -f model/models/nemotronh/model_omni_test.go" ]
+        old.postPatch;
+    })) # LLM runtime
     opencode # AI TUI
     oterm # Ollama terminal client
 
