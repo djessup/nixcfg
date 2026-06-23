@@ -54,11 +54,13 @@
       "helm"
       "skopeo"
       "sccache"
+      "djessup/clpsr/clpsr" # cidr collapser
+      "sapireli/airprint_bridge/airprint-bridge" # AirPrint bridge for non-AirPrint printers
     ];
 
     casks = [
       "block-goose" # Goose AI IDE
-      "docker" # Docker Desktop
+      "docker-desktop" # Docker Desktop
       "podman-desktop" # Podman Desktop
       "ghidra" # Reverse engineering tool
       "signal" # Signal messaging
@@ -78,6 +80,8 @@
     ];
 
     taps = [
+      "djessup/clpsr"
+      "sapireli/airprint_bridge"
       "hudochenkov/sshpass"
       "wouterdebie/repo"
       "hashicorp/tap"
