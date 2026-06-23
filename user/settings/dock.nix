@@ -13,15 +13,16 @@
       { type = "spacer"; }
 
       # Development
-      { path = "/Applications/Cursor.app/"; }
+      { path = "/Applications/Visual Studio Code.app/"; }
       { path = "/Applications/Github Desktop.app/"; }
-      { path = "/Applications/Codex.app/"; }
-      { path = "${pkgs.jetbrains.idea}/Applications/IntelliJ IDEA.app/"; }
+      # { path = "${pkgs.jetbrains.idea}/Applications/IntelliJ IDEA.app/"; }
       { type = "spacer"; }
 
       # Productivity
+      { path = "/Applications/Codex.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
       { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
+      { path = "/Applications/Microsoft To Do.app/"; }
       { type = "spacer"; }
 
       # Communication
