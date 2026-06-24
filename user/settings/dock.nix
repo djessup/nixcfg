@@ -21,13 +21,14 @@
       # Productivity
       { path = "/Applications/Codex.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
+      { path = "/Applications/Claude.app/"; }
       { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
       { path = "/Applications/Microsoft To Do.app/"; }
       { type = "spacer"; }
 
       # Communication
       { path = "/Applications/Microsoft Edge.app/"; }
-      { path = "/Applications/Slack.app/"; }
+      { path = "${pkgs.slack}/Applications/Slack.app/"; }
       { path = "/Applications/Microsoft Teams.app/"; }
       { path = "/Applications/Microsoft Outlook.app/"; }
       { type = "spacer"; }
