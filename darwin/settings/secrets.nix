@@ -7,7 +7,7 @@
 }:
 let
   # Path to the secrets repository
-  secretsPath = builtins.toString inputs.nix-secrets;
+  secretsPath = toString inputs.nix-secrets;
 in
 {
   # SOPS configuration
@@ -20,15 +20,18 @@ in
 
     # mounts to: /run/secrets.d
     secrets = {
+      # Nix access tokens (e.g., GitHub)
       nixAccessTokens = {
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
 
+      # jessup-use2-codex Azure OAI credentials
       azure-openai-api-key = {
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
+
       # GitHub self-hosted runner tokens
       # Format: github-runner-<username-or-org>-token (Must be added to secrets.yaml in nix-secrets)
       github-runner-djessup-token = {
@@ -39,6 +42,16 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
+      # Artifactory Corp credentials
+      artifactory-corp-user = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+      artifactory-corp-token = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+
     };
   };
 }

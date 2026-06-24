@@ -927,11 +927,11 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1770777878,
-        "narHash": "sha256-HMPjzKbDUDmN+oNrisZA489XKZgZef/YePSiJn1IEoU=",
+        "lastModified": 1782262444,
+        "narHash": "sha256-nYoa14b71Y02XZceLgtnX4TE3FKhiL1gqA0Ih2xDmvU=",
         "owner": "djessup",
         "repo": "nix-secrets",
-        "rev": "196db9e41989d4e87b0da1d1e306a11ba5b89e7f",
+        "rev": "17dd4fb24b675953ad15c0ec2c07de7fce78e616",
         "type": "github"
       },
       "original": {

@@ -7,7 +7,7 @@
 }:
 let
   # Path to the secrets repository
-  secretspath = builtins.toString inputs.nix-secrets;
+  secretspath = toString inputs.nix-secrets;
 in
 {
 

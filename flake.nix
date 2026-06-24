@@ -62,7 +62,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Private secrets repo
+    # Private secrets repo (refresh with `nix flake update nix-secrets`)
     nix-secrets = {
       url = "github:djessup/nix-secrets";
       flake = false;
