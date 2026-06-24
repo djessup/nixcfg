@@ -10,5 +10,7 @@ nixos.qcow2
 .cursor/
 +.devenv/
 +.direnv/
+.env
 .packages.nix.nixstall.lock
 .devenv
+*.log
