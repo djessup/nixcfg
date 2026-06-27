@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782110838,
-        "narHash": "sha256-0LJniPDCxC86H2cDJWE0eeHMUaVxersjohlwxd2LcAc=",
+        "lastModified": 1782389357,
+        "narHash": "sha256-WoOs3KPHz5ap/31rEFV+w9wRpRIaXVjzyDt3iKU7E30=",
         "ref": "refs/heads/main",
-        "rev": "ff1599da6f551ba2a13164271d57db7c53332bb3",
-        "revCount": 1,
+        "rev": "0910fb031438891a82a9f68e2aa373f7470d4283",
+        "revCount": 38,
         "type": "git",
         "url": "ssh://git@github.com/jessup_adobe/aws-klam-wrapper.git"
       },
@@ -1106,14 +1106,17 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1781927054,
-        "narHash": "sha256-YxvvTSeiOIK2NdBFZE1l/z5FqiIqGsnT5YPLwf9t75U=",
-        "path": "/Users/jessup/Documents/GitHub/personal/nixstall",
-        "type": "path"
+        "lastModified": 1775373218,
+        "narHash": "sha256-boGmqq3Mf22kmXahckqPpBd63noKcUeMAnuNkS68rZQ=",
+        "owner": "djessup",
+        "repo": "nixstall",
+        "rev": "3d513df85a4d8aa328e2076fc432eeaeb2bdd08b",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/jessup/Documents/GitHub/personal/nixstall",
-        "type": "path"
+        "owner": "djessup",
+        "repo": "nixstall",
+        "type": "github"
       }
     },
     "nixvim": {

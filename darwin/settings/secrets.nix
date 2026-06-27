@@ -18,7 +18,7 @@ in
       keyFile = "${config.users.users.${user}.home}/.config/sops/age/keys.txt";
     };
 
-    # mounts to: /run/secrets.d
+    # mounts to: `/run/secrets.d`
     secrets = {
       # Nix access tokens (e.g., GitHub)
       nixAccessTokens = {
@@ -51,7 +51,7 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
-
     };
+
   };
 }

@@ -84,7 +84,6 @@
     };
 
     sessionVariables = {
-      ARTIFACTORY_USER = "jessup";
       ASDF_DATA_DIR = "$HOME/.asdf";
       TERM = "xterm-256color";
       LANG = "en_US.UTF-8";
@@ -113,9 +112,15 @@
 
     # Custom initialization for development environments
     initContent = ''
-      # Export Azure OpenAI API key from SOPS-mounted secret
-      if [[ -r /run/secrets.d/azure-openai-api-key ]]; then
-        export AZURE_OPENAI_API_KEY="$(</run/secrets.d/azure-openai-api-key)"
+      # Export secrets from SOPS-mounted runtime files
+      if [[ -r /run/secrets/azure-openai-api-key ]]; then
+        export AZURE_OPENAI_API_KEY="$(</run/secrets/azure-openai-api-key)"
+      fi
+      if [[ -r /run/secrets/artifactory-corp-user ]]; then
+        export ARTIFACTORY_USER="$(</run/secrets/artifactory-corp-user)"
+      fi
+      if [[ -r /run/secrets/artifactory-corp-token ]]; then
+        export ARTIFACTORY_TOKEN="$(</run/secrets/artifactory-corp-token)"
       fi
 
       # Development environment detection and setup

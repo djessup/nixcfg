@@ -20,7 +20,7 @@
           exec zsh -l
         fi
       fi
-
+      
       # Source user's zsh configuration if available and not already sourced
       if [[ -n "$ZSH_VERSION" && -f "$HOME/.zshrc" && -z "$ZSHRC_SOURCED" ]]; then
         export ZSHRC_SOURCED=1

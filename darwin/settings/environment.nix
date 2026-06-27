@@ -1,4 +1,4 @@
-{ pkgs, user, config, ... }:
+{ pkgs, user, ... }:
  let
   # Import custom scripts
   scripts = import ../../scripts { inherit pkgs; };
@@ -40,20 +40,6 @@ in
 
     # Shell initialization that will be available to all shells
     shellInit = ''
-      # Load sensitive values from SOPS-managed runtime files instead of storing
-      # decrypted values in the generated system environment.
-      if [ -r "${config.sops.secrets."azure-openai-api-key".path}" ]; then
-        export AZURE_OPENAI_API_KEY="$(cat "${config.sops.secrets."azure-openai-api-key".path}")"
-      fi
-
-      if [ -r "${config.sops.secrets."artifactory-corp-user".path}" ]; then
-        export ARTIFACTORY_USER="$(cat "${config.sops.secrets."artifactory-corp-user".path}")"
-      fi
-
-      if [ -r "${config.sops.secrets."artifactory-corp-token".path}" ]; then
-        export ARTIFACTORY_TOKEN="$(cat "${config.sops.secrets."artifactory-corp-token".path}")"
-      fi
-
       # Ensure development environments use zsh with user configuration
       if [ -n "$IN_NIX_SHELL" ] || [ -n "$DIRENV_IN_ENVRC" ]; then
         # If we're in a development environment and not already in zsh

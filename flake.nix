@@ -70,7 +70,8 @@
 
     nixstall = {
       # TODO: load from github instead of local path
-      url = "path:/Users/jessup/Documents/GitHub/personal/nixstall";
+      url = "github:djessup/nixstall";
+      # url = "path:/Users/jessup/Documents/GitHub/personal/nixstall";
     };
   };
 
