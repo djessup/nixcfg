@@ -1,12 +1,37 @@
-{ config, pkgs, user, ... }:
+{ ... }:
+let
+  secretsEnvScript = ''
+    # SOPS-managed secrets → environment variables
+    # Sourced by zsh initContent, bash initExtra, and dev_shell_init.
+    # Uses POSIX-compatible syntax so it works across all shells.
+
+    if [ -r /run/secrets/azure-openai-api-key ]; then
+      export AZURE_OPENAI_API_KEY="$(cat /run/secrets/azure-openai-api-key)"
+    fi
+    if [ -r /run/secrets/artifactory-corp-user ]; then
+      export ARTIFACTORY_USER="$(cat /run/secrets/artifactory-corp-user)"
+    fi
+    if [ -r /run/secrets/artifactory-corp-token ]; then
+      export ARTIFACTORY_TOKEN="$(cat /run/secrets/artifactory-corp-token)"
+    fi
+  '';
+in
 {
   # Create shell initialization scripts for development environments
   home.file = {
+    # Shared SOPS secrets → env vars (sourced by all shells)
+    ".config/sops/secrets-env.sh".text = secretsEnvScript;
+
     # Development environment shell configuration
     ".dev_shell_init".text = ''
       #!/usr/bin/env zsh
       # Development environment shell initialization
       # This script ensures consistent shell experience in nix-shell, nix develop, and direnv
+
+      # Load SOPS secrets first
+      if [ -r "$HOME/.config/sops/secrets-env.sh" ]; then
+        . "$HOME/.config/sops/secrets-env.sh"
+      fi
 
       # Set development environment indicators
       export IN_DEV_SHELL=1
@@ -20,7 +45,7 @@
           exec zsh -l
         fi
       fi
-      
+
       # Source user's zsh configuration if available and not already sourced
       if [[ -n "$ZSH_VERSION" && -f "$HOME/.zshrc" && -z "$ZSHRC_SOURCED" ]]; then
         export ZSHRC_SOURCED=1

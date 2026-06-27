@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" 
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.youruser.aws-rotate</string>
+
+    <!-- Run quarterly: months Jan(1), Apr(4), Jul(7), Oct(10) -->
+    <key>StartCalendarInterval</key>
+    <array>
+      <dict>
+        <key>Month</key><integer>1</integer>
+        <key>Day</key><integer>1</integer>
+        <key>Hour</key><integer>3</integer>
+        <key>Minute</key><integer>0</integer>
+      </dict>
+      <dict>
+        <key>Month</key><integer>4</integer>
+        <key>Day</key><integer>1</integer>
+        <key>Hour</key><integer>3</integer>
+        <key>Minute</key><integer>0</integer>
+      </dict>
+      <dict>
+        <key>Month</key><integer>7</integer>
+        <key>Day</key><integer>1</integer>
+        <key>Hour</key><integer>3</integer>
+        <key>Minute</key><integer>0</integer>
+      </dict>
+      <dict>
+        <key>Month</key><integer>10</integer>
+        <key>Day</key><integer>1</integer>
+        <key>Hour</key><integer>3</integer>
+        <key>Minute</key><integer>0</integer>
+      </dict>
+    </array>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>-lc</string>
+      <string>$HOME/bin/aws-rotate-all.sh</string>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>$HOME/Library/Logs/aws-rotate/stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>$HOME/Library/Logs/aws-rotate/stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>

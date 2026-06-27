@@ -32,6 +32,11 @@
 
     # Extra bashrc content
     initExtra = ''
+      # Load SOPS-managed secrets into environment
+      if [ -r "$HOME/.config/sops/secrets-env.sh" ]; then
+        . "$HOME/.config/sops/secrets-env.sh"
+      fi
+
       # Initialize direnv for bash
       if command -v direnv >/dev/null 2>&1; then
         eval "$(direnv hook bash)"

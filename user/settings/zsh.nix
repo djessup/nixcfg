@@ -112,15 +112,9 @@
 
     # Custom initialization for development environments
     initContent = ''
-      # Export secrets from SOPS-mounted runtime files
-      if [[ -r /run/secrets/azure-openai-api-key ]]; then
-        export AZURE_OPENAI_API_KEY="$(</run/secrets/azure-openai-api-key)"
-      fi
-      if [[ -r /run/secrets/artifactory-corp-user ]]; then
-        export ARTIFACTORY_USER="$(</run/secrets/artifactory-corp-user)"
-      fi
-      if [[ -r /run/secrets/artifactory-corp-token ]]; then
-        export ARTIFACTORY_TOKEN="$(</run/secrets/artifactory-corp-token)"
+      # Load SOPS-managed secrets into environment
+      if [[ -r "$HOME/.config/sops/secrets-env.sh" ]]; then
+        . "$HOME/.config/sops/secrets-env.sh"
       fi
 
       # Development environment detection and setup
