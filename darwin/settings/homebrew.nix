@@ -56,6 +56,7 @@
       "sccache"
       "djessup/clpsr/clpsr" # cidr collapser
       "sapireli/airprint_bridge/airprint-bridge" # AirPrint bridge for non-AirPrint printers
+      "smimesign"
     ];
 
     casks = [
