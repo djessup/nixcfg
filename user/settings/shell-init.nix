@@ -14,6 +14,19 @@ let
     if [ -r /run/secrets/artifactory-corp-token ]; then
       export ARTIFACTORY_TOKEN="$(cat /run/secrets/artifactory-corp-token)"
     fi
+    if [ -r /run/secrets/jira-corp-user ]; then
+      export JIRA_USER="$(cat /run/secrets/jira-corp-user)"
+    fi
+    if [ -r /run/secrets/jira-corp-token ]; then
+      export JIRA_TOKEN="$(cat /run/secrets/jira-corp-token)"
+    fi
+    if [ -r /run/secrets/confluence-corp-user ]; then
+      export CONFLUENCE_USER="$(cat /run/secrets/confluence-corp-user)"
+    fi
+    if [ -r /run/secrets/confluence-corp-token ]; then
+      export CONFLUENCE_TOKEN="$(cat /run/secrets/confluence-corp-token)"
+    fi
+
   '';
 in
 {

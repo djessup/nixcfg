@@ -51,6 +51,24 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
+      # Jira Corp credentials
+      jira-corp-user = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+      jira-corp-token = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;  
+      };
+      # Confluence Corp credentials
+      confluence-corp-user = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+      confluence-corp-token = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
     };
 
   };
