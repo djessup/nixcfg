@@ -26,7 +26,9 @@ let
     if [ -r /run/secrets/confluence-corp-token ]; then
       export CONFLUENCE_TOKEN="$(cat /run/secrets/confluence-corp-token)"
     fi
-
+    if [ -r /run/secrets/bws-cli-access-token ]; then
+      export BWS_ACCESS_TOKEN="$(cat /run/secrets/bws-cli-access-token)"
+    fi
   '';
 in
 {

@@ -69,6 +69,11 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
+      # Bitwarden CLI
+      bws-cli-access-token = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
     };
 
   };
