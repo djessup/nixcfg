@@ -57,6 +57,7 @@
       "djessup/clpsr/clpsr" # cidr collapser
       "sapireli/airprint_bridge/airprint-bridge" # AirPrint bridge for non-AirPrint printers
       "smimesign"
+      "act"
     ];
 
     casks = [
@@ -102,6 +103,13 @@
       WhatsApp = 310633997;
       Xcode = 497799835;
       DaisyDisk = 411643860;
+      OneDrive = 823766827;
+      "Microsoft Outlook" = 985367838;
+      "Microsoft Word" = 462054704;
+      "Microsoft PowerPoint" = 462062816;
+      "Microsoft Excel" = 462058435;
+      "Microsoft OneNote" = 784801555;
+      "Microsoft To Do" = 1274495053;
     };
   };
 }
