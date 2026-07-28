@@ -1,6 +1,6 @@
 { ... }:
 {
-  # Add ~/.local/bin to PATH for tools like uv, rye, etc.
+  # Add ~/.local/bin to PATH for tools like uv, etc.
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   programs = {

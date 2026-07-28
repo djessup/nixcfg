@@ -3,7 +3,7 @@
 
 # AMSTOOL completions - loaded after compinit (oh-my-zsh handles compinit)
 if command -v amstool >/dev/null 2>&1; then
-  eval "$(_AMSTOOL_COMPLETE=zsh_source amstool)" 2>/dev/null
+  eval "$(_AMSTOOL_COMPLETE=bash_source amstool)" 2>/dev/null
 fi
 
 # Cargo (Rust)
@@ -19,7 +19,7 @@ _jenv_init() {
   if command -v jenv >/dev/null 2>&1; then
     eval "$(jenv init -)"
   fi
-  unfunction _jenv_init 2>/dev/null || true
+  unset -f _jenv_init 2>/dev/null || true
 }
 # Trigger on first jenv command
 jenv() { _jenv_init; jenv "$@"; }
@@ -30,7 +30,7 @@ _maven_home() {
   if command -v mvn >/dev/null 2>&1 && [[ -z "$M2_HOME" ]]; then
     export M2_HOME="$(command mvn --home --quiet)"
   fi
-  unfunction _maven_home 2>/dev/null || true
+  unset -f _maven_home 2>/dev/null || true
 }
 # Trigger on first mvn command
 mvn() { _maven_home; mvn "$@"; }
@@ -47,7 +47,7 @@ _nvm_init() {
   elif [[ -d "$HOME/.nvm/shims" ]]; then
 	export PATH="$HOME/.nvm/shims:$PATH"
   fi
-  unfunction _nvm_init 2>/dev/null || true
+  unset -f _nvm_init 2>/dev/null || true
 }
 # Lazy-load on first use of node, npm, npx, or nvm
 node() { _nvm_init; node "$@"; }
@@ -62,21 +62,21 @@ _sdkman_init() {
   if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
   fi
-  unfunction _sdkman_init 2>/dev/null || true
+  unset -f _sdkman_init 2>/dev/null || true
 }
 # Trigger on first sdk command
 sdk() { _sdkman_init; sdk "$@"; }
 
 # iTerm2 shell integration
-[[ -s "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
+[[ -s "$HOME/.iterm2_shell_integration.bash" ]] && source "$HOME/.iterm2_shell_integration.bash"
 
 # Trunk
 # [[ -s "$HOME/.cache/trunk/shell-hooks/zsh.rc" ]] && source "$HOME/.cache/trunk/shell-hooks/zsh.rc"
 
 # ScaleFT/ASA completions
-if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete" ]]; then
+if [[ -s "$HOME/Library/Application\ Support/ScaleFT/sft_bash_autocomplete" ]]; then
   export PROG=sft
-  source "$HOME/Library/Application\ Support/ScaleFT/sft_zsh_autocomplete"
+  source "$HOME/Library/Application\ Support/ScaleFT/sft_bash_autocomplete"
   unset PROG
 fi
 
@@ -102,14 +102,14 @@ fi
 
 # Just completions - loaded after compinit (oh-my-zsh handles compinit)
 if command -v just >/dev/null 2>&1; then
-  eval "$(just --completions zsh)" 2>/dev/null
+  eval "$(just --completions bash)" 2>/dev/null
 fi
 
 # Micromamba Conda - lazy-loaded
 _conda_init() {
   unset -f conda
   if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
-    __conda_setup="$('$HOME/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    __conda_setup="$('$HOME/micromamba/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
       eval "$__conda_setup"
     else
@@ -121,7 +121,7 @@ _conda_init() {
     fi
     unset __conda_setup
   fi
-  unfunction _conda_init 2>/dev/null || true
+  unset -f _conda_init 2>/dev/null || true
 }
 # Trigger on first conda command
 conda() { _conda_init; conda "$@"; }

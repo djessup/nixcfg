@@ -24,7 +24,6 @@
       tree = "eza --tree --icons";
       watch = "hwatch";
 
-      cursor = "/Applications/Cursor.app/Contents/MacOS/Cursor";
       python = "python3";
       "docker-clean" = "docker rmi $(docker images -f 'dangling=true' -q)";
       tfgo = "terraform plan -out tfplan && terraform apply tfplan";
@@ -41,6 +40,6 @@
       if command -v direnv >/dev/null 2>&1; then
         eval "$(direnv hook bash)"
       fi
-    '';
+    '' + builtins.readFile ./extraConfig.bash;
   };
 }
