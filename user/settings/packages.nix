@@ -221,7 +221,7 @@
     jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
-    obsidian # Knowledge base
+    pkgsStable.obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
     slack # Team communication
     utm # Virtual machines
