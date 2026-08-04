@@ -76,7 +76,6 @@
 
       # Editor shortcuts
       # vi = "nvim";
-      cursor = "/Applications/Cursor.app/Contents/MacOS/Cursor";
       python = "python3";
       docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
 
