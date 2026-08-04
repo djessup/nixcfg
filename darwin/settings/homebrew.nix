@@ -58,6 +58,8 @@
       "sapireli/airprint_bridge/airprint-bridge" # AirPrint bridge for non-AirPrint printers
       "smimesign"
       "act"
+      "steipete/tap/codexbar"
+      "homebrew/cask/codex"
     ];
 
     casks = [
