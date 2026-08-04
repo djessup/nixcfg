@@ -1,4 +1,4 @@
-{ config, user, pkgs, ... }: {
+{ config, user, pkgs, inputs, ... }: {
   # Dock configuration using custom module
   local.dock = {
     enable = true;
@@ -19,10 +19,11 @@
       { type = "spacer"; }
 
       # Productivity
-      { path = "/Applications/Codex.app/"; }
+      { path = "/Applications/GitHub Copilot.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
       { path = "/Applications/Claude.app/"; }
-      { path = "${pkgs.obsidian}/Applications/Obsidian.app/"; }
+      { type = "spacer"; }
+      { path = "${pkgs.pkgsStable.obsidian}/Applications/Obsidian.app/"; }
       { path = "/Applications/Microsoft To Do.app/"; }
       { type = "spacer"; }
 
