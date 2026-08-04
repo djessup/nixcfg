@@ -51,7 +51,7 @@
     #
     # AWS tools
     #
-    inputs.klam-shucker.packages.${pkgs.system}.default # AWS credential_process wrapper for KLAM
+    inputs.klam-shucker.packages.${pkgs.stdenv.hostPlatform.system}.default # AWS credential_process wrapper for KLAM
     aws-gate # AWS SSH and port forwarding
     aws-iam-authenticator # Authenticate to EKS with IAM
     aws-rotate-key # AWS access key rotator
@@ -93,7 +93,7 @@
     #
     # Development tools
     #
-    # inputs.mise-flake.packages.${system}.mise # Mise-in-place dev environment manager
+    # inputs.mise-flake.packages.${stdenv.hostPlatform.system}.mise # Mise-in-place dev environment manager
     age # File encryption
     ant # ant build tool
     asciinema # Terminal recorder
@@ -127,7 +127,7 @@
     sops # Secrets management
     srecord # Collection of tools for manipulating EEPROM load files
     zig # Zig programming language
-    
+
     #
     # Database tools
     #
@@ -226,7 +226,7 @@
     slack # Team communication
     utm # Virtual machines
     vlc-bin # VLC media player
-    
+
 
     #
     # Fonts
@@ -245,7 +245,7 @@
     #
     dockutil # macOS dock utility
     sox # Sound processing tool
-    inputs.nixstall.packages.${pkgs.system}.default # nixstall
+    inputs.nixstall.packages.${pkgs.stdenv.hostPlatform.system}.default # nixstall
     #
     # Security tools
     #
