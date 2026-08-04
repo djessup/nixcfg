@@ -216,9 +216,9 @@
     # jetbrains.aqua # Polyglot IDE
     # jetbrains.clion # C/C++ IDE
     # jetbrains.datagrip # Database IDE
-    jetbrains.idea # JVM/general IDE
-    jetbrains.pycharm # Python IDE
-    jetbrains.rust-rover # Rust IDE
+    pkgsStable.jetbrains.idea # JVM/general IDE
+    pkgsStable.jetbrains.pycharm # Python IDE
+    pkgsStable.jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
     neovide # Neovim GUI
     pkgsStable.obsidian # Knowledge base
