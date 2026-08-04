@@ -57,8 +57,8 @@
     };
 
     # AWS credential_process wrapper for Adobe KLAM CLI
-    aws-klam-wrapper = {
-      url = "git+ssh://git@github.com/jessup_adobe/aws-klam-wrapper.git";
+    klam-shucker = {
+      url = "git+ssh://git@github.com/AdobeManagedServices-Innovation/klam-shucker.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

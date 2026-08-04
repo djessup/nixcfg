@@ -51,7 +51,7 @@
     #
     # AWS tools
     #
-    inputs.aws-klam-wrapper.packages.${pkgs.system}.default # AWS credential_process wrapper for KLAM
+    inputs.klam-shucker.packages.${pkgs.system}.default # AWS credential_process wrapper for KLAM
     aws-gate # AWS SSH and port forwarding
     aws-iam-authenticator # Authenticate to EKS with IAM
     aws-rotate-key # AWS access key rotator
