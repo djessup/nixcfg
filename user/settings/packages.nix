@@ -268,5 +268,6 @@
     plantuml
     signal-cli
     dos2unix
+    superfile
   ];
 }
