@@ -71,7 +71,7 @@
     #
     # Infrastructure and deployment
     #
-    atmos # Infrastructure as code tool
+    pkgsStable.atmos # Infrastructure as code tool
     # pkgsStable.checkov # Static code analysis for Terraform
     cloudlens # Cloud resource explorer
     google-cloud-sdk # Google Cloud Platform (GCP) CLI
