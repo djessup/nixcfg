@@ -1,29 +1,25 @@
 # Conditional Git configurations for different email addresses
 # These files are referenced by includeIf directives in git.nix
-{ config, user, ... }:
+{ user, ... }:
 let
-  homeDir = "/Users/${user}";
+  githubProfiles = import ./git-profiles.nix { inherit user; };
+  githubProfileList = builtins.attrValues githubProfiles;
+
+  # Render a per-profile Git include file containing identity and signing settings.
+  mkProfileConfig = profile: ''
+    [user]
+      email = ${profile.userEmail}
+      name = ${profile.userName}
+      signingkey = ${profile.signingKey}
+      identityFile = "${profile.identityFile}";
+  '';
 in
 {
-  # Create conditional Git config files for different contexts
-  home.file = {
-    # Personal repositories configuration
-    ".config/git/config-personal".text = ''
-      [user]
-        email = 866649+djessup@users.noreply.github.com
-        name = David Jessup
-        signingkey = ${homeDir}/.ssh/id_ed25519_djessup_signing.pub
-        identityFile = "${homeDir}/.ssh/id_rsa-djessup-gh";
-    '';
-
-    # Work repositories configuration
-    ".config/git/config-work".text = ''
-      [user]
-        email = jessup@adobe.com
-        name = David Jessup
-        signingkey = ${homeDir}/.ssh/id_ed25519_adobe_signing.pub
-        identityFile = "${homeDir}/.ssh/id_rsa";
-    '';
-  };
+  # Materialize one include file per profile under ~/.config/git/.
+  home.file =
+    builtins.listToAttrs (map (profile: {
+      name = ".config/git/${profile.configName}";
+      value.text = mkProfileConfig profile;
+    }) githubProfileList);
 }
 
