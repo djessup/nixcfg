@@ -9,8 +9,10 @@ in
     configName = "config-personal";
     configPath = "${homeDir}/.config/git/config-personal";
     gitDir = "~/Documents/Github/personal/";
-    owners = [ "djessup" ];
-    httpsOnlyOwners = [ "adobe" ];
+    owners = [
+      "djessup"
+      "adobe"
+    ];
 
     userName = "David Jessup";
     userEmail = "866649+djessup@users.noreply.github.com";
@@ -29,7 +31,6 @@ in
       "AdobeManagedServices-Innovation"
       "OneAdobe"
     ];
-    httpsOnlyOwners = [ ];
 
     userName = "David Jessup";
     userEmail = "jessup@adobe.com";

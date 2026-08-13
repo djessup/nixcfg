@@ -65,11 +65,6 @@ let
       owners = profile.owners;
       configPath = profile.configPath;
       sshHosts = [ "github.com" profile.alias ];
-    }
-    // mkGithubIncludeIfSet {
-      owners = profile.httpsOnlyOwners;
-      configPath = profile.configPath;
-      sshHosts = [ ];
     };
 
   # Merge all profile URL rewrites into a single Git `url` block.
