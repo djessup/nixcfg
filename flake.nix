@@ -56,9 +56,10 @@
       url = "github:juspay/github-nix-ci";
     };
 
-    # AWS credential_process wrapper for Adobe KLAM CLI
+    # AWS credential_process wrapper for Adobe KLAM CLI 
     klam-shucker = {
       url = "git+ssh://git@github.com/AdobeManagedServices-Innovation/klam-shucker.git";
+      # url = "github:AdobeManagedServices-Innovation/klam-shucker"; # this version throws 404 err :/
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
