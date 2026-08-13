@@ -42,5 +42,8 @@
                 }
             }
         }
+    },
+    "chat.tools.terminal.autoApprove": {
+        "nix": true
     }
 }
