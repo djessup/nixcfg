@@ -106,7 +106,7 @@
     git-cliff # Changelog generator
     git-extras # Git extras
     git-lfs # Git Large File Storage
-    github-runner # Self-hosted GitHub Runner
+    # github-runner # Self-hosted GitHub Runner
     gnumake # GNU make
     go # Go programming language
     graphviz # Graph visualization
@@ -152,7 +152,7 @@
         old.postPatch;
     })) # LLM runtime
     opencode # AI TUI
-    oterm # Ollama terminal client
+    # oterm # Ollama terminal client
 
     #
     # Node.js tools
@@ -166,8 +166,8 @@
     #
     hatch # Modern Python toolchain
     pkgsStable.micromamba # Conda package manager
-    pixi # Polyglot package manager
-    pkgsStable.poetry # Python packager and dependency manager (pinned: rapidfuzz build failure on aarch64-darwin unstable)
+    # pixi # Polyglot package manager
+    # pkgsStable.poetry # Python packager and dependency manager (pinned: rapidfuzz build failure on aarch64-darwin unstable)
     python3 # Python language
     uv # Python package manager
     virtualenv # Python virtual environment
@@ -217,14 +217,14 @@
     # jetbrains.clion # C/C++ IDE
     # jetbrains.datagrip # Database IDE
     pkgsStable.jetbrains.idea # JVM/general IDE
-    pkgsStable.jetbrains.pycharm # Python IDE
+    # pkgsStable.jetbrains.pycharm # Python IDE
     pkgsStable.jetbrains.rust-rover # Rust IDE
     keka # Multi-format (un)archiver
-    neovide # Neovim GUI
+    # neovide # Neovim GUI
     pkgsStable.obsidian # Knowledge base
     obsidian-export # Obsidian vault export tool
     slack # Team communication
-    utm # Virtual machines
+    # utm # Virtual machines
     vlc-bin # VLC media player
 
 
@@ -261,8 +261,8 @@
     glow
     duti
     devenv
-    godot
-    godot-mcp
+    # godot
+    # godot-mcp
     neovim
     aws-cdk-cli
     plantuml
