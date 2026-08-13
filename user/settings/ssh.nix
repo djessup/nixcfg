@@ -32,6 +32,9 @@
 Match exec "/usr/local/bin/sft resolve -q %h"
   ProxyCommand "/usr/local/bin/sft" proxycommand %h
   UserKnownHostsFile "~/Library/Application Support/ScaleFT/proxycommand_known_hosts"
+
+# Teleport Vnet configuration
+Include "/Users/jessup/.tsh/vnet_ssh_config"
     '';
   };
 
