@@ -38,9 +38,8 @@
 
     # !! – Where possible, prefer nixpkgs packages over homebrew for better portability. - !!
     brews = [
-      "amstool"
+      "oneadobe/ams-homebrew/amstool"
       "gittower/tap/git-flow-next"
-      "i2cssh"
       "jenv" # java version manager
       "mvnvm" # maven version manager
       "mas" # mac app store cli
@@ -60,27 +59,27 @@
       "act"
       "steipete/tap/codexbar"
       "homebrew/cask/codex"
+      "cloudflare-wrangler"
     ];
 
     casks = [
       "block-goose" # Goose AI IDE
       "docker-desktop" # Docker Desktop
-      "podman-desktop" # Podman Desktop
-      "ghidra" # Reverse engineering tool
+      # "podman-desktop" # Podman Desktop
+      # "ghidra" # Reverse engineering tool
       "signal" # Signal messaging
       "omlx" # OMLX inference engine
-
       "monitorcontrol" # Brightness and volume controls for external monitors.
 #      "nordic-nrf-command-line-tools"
 #      "nrf-connect"
 #      "nrfutil"
       "font-monaspace" # Monaspace font
       "okta-advanced-server-access"
-      "keyguard"
       "raycast" # Productivity launcher
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
 #      "ubar" # Dock replacement
       "xquartz" # X11 server
+      "copilot-cli"
     ];
 
     taps = [
@@ -91,8 +90,8 @@
       "hashicorp/tap"
       "jundot/omlx"
       {
-        name = "Pyramid/homebrew";
-        clone_target = "git@git.corp.adobe.com:Pyramid/homebrew.git";
+        name = "OneAdobe/ams-homebrew";
+        clone_target = "git@github.com:OneAdobe/ams-homebrew.git";
         force_auto_update = true;
       }
     ];
