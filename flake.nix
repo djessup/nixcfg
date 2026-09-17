@@ -11,7 +11,7 @@
   inputs = {
     # Core Nix packages
     nixpkgsStable.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/0390e69d8d8569776ceefd5ec424eb8e21dfed85";
     # Darwin (macOS) system configuration framework
     darwin = {
       url = "github:LnL7/nix-darwin/master";
