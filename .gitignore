@@ -14,3 +14,4 @@ nixos.qcow2
 .packages.nix.nixstall.lock
 .devenv
 *.log
+.scout/
