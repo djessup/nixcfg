@@ -127,7 +127,7 @@ in
   };
 
 
-  # Github Self-hosted runner
+# Github Self-hosted runner
 #  launchd.agents.github-runner = {
 #    enable = true;
 #    config = {
