@@ -60,6 +60,7 @@
       "steipete/tap/codexbar"
       "homebrew/cask/codex"
       "cloudflare-wrangler"
+      "agent-browser"
     ];
 
     casks = [
