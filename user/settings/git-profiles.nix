@@ -25,6 +25,7 @@ in
     alias = "github-work";
     configName = "config-work";
     configPath = "${homeDir}/.config/git/config-work";
+    gitDir = "~/Documents/GitHub/ams-inno/";
     owners = [
       "jessup_adobe"
       "AdobeManagedServices"
