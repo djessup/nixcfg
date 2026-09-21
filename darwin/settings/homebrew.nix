@@ -58,13 +58,13 @@
       "smimesign"
       "act"
       "steipete/tap/codexbar"
-      "homebrew/cask/codex"
       "cloudflare-wrangler"
       "agent-browser"
     ];
 
     casks = [
       "block-goose" # Goose AI IDE
+      "codex" # OpenAI Codex/ChatGPT Desktop
       "docker-desktop" # Docker Desktop
       # "podman-desktop" # Podman Desktop
       # "ghidra" # Reverse engineering tool
