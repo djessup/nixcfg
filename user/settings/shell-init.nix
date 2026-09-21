@@ -26,6 +26,12 @@ let
     if [ -r /run/secrets/confluence-corp-token ]; then
       export CONFLUENCE_TOKEN="$(cat /run/secrets/confluence-corp-token)"
     fi
+    if [ -r /run/secrets/amsauto-jenkins-api-user ]; then
+      export AMSAUTO_JENKINS_API_USER="$(cat /run/secrets/amsauto-jenkins-api-user)"
+    fi
+    if [ -r /run/secrets/amsauto-jenkins-api-token ]; then
+      export AMSAUTO_JENKINS_API_TOKEN="$(cat /run/secrets/amsauto-jenkins-api-token)"
+    fi
     if [ -r /run/secrets/bws-cli-access-token ]; then
       export BWS_ACCESS_TOKEN="$(cat /run/secrets/bws-cli-access-token)"
     fi

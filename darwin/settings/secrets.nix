@@ -69,6 +69,15 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
+      # AMSAuto Jenkins API credentials
+      amsauto-jenkins-api-user = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+      amsauto-jenkins-api-token = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
       # Bitwarden CLI
       bws-cli-access-token = {
         mode = "0400";
