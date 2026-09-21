@@ -60,25 +60,25 @@
       "steipete/tap/codexbar"
       "cloudflare-wrangler"
       "agent-browser"
+      "jundot/omlx/omlx" # OMLX inference engine
     ];
 
     casks = [
       "block-goose" # Goose AI IDE
-      "codex" # OpenAI Codex/ChatGPT Desktop
+      "codex" # OpenAI Codex/ChatGPT CLI
       "docker-desktop" # Docker Desktop
+      "signal" # Signal messaging
+      "monitorcontrol" # Brightness and volume controls for external monitors.
       # "podman-desktop" # Podman Desktop
       # "ghidra" # Reverse engineering tool
-      "signal" # Signal messaging
-      "omlx" # OMLX inference engine
-      "monitorcontrol" # Brightness and volume controls for external monitors.
-#      "nordic-nrf-command-line-tools"
-#      "nrf-connect"
-#      "nrfutil"
+      # "nordic-nrf-command-line-tools"
+      # "nrf-connect"
+      # "nrfutil"
+      # "ubar" # Dock replacement
       "font-monaspace" # Monaspace font
       "okta-advanced-server-access"
       "raycast" # Productivity launcher
       "unnaturalscrollwheels" # Enable natural scrolling in the trackpad but regular scroll on an external mouse
-#      "ubar" # Dock replacement
       "xquartz" # X11 server
       "copilot-cli"
     ];
