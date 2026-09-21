@@ -60,7 +60,7 @@
       "steipete/tap/codexbar"
       "cloudflare-wrangler"
       "agent-browser"
-      "jundot/omlx/omlx" # OMLX inference engine
+      # "jundot/omlx/omlx" # OMLX inference engine (disabled due to version lag)
     ];
 
     casks = [
