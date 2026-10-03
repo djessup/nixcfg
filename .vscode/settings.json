@@ -38,7 +38,7 @@
                 },
                 // Tip: use ${workspaceFolder} variable to define path
                 "nix-darwin": {
-                    "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.jessup-m3.options"
+                    "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options"
                 }
             }
         }
