@@ -269,5 +269,7 @@
     signal-cli
     dos2unix
     superfile
+    microcad
+    mkcert
   ];
 }
