@@ -27,7 +27,11 @@ in
       };
 
       # jessup-use2-codex Azure OAI credentials
-      azure-openai-api-key = {
+      azure-openai-api-key-jessupuse2codex = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+      azure-openai-api-key-amsbench = {
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
@@ -74,7 +78,11 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
-      amsauto-jenkins-api-token = {
+      amsauto-jenkins-api-token-jessupuse2codex = {
+        mode = "0400";
+        owner = config.users.users.${user}.name;
+      };
+      amsauto-jenkins-api-token-amsbench = {
         mode = "0400";
         owner = config.users.users.${user}.name;
       };

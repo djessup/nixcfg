@@ -959,11 +959,11 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1789973654,
-        "narHash": "sha256-4N0cK/72zJDra4ciNm3RrG93zwJxdQ5SZmC/vXtXueI=",
+        "lastModified": 1791515184,
+        "narHash": "sha256-1AbcCTJcV37zW9wgcTaxnVw5/LTFHpXKjggNfzA0J8U=",
         "owner": "djessup",
         "repo": "nix-secrets",
-        "rev": "718a2fd41657ca776a82ca1566b6e2952ee3d64b",
+        "rev": "f05f426abb04a4552980231ff2edc4751938938a",
         "type": "github"
       },
       "original": {

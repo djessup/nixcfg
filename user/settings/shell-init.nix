@@ -5,8 +5,13 @@ let
     # Sourced by zsh initContent, bash initExtra, and dev_shell_init.
     # Uses POSIX-compatible syntax so it works across all shells.
 
-    if [ -r /run/secrets/azure-openai-api-key ]; then
-      export AZURE_OPENAI_API_KEY="$(cat /run/secrets/azure-openai-api-key)"
+    if [ -r /run/secrets/azure-openai-api-key-amsbench ]; then
+      export AZURE_OPENAI_API_KEY_AMSBENCH="$(cat /run/secrets/azure-openai-api-key-amsbench)"
+      export AZURE_OPENAI_API_KEY="''${AZURE_OPENAI_API_KEY:-$AZURE_OPENAI_API_KEY_AMSBENCH}"
+    fi
+    if [ -r /run/secrets/azure-openai-api-key-jessupuse2codex ]; then
+      export AZURE_OPENAI_API_KEY_JESSUPUSE2CODEX="$(cat /run/secrets/azure-openai-api-key-jessupuse2codex)"
+      export AZURE_OPENAI_API_KEY="''${AZURE_OPENAI_API_KEY:-$AZURE_OPENAI_API_KEY_JESSUPUSE2CODEX}"
     fi
     if [ -r /run/secrets/artifactory-corp-user ]; then
       export ARTIFACTORY_USER="$(cat /run/secrets/artifactory-corp-user)"
