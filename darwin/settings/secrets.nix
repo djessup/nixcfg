@@ -78,11 +78,7 @@ in
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
-      amsauto-jenkins-api-token-jessupuse2codex = {
-        mode = "0400";
-        owner = config.users.users.${user}.name;
-      };
-      amsauto-jenkins-api-token-amsbench = {
+      amsauto-jenkins-api-token = {
         mode = "0400";
         owner = config.users.users.${user}.name;
       };
