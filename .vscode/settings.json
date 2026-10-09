@@ -1,49 +1,94 @@
 {
-    "nixEnvPicker.envFile": "${workspaceFolder}${/}flake.nix",
-    "[nix]": {
-        "editor.formatOnSave": true
-    },
-    // Nix settings
-    "nix.formatterPath": [
-        "nixpkgs-fmt",
-        "nixfmt",
-        "treefmt",
-        "--stdin",
-        "{file}",
-        "nix",
-        "fmt",
-        "--",
-        "-",
-    ],
-    "nix.enableLanguageServer": true,
-    "nix.serverPath": "nixd",
-    
-    "nix.serverSettings": {
-        "nixd": {
-            "formatting": {
-                "command": [
-                    "nixpkgs-fmt"
-                ]
-            },
-            "nixpkgs": {
-                "expr": "import (builtins.getFlake \"/etc/nix-darwin/flake.nix\").inputs.nixpkgs {}"
-            },
-            "options": {
-                "home_manager": {
-                    /*the below is for those who directly integrate their home manager into nixos, what others use is for stand alone home manager*/
-                    "expr": "(builtins.getFlake \"/etc/nix-darwin/flake.nix\").darwinConfigurations.jessup-m3.options.home-manager.users.type.getSubOptions []"
-                },
-                "nixos": {
-                    "expr": "(builtins.getFlake \"/etc/nix-darwin/flake.nix\").darwinConfigurations.jessup-m3.options"
-                },
-                // Tip: use ${workspaceFolder} variable to define path
-                "nix-darwin": {
-                    "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options"
-                }
-            }
+  "nixEnvPicker.envFile": "${workspaceFolder}${/}flake.nix",
+  "[nix]": {
+    "editor.formatOnSave": true
+  },
+  // -----------------------------------------------
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nil", // or "nixd", or ["executable", "argument1", ...]
+  // LSP config can be passed via the ``nix.serverSettings.{lsp}`` as shown below.
+  "nix.serverSettings": {
+    // check https://github.com/oxalica/nil/blob/main/docs/configuration.md for all options available
+    "nil": {
+      // "diagnostics": {
+      //  "ignored": ["unused_binding", "unused_with"],
+      // },
+      "formatting": {
+        "command": ["nixfmt"]
+      },
+      "nix": {
+        "flake": {
+          "autoEvalInputs": true,
+          "autoArchive": true,
+          "nixpkgsInputName": "nixpkgs"
         }
+      }
     },
-    "chat.tools.terminal.autoApprove": {
-        "nix": true
+    // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
+    "nixd": {
+      "formatting": {
+        "command": ["nixfmt"]
+      },
+      "options": {
+        // By default, this entry will be read from `import <nixpkgs> { }`.
+        // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
+        // Tip: for flake-based configuration, utilize `builtins.getFlake`
+        // Tip: use ${workspaceFolder} variable to define path
+        "nixos": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options"
+        },
+        "nix-darwin": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options"
+        },
+        "home-manager": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options.home-manager.users.type.getSubOptions []"
+        }
+      }
     }
+  },
+  // -----------------------------------------------
+
+  // Nix settings
+  "nix.formatterPath": [
+    "nixpkgs-fmt",
+    "nixfmt",
+    "treefmt",
+    "--stdin",
+    "{file}",
+    "nix",
+    "fmt",
+    "--",
+    "-"
+  ],
+  // "nix.enableLanguageServer": true,
+  // "nix.serverPath": "nixd",
+
+  // "nix.serverSettings": {
+  //     "nixd": {
+  //         "formatting": {
+  //             "command": [
+  //                 "nixpkgs-fmt"
+  //             ]
+  //         },
+  //         "nixpkgs": {
+  //             "expr": "import (builtins.getFlake \"${workspaceFolder}/flake.nix\").inputs.nixpkgs {}"
+  //         },
+  //         "options": {
+  //             "home_manager": {
+  //                 /*the below is for those who directly integrate their home manager into nixos, what others use is for stand alone home manager*/
+  //                 "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options.home-manager.users.type.getSubOptions []"
+  //             },
+  //             "nixos": {
+  //                 "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options"
+  //             },
+  //             // Tip: use ${workspaceFolder} variable to define path
+  //             "nix-darwin": {
+  //                 "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.jessup-m3.options"
+  //             }
+  //         }
+  //     }
+  // },
+  "chat.tools.terminal.autoApprove": {
+    "nix": true
+  }
 }
