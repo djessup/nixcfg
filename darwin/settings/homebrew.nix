@@ -1,5 +1,18 @@
 # Homebrew configuration
-{ user, ... }:
+{
+  user,
+  ...
+}: 
+let 
+  # List of additional taps used with Homebrew
+  homebrewTaps = [
+    "hudochenkov/sshpass"
+    "wouterdebie/repo"
+    "hashicorp/tap"
+    "jundot/omlx"
+    "OneAdobe/ams-homebrew"
+  ];
+in 
 {
    # Use nix-homebrew to manage the homebrew installation
    nix-homebrew = {
@@ -14,7 +27,12 @@
 
     # Enable if there is an existing non-Nix Homebrew installation we want to import
     # autoMigrate = true;
-
+    trust = {
+      formulae = [ ];
+      casks = [ ];
+      commands = [ ];
+      taps = homebrewTaps;
+    };
     # Optional: Enable fully-declarative tap management
     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
     mutableTaps = true;
@@ -28,9 +46,9 @@
 
     # Use the Apple Silicon prefix for Homebrew instead of the Intel one
     prefix = "/opt/homebrew";
-
+    
     onActivation = {
-      # autoUpdate = true;
+      autoUpdate = true;
       upgrade = true;
       cleanup = "zap";
       extraFlags = [ "--verbose" ];
@@ -61,6 +79,7 @@
       "cloudflare-wrangler"
       "agent-browser"
       # "jundot/omlx/omlx" # OMLX inference engine (disabled due to version lag)
+      "moon"
     ];
 
     casks = [
@@ -113,5 +132,6 @@
       "Microsoft OneNote" = 784801555;
       "Microsoft To Do" = 1274495053;
     };
-  };
+  };     
+  
 }

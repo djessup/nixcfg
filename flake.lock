@@ -840,6 +840,38 @@
         "type": "github"
       }
     },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791069767,
+        "narHash": "sha256-silEAdvWhQKucnQUbm2u2ZQpFrfzkgvz3B+l6jBYFxI=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "rev": "b514ad08610e55cbdd65a4c5b0cfbdb91cff4f91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791070239,
+        "narHash": "sha256-SAWa6FpL2tqDE8D20c+zxBal4NBEtAiz8ncA8qI/Y1o=",
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "rev": "fee917fe7d8c9d3b76c1833a644cd817cbf8f0ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
     "klam-shucker": {
       "inputs": {
         "nixpkgs": [
@@ -1230,6 +1262,8 @@
         "darwin": "darwin_2",
         "github-nix-ci": "github-nix-ci",
         "home-manager": "home-manager_2",
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
         "klam-shucker": "klam-shucker",
         "nix-homebrew": "nix-homebrew",
         "nix-secrets": "nix-secrets",

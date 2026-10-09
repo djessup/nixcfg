@@ -26,6 +26,15 @@
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
     # Nix User Repository for community packages
     nur = {
       url = "github:nix-community/NUR";
@@ -70,9 +79,7 @@
     };
 
     nixstall = {
-      # TODO: load from github instead of local path
       url = "github:djessup/nixstall";
-      # url = "path:/Users/jessup/Documents/GitHub/personal/nixstall";
     };
   };
 
@@ -84,6 +91,8 @@
       darwin,
       home-manager,
       nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
       sops-nix,
       agenix,
       ...
@@ -107,6 +116,35 @@
               ./user # User-specific settings
               home-manager.darwinModules.home-manager # User home environment management
               nix-homebrew.darwinModules.nix-homebrew # Homebrew integration
+              {
+                nix-homebrew = {
+                  # Optional: Declarative tap management
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                  };
+
+                  # Optional: Enable fully-declarative tap management
+                  #
+                  # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+                  mutableTaps = false;
+
+                  # Optional: Declarative Homebrew tap trust entries.
+                  #
+                  # Note: The trust entries are _not_ removed if you remove them from those lists!
+                  # Use the `brew untrust` command to remove a trust entry.
+                  trust = {
+                    formulae = [ ];
+                    casks = [ ];
+                    commands = [ ];
+                    taps = [ ];
+                  };
+                };
+              }
+              # Optional: Align homebrew taps config with nix-homebrew
+              ({config, ...}: {
+                homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+              })
               sops-nix.darwinModules.sops # Secrets module (SOPS)
               agenix.darwinModules.default # Provide `age.*` option namespace
               inputs.github-nix-ci.darwinModules.default # GitHub self-hosted runners
