@@ -80,6 +80,9 @@ in
       "agent-browser"
       # "jundot/omlx/omlx" # OMLX inference engine (disabled due to version lag)
       "moon"
+      "graphviz"
+      "trivy"
+      "openspec"
     ];
 
     casks = [
