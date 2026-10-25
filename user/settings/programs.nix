@@ -1,7 +1,10 @@
 { ... }:
 {
   # Add ~/.local/bin to PATH for tools like uv, etc.
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionPath = [ 
+    "$HOME/.local/bin"
+    "$HOME/.lmstudio/bin"  
+  ];
 
   programs = {
     direnv = {
